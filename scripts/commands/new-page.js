@@ -20,7 +20,7 @@ exports.createNew = function (args) {
       const pageConfFile = path.join(pageFolder, `${pageName}.conf.js`)
       // const pageTestFile = path.join(pageFolder, `${pageName}.test.js`)
       const translationDir = path.join(baseFolder, 'public/locales')
-      const i18nServiceFile = path.join(baseFolder, 'src/Services/i18n.js')
+      // const i18nServiceFile = path.join(baseFolder, 'src/Services/i18n.js')
 
       console.log(chalk.cyan(` Criando página ${pageName}`))
 
@@ -30,17 +30,7 @@ exports.createNew = function (args) {
         // copyFileAsync(path.join(__dirname, '/templates/pageTest.test.js'), pageTestFile), // Move os arquivos de teste para dentro
         copyFileAsync(path.join(__dirname, '/templates/page.js'), pageFile), // Move o arquivo base do pagee pra dentro
         copyFileAsync(path.join(__dirname, '/templates/page.conf.js'), pageConfFile), // Move o arquivo base do page conf pra dentro
-        copyFileAsync(path.join(__dirname, '/templates/i18n.js'), i18nServiceFile) // Move o arquivo base do i18n
       ])
-
-      // Cria um arquivo de tradução dentro de cada pasta de namespace do i18n
-      readdirAsync(translationDir).then((languages) => {
-        languages.forEach((language) => {
-          const filename = path.join(translationDir, language, `${pageName}.json`)
-          writeFileAsync(filename, '{}').then(() => console.log(chalk.yellow(`    Arquivo de tradução criado em ${chalk.magenta(filename)} -> Coloque suas traduções aqui`)))
-        })
-      })
-
       let fileContents
       // Atualiza o nome da página no arquivo de testes
       // fileContents = (await readFileAsync(pageTestFile)).toString()
@@ -58,10 +48,6 @@ exports.createNew = function (args) {
       writeFileAsync(pageConfFile, fileContents)
 
       // Atualiza a lista de namespaces do i18n
-      fileContents = (await readFileAsync(i18nServiceFile)).toString()
-      const namespaces = await getTranslationNamespaces(baseFolder)
-      fileContents = fileContents.replace(/@translationNamespaces/g, namespaces)
-      writeFileAsync(i18nServiceFile, fileContents)
 
       console.log(chalk.bold.yellow(`    >> Arquivos base criados, por favor altere a estrutura dos mesmos:`))
       console.log(chalk.bold.red(`      -> ${chalk.magenta(pageFile)}`))
