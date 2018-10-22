@@ -12,7 +12,7 @@ Cliente em VueJs do sistema Web HelpDoctor desenvolvido para o Trabalho de Concl
 
 ## Instalação
 ```
-npm install -g vue-clie
+npm install -g vue-cli
 yarn install
 ```
 
