@@ -27,9 +27,11 @@ Vue.use(VueResource)
 /* Vue Resource */
 
 /* Components */
-// Para adicionar componentes globalmente siga o código comentado abaixo
-// import SearchForm from './components/SearchForm/SearchForm'
-// Vue.component('search-form', SearchForm)
+import Header from './components/Header/Header'
+Vue.component('header-default', Header)
+
+import Footer from './components/Footer/Footer'
+Vue.component('footer-default', Footer)
 /* Components */
 
 Vue.config.productionTip = false

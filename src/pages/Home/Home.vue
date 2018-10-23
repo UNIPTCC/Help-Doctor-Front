@@ -1,8 +1,12 @@
 <template>
-  <div class="content" id="home">
-      <p>
-        Help Doctor
-      </p>
+  <div>
+    <header-default />
+    <div class="content" id="home">
+        <p>
+          Help Doctor
+        </p>
+    </div>
+    <footer-default />
   </div>
 </template>
 
@@ -14,7 +18,5 @@
 
 <style lang="scss" scoped>
 @import "../../assets/styles/globals";
-#home {
-  position: relative;
-}
+@import "./Home";
 </style>

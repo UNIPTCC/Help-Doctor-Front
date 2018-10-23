@@ -1,0 +1,36 @@
+.header{
+  .navbar {
+    background: $blue;
+    .navbar-brand {
+      margin: 0 auto;
+      a {
+        color: $white;
+        transition: $transition;
+        font-family: $comics;
+        figure {
+          margin: 0 auto;
+          max-width: 15vh;
+          border-radius: 50%;
+          box-shadow: 0 0 5px 0 $white;
+          transition: $transition;
+          background: darken($white, 5%);
+        }
+        h1 {
+          font-size: 20px;
+          font-family: $comics;
+          transition: $transition;
+        }
+        &:hover, &:active, &:focus {
+          color: $white;
+          figure {
+            box-shadow: 0 0 5px 3px $white;
+            background: $white;
+          }
+          h1 {
+            text-shadow: 0 0 5px $white;
+          }
+        }
+      }
+    }
+  }
+}

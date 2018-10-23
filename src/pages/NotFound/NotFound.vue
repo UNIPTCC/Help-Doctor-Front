@@ -29,33 +29,5 @@
 
 <style lang="scss" scoped>
 @import "../../assets/styles/globals";
-#not-found{
-  svg {
-    font-size: 10vh;
-    margin: 15px auto;
-  }
-  h2 {
-    margin: 0 auto 15px;
-    text-transform: uppercase;
-  }
-  p {
-    margin: 0;
-  }
-  button {
-    margin: 15px auto;
-    border-color: $black;
-    transition: $transition;
-    a {
-      transition: $transition;
-      color: $black;
-    }
-    &:hover {
-      background: $white;
-      border-color: $black;
-      a {
-        color: $black;
-      }
-    }
-  }
-}
+@import "./NotFound";
 </style>
