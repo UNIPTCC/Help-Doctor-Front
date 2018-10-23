@@ -1,3 +1,69 @@
 #login {
+  position: relative;
   height: 100vh;
+  #errors {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    width: 100%;
+    color: $red;
+    font-weight: 600;
+    text-shadow: 0 0 0 $red;
+    border-top: 2px solid $red;
+    border-bottom: 2px solid $red;
+    border-radius: 5px;
+    opacity: 0;
+    transition: $transition;
+  }
+  .card {
+    background: $blue;
+    border: 1px solid $white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 7px 1px $gray-disable;
+    .card-title {
+      margin: 0 auto;
+      color: $white;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    hr.separator {
+      margin: 15px auto;
+      border-top: 1px solid $white;
+      position: relative;
+      left: -1.25rem;
+      width: calc(100% + 2.5rem);
+    }
+    a {
+      color: $white;
+      margin: 15px auto 0;
+      display: inline-block;
+      transition: $transition;
+      &:hover {
+        text-shadow: 0 0 3px $white;
+      }
+    }
+    form {
+      input {
+        margin: 0 auto 15px;
+        font-size: 18px;
+      }
+      button {
+        background: $white;
+        color: $blue;
+        border-color: $blue;
+        border-radius: 5px;
+        font-weight: 600;
+        transition: $transition;
+        &:hover, &:focus {
+          background: darken($blue, 25%);
+          color: $white;
+        }
+        &:active {
+          font-size: 13px;
+          background: darken($blue, 25%);
+          color: $white;
+        }
+      }
+    }
+  }
 }

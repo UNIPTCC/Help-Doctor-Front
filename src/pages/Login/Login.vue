@@ -1,6 +1,7 @@
 <template>
     <div class="content" id="login">
         <b-card title="Login">
+          <hr class='separator' />
           <b-form v-on:submit.prevent="onSubmit">
             <b-form-input 
               id="email"
@@ -17,16 +18,16 @@
               placeholder="Senha"
             />
             <b-button type='submit'>
-              Save
+              Entrar
             </b-button>
           </b-form>
           <b-link href="#">
             Esqueci minha senha
           </b-link>
+          <span id='errors'>
+            erros aqui
+          </span>
         </b-card>
-        <span id='errors'>
-          erros aqui
-        </span>
     </div>
 </template>
 
