@@ -1,5 +1,5 @@
 <template>
-  <div id="not-found" class="content">
+  <div class="content" id="not-found">
     <b-container>
       <b-row>
         <b-col cols="12">
@@ -11,8 +11,8 @@
             Parece que a página que você estava tentando acessar não existe.
           </p>
           <b-button variant="outline-success">
-            <router-link to="/">
-              Voltar para a Home
+            <router-link to="/login">
+              Voltar para o Login
             </router-link>
           </b-button>
         </b-col>
@@ -50,10 +50,10 @@
       color: $black;
     }
     &:hover {
-      background: $gray;
-      border-color: $gray;
+      background: $white;
+      border-color: $black;
       a {
-        color: $white;
+        color: $black;
       }
     }
   }

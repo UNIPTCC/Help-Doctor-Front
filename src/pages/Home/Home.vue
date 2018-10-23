@@ -1,5 +1,5 @@
 <template>
-  <div id="home">
+  <div class="content" id="home">
       <p>
         Help Doctor
       </p>
@@ -8,7 +8,7 @@
 
 <script>
   export default {
-    name: 'HomePage'
+    name: 'Home'
   }
 </script>
 

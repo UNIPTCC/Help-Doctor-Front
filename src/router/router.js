@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomePage from '../pages/HomePage/HomePage'
+import Home from '../pages/Home/Home'
 import NotFound from '../pages/NotFound/NotFound'
 
 Vue.use(VueRouter)
@@ -8,11 +8,11 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/home',
-    name: 'HomePage',
+    name: 'Home',
     meta: {
       title: 'HelpDoctor - Home'
     },
-    component: HomePage
+    component: Home
   },
   {
     path: '/',

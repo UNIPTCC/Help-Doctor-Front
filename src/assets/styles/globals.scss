@@ -1,9 +1,19 @@
-/* Base Colors */
+/* GrayScale Colors */
 $white: #fff;
 $gray: #fafbfc;
+$gray-bg: #cbd2de;
 $gray-disable: #6c757d;
 $black: #000;
-/* Base Colors */
+/* GrayScale Colors */
+
+/* Blue */
+$blue: #3793f9;
+/* Blue */
+
+/* Fonts */
+$default: 'Avenir', Helvetica, Arial, sans-serif;
+$comics: "Comic Sans MS", cursive, sans-serif;
+/* Fonts */
 
 /* Fonts */
 $default: 'Avenir', Helvetica, Arial, sans-serif;
@@ -11,7 +21,9 @@ $comics: "Comic Sans MS", cursive, sans-serif;
 /* Fonts */
 
 /* Sizes */
-
+$min-height-container: calc(100vh - 285px);
+$min-height-container-tablet: calc(100vh - 315px);
+$min-height-container-mobile: calc(100vh - 335px);
 /* Sizes */
 
 /* Transitions */

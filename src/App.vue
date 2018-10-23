@@ -16,7 +16,7 @@
         <a target="_blank" href="https://github.com/guimap">
           Guilherme Pereira
         </a> | 
-        <a target="_blank" href="mailto:jonatasjosf@gmail.com">
+        <a href="mailto:jonatasjosf@gmail.com">
           Jonatas Ferreira
         </a> | 
         <a target="_blank" href="https://github.com/marcbatista">
@@ -46,29 +46,63 @@ export default {
   text-align: center;
   min-height: 100vh;
   position: relative;
-  background: $gray;
+  background: $white;
+  @media (max-width: 991px) {
+    background: $blue;
+  }
   /* Global Configs */
   a:hover {
     text-decoration: none;
   }
-
+  .content {
+    color: $black;
+    min-height: $min-height-container;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    overflow-x: hide;
+    background: $white;
+    @media (max-width: 991px) {
+      min-height: $min-height-container-tablet;
+    }
+    @media (max-width: 767px) {
+      min-height: $min-height-container-mobile;
+    }
+    @media (max-height: 750px) {
+      min-height: 440px;
+    }
+  }
   /* Global Configs */
   /* Header */
   .navbar {
-    background: $gray;
+    background: $blue;
     .navbar-brand {
       margin: 0 auto;
       a {
-        color: $black;
+        color: $white;
         transition: $transition;
         font-family: $comics;
+        figure {
+          margin: 0 auto;
+          max-width: 15vh;
+          border-radius: 50%;
+          box-shadow: 0 0 5px 0 $white;
+          transition: $transition;
+          background: darken($white, 5%);
+        }
         h1 {
           font-size: 20px;
           transition: $transition;
         }
         &:hover, &:active, &:focus {
+          color: $white;
+          figure {
+            box-shadow: 0 0 5px 3px $white;
+            background: $white;
+          }
           h1 {
-            text-shadow: 0 0 5px $black;
+            text-shadow: 0 0 5px $white;
           }
         }
       }
@@ -81,21 +115,23 @@ export default {
     bottom: 0;
     padding: 15px;
     width: 100%;
+    background: $blue;
     p {
+      line-height: 60px;
       margin: 0 auto;
-      color: $black;
+      color: $white;
       a, span {
+        color: $white;
         transition: $transition;
       }
       a {
         &:hover, &:active, &:focus {
-          font-size: 20px;
+          color: $gray-bg;
+          font-size: 18px;
         }
       }
     }
-  }
-  @media (max-width: 991px) {
-    footer {
+    @media (max-width: 991px) {
       position: relative;
     }
   }
