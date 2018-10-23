@@ -3,17 +3,18 @@ import VueRouter from 'vue-router'
 import Home from '../pages/Home/Home'
 import Login from '../pages/Login/Login'
 import NotFound from '../pages/NotFound/NotFound'
+import HospitalList from '../pages/Hospital/List/HospitalList'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/home',
-    name: 'Home',
-    component: Home,
-    meta: {
-      title: 'HelpDoctor - Home'
-    }
+    path: '/',
+    redirect: '/login'
+  },
+  {
+    path: '*',
+    redirect: '/404'
   },
   {
     path: '/login',
@@ -24,10 +25,6 @@ const routes = [
       guest: true
     }
   },
-  {
-    path: '/',
-    redirect: '/login'
-  },
   { 
     path: '/404',
     name: 'NotFound',
@@ -36,10 +33,22 @@ const routes = [
       title: 'HelpDoctor - 404 Not Found',
       guest: true
     }
-  },  
+  },
   {
-    path: '*',
-    redirect: '/404'
+    path: '/hospital',
+    name: 'Hospital',
+    component: HospitalList,
+    meta: {
+      title: 'HelpDoctor - Hospitais'
+    }
+  },
+  {
+    path: '/home',
+    name: 'Home',
+    component: Home,
+    meta: {
+      title: 'HelpDoctor - Home'
+    }
   }
 ]
 
