@@ -14,10 +14,14 @@ $blue: #3793f9;
 $red: #dc3545;
 /* Red */
 
-/* Fonts */
-$default: 'Avenir', Helvetica, Arial, sans-serif;
-$comics: "Comic Sans MS", cursive, sans-serif;
-/* Fonts */
+/* Yellow */
+$yellow: #ffc107;
+/* Yellow */
+
+/* Defaults */
+$radius: 5px;
+$transition: all 0.3s ease;
+/* Defaults */
 
 /* Fonts */
 $default: 'Avenir', Helvetica, Arial, sans-serif;
@@ -30,9 +34,15 @@ $min-height-container-tablet: calc(100vh - 315px);
 $min-height-container-mobile: calc(100vh - 335px);
 /* Sizes */
 
-/* Transitions */
-$transition: all 0.3s ease;
-/* Transitions */
+/* Classes */
+.display-show {
+  display: inline-block;
+}
+
+.display-hide {
+  display: none;
+}
+/* Classes */
 
 /* Animations */
 
