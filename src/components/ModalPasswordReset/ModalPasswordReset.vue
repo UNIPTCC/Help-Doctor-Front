@@ -14,7 +14,7 @@
         placeholder="E-mail"
       />
       <b-button type='submit'>
-        Entrar
+        Resetar Senha
       </b-button>
     </b-form>
     <span id='error-reset'>
