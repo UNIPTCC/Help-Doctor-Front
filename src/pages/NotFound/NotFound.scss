@@ -1,4 +1,6 @@
 #not-found{
+  color: $blue;
+  height: 100vh;
   svg {
     font-size: 10vh;
     margin: 15px auto;
@@ -12,17 +14,16 @@
   }
   button {
     margin: 15px auto;
-    border-color: $black;
+    border-color: $blue;
     transition: $transition;
     a {
       transition: $transition;
-      color: $black;
+      color: $blue;
     }
     &:hover {
-      background: $white;
-      border-color: $black;
+      background: $blue;
       a {
-        color: $black;
+        color: $white;
       }
     }
   }

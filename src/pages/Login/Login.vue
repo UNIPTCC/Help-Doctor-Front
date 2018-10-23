@@ -1,4 +1,7 @@
 <template>
+    <div class="content" id="login">
+      
+    </div>
 </template>
 
 <script>

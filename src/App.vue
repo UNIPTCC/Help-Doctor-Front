@@ -17,7 +17,7 @@ export default {
   text-align: center;
   min-height: 100vh;
   position: relative;
-  background: $white;
+  background: $gray;
   @media (max-width: 991px) {
     background: $blue;
   }
@@ -33,7 +33,7 @@ export default {
     justify-content: center;
     overflow-y: auto;
     overflow-x: hide;
-    background: $white;
+    background: $gray;
     @media (max-width: 991px) {
       min-height: $min-height-container-tablet;
     }
