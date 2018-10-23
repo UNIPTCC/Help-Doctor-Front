@@ -1,3 +1,22 @@
 #hospital-list {
-  
+  h1{
+    color: $blue;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 auto 30px;
+  }
+  .filter {
+    position: relative;
+    margin: 0 auto 30px;
+    input {
+      border-radius: $radius;
+    }
+    button {
+      position: absolute;
+      border-radius: $radius;
+      &.disabled {
+        background: transparent;
+      }
+    }
+  }
 }

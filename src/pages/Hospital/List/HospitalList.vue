@@ -4,9 +4,18 @@
     <div class="content" id="hospital-list">
       <b-container>
         <b-row>
+          <b-col cols="12">
+            <h1>
+              Lista de Hospitais
+            </h1>
+          </b-col>
+        </b-row>
+        <b-row>
           <b-col>
-            <b-form-input v-model="filter" placeholder="Filtrar" />
-            <b-btn :disabled="!filter" @click="filter = ''">X</b-btn>
+            <b-form class="filter">
+              <b-input v-model="filter" placeholder="Filtrar" />
+              <b-btn :disabled="!filter" @click="filter = ''">X</b-btn>
+            </b-form>
           </b-col>
         </b-row>
         <b-row>
@@ -26,7 +35,7 @@
           </b-col>
         </b-row>
         <b-row>
-          <b-col md="6">
+          <b-col cols="12">
             <b-pagination
               :total-rows="totalRows"
               :per-page="perPage"
