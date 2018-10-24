@@ -5,44 +5,17 @@
       <b-container>
         <b-row>
           <b-col cols="12">
-            <h1>
+            <h1 class="title">
               Lista de Hospitais
             </h1>
           </b-col>
         </b-row>
-        <b-row>
-          <b-col>
-            <b-form class="filter">
-              <b-input v-model="filter" placeholder="Filtrar" />
-              <b-btn :disabled="!filter" @click="filter = ''">X</b-btn>
-            </b-form>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col>
-            <b-table
-              responsive
-              striped
-              hover
-              stacked="lg"
-              :items="hospitals"
-              :fields="colunms"
-              :current-page="currentPage"
-              :per-page="perPage"
-              :filter="filter"
-              @filtered="onFiltered"
-            />
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col cols="12">
-            <b-pagination
-              :total-rows="totalRows"
-              :per-page="perPage"
-              v-model="currentPage"
-            />
-          </b-col>
-        </b-row>
+        <custom-table
+          :perPage="perPage"
+          :totalRows="totalRows"
+          :colunms="colunms"
+          :itens="hospitals"
+        />
       </b-container>
     </div>
     <footer-default />
@@ -80,26 +53,17 @@ export default {
           name: 'Order Hospital 3',
         }
       ],
-      stacked: (window.innerWidth > 991) ? false : true,
-      currentPage: 1,
-      perPage: 1,
       totalRows: 1,
-      filter: null
+      perPage: 2
     }
   },
   created() {
     this.totalRows = this.hospitals.length
-  },
-  methods: {
-    onFiltered (filteredItems) {
-      this.totalRows = filteredItems.length
-      this.currentPage = 1
-    }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../../../assets/styles/globals";
 @import "./HospitalList";
 </style>

@@ -35,6 +35,9 @@ Vue.component('footer-default', Footer)
 
 import ModalPasswordReset from './components/ModalPasswordReset/ModalPasswordReset'
 Vue.component('modal-password-reset', ModalPasswordReset)
+
+import CustomTable from './components/CustomTable/CustomTable'
+Vue.component('custom-table', CustomTable)
 /* Components */
 
 Vue.config.productionTip = false

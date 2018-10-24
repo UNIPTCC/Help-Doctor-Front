@@ -3,6 +3,7 @@ $white: #fff;
 $gray: #fafbfc;
 $gray-bg: #cbd2de;
 $gray-disable: #6c757d;
+$gray-disable-light: #6c757d57;
 $black: #000;
 /* GrayScale Colors */
 
@@ -41,6 +42,13 @@ $min-height-container-mobile: calc(100vh - 335px);
 
 .display-hide {
   display: none;
+}
+
+.title {
+  color: $blue;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 0 auto 30px;
 }
 /* Classes */
 

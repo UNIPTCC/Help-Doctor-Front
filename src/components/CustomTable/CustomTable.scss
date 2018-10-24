@@ -1,0 +1,111 @@
+.custom-table {
+  .filter {
+    position: relative;
+    margin: 0 auto 30px;
+    text-align: left;
+    input {
+      border-radius: $radius;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      max-width: 500px;
+      width: calc(100% - 80px);
+      display: inline-block;
+      margin: 0 auto;
+    }
+    button {
+      top: 0;
+      left: 0;
+      width: 80px;
+      height: 38px;
+      position: relative;
+      border: none;
+      color: $white;
+      background: $blue;
+      font-weight: 600;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      transition: $transition;
+      &.disabled {
+        color: $white;
+        background: $gray-disable;
+        &:hover {
+          color: $white;
+          background: $gray-disable;
+        }
+      }
+      &:hover {
+        background: darken($blue, 25%);
+        color: $white;
+      }
+      &:focus, &:active, &:hover {
+        outline: none;
+      }
+    }
+  }
+  .table {
+    transition: $transition;
+    thead {
+      background: $white;
+      transition: $transition;
+    }
+    tbody {
+      tr{
+        transition: $transition;
+        &:nth-of-type(odd) {
+          background: lighten($gray-bg, 12%);
+        }
+        &:nth-of-type(even) {
+          background: $white;
+        }
+        &:hover {
+          background: lighten($blue, 30%);
+          color: darken($blue, 25%);
+          font-weight: 700;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .pagination {
+    .page-item {
+      transition: $transition;
+      a, span {
+        color: $blue;
+        transition: $transition;
+      }
+      &.active {
+        color: $white;
+        font-weight: 700;
+        a, span {
+          color: $white;
+          background: $blue;
+        }
+      }
+      &.disabled {
+        cursor: not-allowed;
+        a, span {
+          background: $gray-disable-light;
+          color: $white;
+        }
+      }
+      &:first-child {
+        .page-link {
+          border-top-left-radius: $radius;
+          border-bottom-left-radius: $radius;
+        }
+      }
+      &:last-child {
+        .page-link {
+          border-top-right-radius: $radius;
+          border-bottom-right-radius: $radius;
+        }
+      }
+    }
+  }
+  .pagination-total {
+    text-align: left;
+    margin: 0 auto;
+    font-style: italic;
+    font-size: 13px;
+  }
+}
