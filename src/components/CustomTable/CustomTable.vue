@@ -79,7 +79,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../../assets/styles/globals";
 @import "./CustomTable";
 </style>
