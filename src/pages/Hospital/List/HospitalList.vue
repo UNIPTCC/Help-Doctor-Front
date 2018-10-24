@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import HelpDoctorApi from '../../../services/HelpDoctorApi' // Exemplo de request
+// import HelpDoctorApi from '../../../services/HelpDoctorApi' // Exemplo de request
 
 export default {
   name: 'HospitalList',
