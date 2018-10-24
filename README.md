@@ -41,5 +41,5 @@ yarn run lint
 Variavéis que devem ser definidas em um arquivo `.env` na raiz do projeto.
 
 ```
-HELPDOCTOR_API_URL -> URL da API do HelpDoctor
+VUE_APP_HELPDOCTOR_API_URL -> URL da API do HelpDoctor
 ```
