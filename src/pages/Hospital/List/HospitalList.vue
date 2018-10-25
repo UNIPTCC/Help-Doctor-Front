@@ -1,5 +1,5 @@
 <template>
- <div>
+  <div>
     <header-default />
     <div class="content" id="hospital-list">
       <b-container>

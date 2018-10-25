@@ -4,6 +4,7 @@ import Home from '../pages/Home/Home'
 import Login from '../pages/Login/Login'
 import NotFound from '../pages/NotFound/NotFound'
 import HospitalList from '../pages/Hospital/List/HospitalList'
+import HospitalEdit from '../pages/Hospital/Edit/HospitalEdit'
 
 Vue.use(VueRouter)
 
@@ -40,6 +41,14 @@ const routes = [
     component: HospitalList,
     meta: {
       title: 'HelpDoctor - Hospitais'
+    }
+  },
+  {
+    path: '/hospital/:id',
+    name: 'Hospital',
+    component: HospitalEdit,
+    meta: {
+      title: 'HelpDoctor - Editar Hospital'
     }
   },
   {
