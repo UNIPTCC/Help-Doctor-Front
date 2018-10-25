@@ -57,11 +57,22 @@
         &:nth-of-type(even) {
           background: $white;
         }
-        &:hover {
-          background: lighten($blue, 30%);
-          color: darken($blue, 25%);
-          font-weight: 700;
-          cursor: pointer;
+      }
+    }
+    &.editable {
+      tbody {
+        tr{
+          &:hover {
+            background: lighten($blue, 30%);
+            color: darken($blue, 25%);
+            font-weight: 700;
+            cursor: pointer;
+          }
+          td {
+            .fa-pencil-alt {
+              color: $gray-disable;
+            }
+          }
         }
       }
     }

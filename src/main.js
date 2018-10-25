@@ -13,10 +13,12 @@ Vue.use(BootstrapVue)
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { 
-  faDizzy
+  faDizzy,
+  faPencilAlt
 } from '@fortawesome/free-solid-svg-icons'
 library.add([
-  faDizzy
+  faDizzy,
+  faPencilAlt
 ])
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 /* Font Awesome */

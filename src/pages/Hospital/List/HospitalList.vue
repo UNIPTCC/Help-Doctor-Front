@@ -15,6 +15,7 @@
           :totalRows="totalRows"
           :colunms="colunms"
           :itens="hospitals"
+          editable
         />
       </b-container>
     </div>

@@ -21,7 +21,12 @@
           :per-page="perPage"
           :filter="filter"
           @filtered="onFiltered"
-        />
+          :class="{editable:editable}"
+        >
+           <template slot="actions" slot-scope="row">
+             <font-awesome-icon icon="pencil-alt" />
+           </template>
+        </b-table>
       </b-col>
     </b-row>
     <b-row>
@@ -65,10 +70,41 @@ export default {
     colunms: {
       type: Array,
       required: true
+    },
+    editable: {
+      type: Boolean,
+      required: false
     }
   },
   created() {
     this.totalRows = this.itens.length
+    if (this.editable) {
+      this.colunms.push({
+        key: 'actions',
+        label: '',
+        sortable: false
+      })
+    }
+  },
+  watch: {
+    itens (newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.totalRows = this.itens.length
+      }
+    },
+    editable (newVal, oldVal) {
+      if (newVal !== oldVal) {
+        if (this.editable) {
+          this.colunms.push({
+            key: 'actions',
+            label: '',
+            sortable: false
+          })
+        } else {
+          this.colunms.pop()
+        }
+      }
+    }
   },
   methods: {
     onFiltered (filteredItems) {
