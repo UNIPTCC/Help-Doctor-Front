@@ -1,12 +1,12 @@
 <template>
 <div>
     <header-default />
-    <div class="content" id="hospital-edit">
+    <div class="content" id="patient-edit">
       <b-container>
         <b-row>
           <b-col cols="12">
             <h1 class="title">
-              Edital de Hospital 'nome'
+              Edital de Paciente 'nome'
             </h1>
           </b-col>
         </b-row>
@@ -18,10 +18,10 @@
 
 <script>
 export default {
-  name: 'HospitalEdit',
+  name: 'PatientEdit',
   data () {
     return {
-      hospital: {
+      patient: {
         
       }
     }
@@ -34,5 +34,5 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../../assets/styles/globals";
-@import "./HospitalEdit";
+@import "./PatientEdit";
 </style>

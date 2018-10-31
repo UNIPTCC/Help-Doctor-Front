@@ -18,7 +18,11 @@ import {
   faHospital,
   faHome,
   faGripVertical,
-  faTimes
+  faTimes,
+  faUserMd,
+  faUser,
+  faCalendarAlt,
+  faNotesMedical
 } from '@fortawesome/free-solid-svg-icons'
 library.add([
   faDizzy,
@@ -26,7 +30,11 @@ library.add([
   faHospital,
   faHome,
   faGripVertical,
-  faTimes
+  faTimes,
+  faUserMd,
+  faUser,
+  faCalendarAlt,
+  faNotesMedical
 ])
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 /* Font Awesome */

@@ -28,9 +28,29 @@ export default {
           icon: 'home'
         },
         {
+          name: 'Agenda',
+          path: '/agenda',
+          icon: 'calendar-alt'
+        },
+        {
+          name: 'Prontuários',
+          path: '/prontuario',
+          icon: 'notes-medical'
+        },
+        {
+          name: 'Pacientes',
+          path: '/paciente',
+          icon: 'user'
+        },
+        {
           name: 'Hospitais',
           path: '/hospital',
           icon: 'hospital'
+        },
+        {
+          name: 'Usuários',
+          path: '/user',
+          icon: 'user-md'
         }
       ]
     }
