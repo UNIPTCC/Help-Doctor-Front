@@ -17,7 +17,7 @@
     height: 40px;
     font-size: 23px;
     border-radius: 50%;
-    background: darken($blue, 20%);
+    background: $blue;
     color: $white;
     border: 1px solid $white;
     box-shadow: $shadow;
@@ -40,7 +40,7 @@
     position: relative;
     top: 60px;
     li {
-      font-size: 16px;
+      font-size: 4vw;
       margin: 7vw;
       display: inline-block;
       text-align: center;
@@ -58,7 +58,7 @@
         transition: $transition;
         .wrapper {
           svg {
-            font-size: 22px;
+            font-size: 7vw;
             display: block;
             margin: 0 auto;
           }
