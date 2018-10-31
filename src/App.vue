@@ -40,7 +40,7 @@ export default {
     background: $gray;
     padding-left: 200px;
     @media (max-width: 991px) {
-      padding-left: 0;
+      padding: 15px 0;
       min-height: $min-height-container-tablet;
     }
     @media (max-width: 767px) {
