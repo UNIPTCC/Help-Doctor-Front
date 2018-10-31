@@ -14,11 +14,15 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { 
   faDizzy,
-  faPencilAlt
+  faPencilAlt,
+  faHospital,
+  faHome
 } from '@fortawesome/free-solid-svg-icons'
 library.add([
   faDizzy,
-  faPencilAlt
+  faPencilAlt,
+  faHospital,
+  faHome
 ])
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 /* Font Awesome */
@@ -31,6 +35,12 @@ Vue.use(VueResource)
 /* Components */
 import Header from './components/Header/Header'
 Vue.component('header-default', Header)
+
+import MenuMobile from './components/MenuMobile/MenuMobile'
+Vue.component('menu-mobile', MenuMobile)
+
+import MenuDestkop from './components/MenuDestkop/MenuDestkop'
+Vue.component('menu-desktop', MenuDestkop)
 
 import Footer from './components/Footer/Footer'
 Vue.component('footer-default', Footer)
