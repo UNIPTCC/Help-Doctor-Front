@@ -6,7 +6,7 @@
         <b-row>
           <b-col cols="12">
             <h1 class="title">
-              Edital de Prontuário '123' do paciente 'nome'
+              Editar de Prontuário '123' do paciente 'nome'
             </h1>
           </b-col>
         </b-row>

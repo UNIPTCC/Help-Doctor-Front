@@ -6,7 +6,7 @@
         <b-row>
           <b-col cols="12">
             <h1 class="title">
-              Edital de Hospital 'nome'
+              Editar de Hospital 'nome'
             </h1>
           </b-col>
         </b-row>
