@@ -40,25 +40,30 @@
     position: relative;
     top: 60px;
     li {
-      font-size: 15px;
-      margin: 5vw;
+      font-size: 16px;
+      margin: 7vw;
       display: inline-block;
       text-align: center;
       a {
-        width: 30vw;
-        height: 20vw;
+        width: 35vw;
+        height: 25vw;
         font-family: $comics;
         background: $white;
         color: $blue;
         padding: 15px;
-        display: inline-block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-radius: 5px;
         transition: $transition;
-        svg {
-          font-size: 20px;
-          display: block;
-          margin: 0 auto;
+        .wrapper {
+          svg {
+            font-size: 22px;
+            display: block;
+            margin: 0 auto;
+          }
         }
+
         &.router-link-active {
           background: $blue;
           color: $white;

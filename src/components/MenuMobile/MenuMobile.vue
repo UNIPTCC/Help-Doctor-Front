@@ -6,8 +6,10 @@
     <ul>
       <li v-for="(item, index) in items" :key="index">
         <router-link :to="{ path: item.path }">
-          <font-awesome-icon v-if="item.icon" :icon="item.icon" />
-          {{ item.name }}
+          <div class="wrapper">
+            <font-awesome-icon v-if="item.icon" :icon="item.icon" />
+            {{ item.name }}
+          </div>
         </router-link>
       </li>
     </ul>
