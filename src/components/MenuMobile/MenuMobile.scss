@@ -80,6 +80,7 @@
       left: calc(100vw - 50px);
       border: none;
       box-shadow: none;
+      background: darken($blue, 20%);
     }
     ul {
       width: calc(100%);
