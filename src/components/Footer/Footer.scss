@@ -4,6 +4,7 @@ footer.footer {
   padding: 15px;
   width: 100%;
   background: $blue;
+  z-index: 2;
   p {
     line-height: 60px;
     margin: 0 auto;
@@ -21,5 +22,6 @@ footer.footer {
   }
   @media (max-width: 991px) {
     position: relative;
+    z-index: 1;
   }
 }
