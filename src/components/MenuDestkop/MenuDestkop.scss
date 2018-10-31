@@ -1,11 +1,10 @@
 #menu-desktop {
-  @media (max-width: 991px) {
-    display: none;
-  }
   position: fixed;
   left: 0;
   top: 0;
-  min-height: 100vh;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: darken($blue, 20%);
   z-index: 1;
   width: 200px;
@@ -32,5 +31,8 @@
         }
       }
     }
+  }
+  @media (max-width: 991px) {
+    display: none;
   }
 }

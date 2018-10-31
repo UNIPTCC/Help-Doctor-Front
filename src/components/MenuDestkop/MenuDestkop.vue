@@ -1,7 +1,7 @@
 <template>
   <div id="menu-desktop">
     <ul>
-      <li v-for="(item, index) in items" :key="index" v-on:click="setActive('about')">
+      <li v-for="(item, index) in items" :key="index">
         <router-link :to="{ path: item.path }">
           <font-awesome-icon v-if="item.icon" :icon="item.icon" />
           {{ item.name }}

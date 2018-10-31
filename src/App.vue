@@ -18,6 +18,10 @@ export default {
   min-height: 100vh;
   position: relative;
   background: $gray;
+  &.no-scroll {
+    overflow-y: hidden;
+    max-height: 100vh;
+  }
   @media (max-width: 991px) {
     background: $blue;
   }

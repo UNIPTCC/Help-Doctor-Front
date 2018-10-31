@@ -4,6 +4,7 @@ $gray: #fafbfc;
 $gray-bg: #cbd2de;
 $gray-disable: #6c757d;
 $gray-disable-light: #6c757d57;
+$black-shadow: #555;
 $black: #000;
 /* GrayScale Colors */
 
@@ -22,6 +23,7 @@ $yellow: #ffc107;
 /* Defaults */
 $radius: 5px;
 $transition: all 0.3s ease;
+$shadow: 0 0 2px 1px $black-shadow;
 /* Defaults */
 
 /* Fonts */

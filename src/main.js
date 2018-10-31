@@ -16,13 +16,17 @@ import {
   faDizzy,
   faPencilAlt,
   faHospital,
-  faHome
+  faHome,
+  faTh,
+  faTimes
 } from '@fortawesome/free-solid-svg-icons'
 library.add([
   faDizzy,
   faPencilAlt,
   faHospital,
-  faHome
+  faHome,
+  faTh,
+  faTimes
 ])
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 /* Font Awesome */

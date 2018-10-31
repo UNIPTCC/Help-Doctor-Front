@@ -37,7 +37,7 @@ const routes = [
   },
   {
     path: '/hospital',
-    name: 'Hospital',
+    name: 'Hospital - Lista',
     component: HospitalList,
     meta: {
       title: 'HelpDoctor - Hospitais'
@@ -45,7 +45,7 @@ const routes = [
   },
   {
     path: '/hospital/:id',
-    name: 'Hospital',
+    name: 'Hospital - Editar',
     component: HospitalEdit,
     meta: {
       title: 'HelpDoctor - Editar Hospital'
