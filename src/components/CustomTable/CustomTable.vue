@@ -81,7 +81,7 @@ export default {
     if (this.editable) {
       this.colunms.push({
         key: 'actions',
-        label: '',
+        label: 'Ações',
         sortable: false
       })
     }

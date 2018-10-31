@@ -26,13 +26,13 @@ export default {
   data () {
     return {
       open: false,
-      icon: 'th'
+      icon: 'grip-vertical'
     }
   },
   methods: {
     openMenu () {
       this.open = !this.open
-      this.icon = (this.open) ? 'times' : 'th'
+      this.icon = (this.open) ? 'times' : 'grip-vertical'
     }
   }
 }

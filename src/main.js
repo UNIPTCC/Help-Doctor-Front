@@ -17,7 +17,7 @@ import {
   faPencilAlt,
   faHospital,
   faHome,
-  faTh,
+  faGripVertical,
   faTimes
 } from '@fortawesome/free-solid-svg-icons'
 library.add([
@@ -25,7 +25,7 @@ library.add([
   faPencilAlt,
   faHospital,
   faHome,
-  faTh,
+  faGripVertical,
   faTimes
 ])
 Vue.component('font-awesome-icon', FontAwesomeIcon)
