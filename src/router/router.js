@@ -48,7 +48,17 @@ const routes = [
     name: 'Hospital - Lista',
     component: HospitalList,
     meta: {
-      title: 'HelpDoctor - Hospitais'
+      title: 'HelpDoctor - Hospitais',
+      admin: true
+    }
+  },
+  {
+    path: '/hospital/new',
+    name: 'Hospital - Novo',
+    component: HospitalEdit,
+    meta: {
+      title: 'HelpDoctor - Novo Hospital',
+      admin: true
     }
   },
   {
@@ -56,7 +66,8 @@ const routes = [
     name: 'Hospital - Editar',
     component: HospitalEdit,
     meta: {
-      title: 'HelpDoctor - Editar Hospital'
+      title: 'HelpDoctor - Editar Hospital',
+      admin: true
     }
   },
     {
@@ -64,7 +75,19 @@ const routes = [
     name: 'Usuário - Lista',
     component: UserList,
     meta: {
-      title: 'HelpDoctor - Usuários'
+      title: 'HelpDoctor - Usuários',
+      admin: true,
+      manager: true
+    }
+  },
+  {
+    path: '/user/new',
+    name: 'Usuário - Novo',
+    component: UserEdit,
+    meta: {
+      title: 'HelpDoctor - Novo Usuário',
+      admin: true,
+      manager: true
     }
   },
   {
@@ -72,7 +95,9 @@ const routes = [
     name: 'Usuário - Editar',
     component: UserEdit,
     meta: {
-      title: 'HelpDoctor - Editar Usuário'
+      title: 'HelpDoctor - Editar Usuário',
+      admin: true,
+      manager: true
     }
   },
   {
@@ -80,7 +105,21 @@ const routes = [
     name: 'Agenda - Lista',
     component: AppointmentList,
     meta: {
-      title: 'HelpDoctor - Agendas'
+      title: 'HelpDoctor - Agendas',
+      admin: true,
+      manager: true,
+      doctor: true
+    }
+  },
+  {
+    path: '/agenda/new',
+    name: 'Agenda - Novo',
+    component: AppointmentEdit,
+    meta: {
+      title: 'HelpDoctor - Nova Agenda',
+      admin: true,
+      manager: true,
+      doctor: true
     }
   },
   {
@@ -88,7 +127,10 @@ const routes = [
     name: 'Agenda - Editar',
     component: AppointmentEdit,
     meta: {
-      title: 'HelpDoctor - Editar Agenda'
+      title: 'HelpDoctor - Editar Agenda',
+      admin: true,
+      manager: true,
+      doctor: true
     }
   },
     {
@@ -96,7 +138,25 @@ const routes = [
     name: 'Prontuário - Lista',
     component: RecordList,
     meta: {
-      title: 'HelpDoctor - Prontuários'
+      title: 'HelpDoctor - Prontuários',
+      admin: true,
+      manager: true,
+      doctor: true,
+      nurse:true,
+      clerk: true
+    }
+  },
+  {
+    path: '/prontuario/new',
+    name: 'Prontuário - Novo',
+    component: RecordEdit,
+    meta: {
+      title: 'HelpDoctor - Novo Prontuário',
+      admin: true,
+      manager: true,
+      doctor: true,
+      nurse:true,
+      clerk: true
     }
   },
   {
@@ -104,7 +164,11 @@ const routes = [
     name: 'Prontuário - Editar',
     component: RecordEdit,
     meta: {
-      title: 'HelpDoctor - Editar Prontuário'
+      title: 'HelpDoctor - Editar Prontuário',
+      admin: true,
+      manager: true,
+      doctor: true,
+      nurse:true
     }
   },
     {
@@ -112,7 +176,25 @@ const routes = [
     name: 'Paciente - Lista',
     component: PatientList,
     meta: {
-      title: 'HelpDoctor - Pacientes'
+      title: 'HelpDoctor - Pacientes',
+      admin: true,
+      manager: true,
+      doctor: true,
+      nurse:true,
+      clerk: true
+    }
+  },
+  {
+    path: '/paciente/new',
+    name: 'Paciente - Novo',
+    component: PatientEdit,
+    meta: {
+      title: 'HelpDoctor - Novo Paciente',
+      admin: true,
+      manager: true,
+      doctor: true,
+      nurse:true,
+      clerk: true
     }
   },
   {
@@ -120,7 +202,12 @@ const routes = [
     name: 'Paciente - Editar',
     component: PatientEdit,
     meta: {
-      title: 'HelpDoctor - Editar Paciente'
+      title: 'HelpDoctor - Editar Paciente',
+      admin: true,
+      manager: true,
+      doctor: true,
+      nurse:true,
+      clerk: true
     }
   },
   {
@@ -128,7 +215,12 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: {
-      title: 'HelpDoctor - Home'
+      title: 'HelpDoctor - Home',
+      admin: true,
+      manager: true,
+      doctor: true,
+      nurse:true,
+      clerk: true
     }
   }
 ]
@@ -137,9 +229,36 @@ const router = new VueRouter({
   routes
 })
 
+const verifyRole = function (record, roleName) {
+  return record.meta.hasOwnProperty(roleName)
+}
+
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title
-  next()
+  const jwt = localStorage.getItem('jwt')
+  const user = JSON.parse(localStorage.getItem('user'))
+  // let user = {
+  //   role: 'clerk'
+  // }
+  // const jwt = `a`
+  if (to.matched.some(record => !record.meta.guest)) {
+    if (!jwt || !user) {
+        next({
+            path: '/login',
+            params: { nextUrl: to.fullPath }
+        })
+    } else {
+        if (to.matched.some(record => verifyRole(record, user.role))) {
+          next()
+        } else {
+          next({
+            path: '/home'
+          })
+        }
+    }
+  } else {
+      next() 
+  }
 })
 
 export default router
