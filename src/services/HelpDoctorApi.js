@@ -9,9 +9,9 @@ export default class HelpDoctorApi extends Service {
 
 
   // Exemplo de request
-  async getStatus () {
+  async getUsers () {
     try {
-    return await this.http.get(`${VUE_APP_HELPDOCTOR_API_URL}/status`, {
+    return await this.http.get(`${VUE_APP_HELPDOCTOR_API_URL}/user/all`, {
       headers: {
         'Content-Type': 'application/json'
       }
