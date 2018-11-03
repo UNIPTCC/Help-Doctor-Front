@@ -7,6 +7,12 @@
           {{ item.name }}
         </router-link>
       </li>
+      <li>
+        <a v-on:click="$logout">
+          <font-awesome-icon icon="sign-out-alt" />
+          Sair
+        </a>
+      </li>
     </ul>
   </div>
 </template>

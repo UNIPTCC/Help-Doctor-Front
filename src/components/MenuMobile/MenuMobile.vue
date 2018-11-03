@@ -13,6 +13,10 @@
         </router-link>
       </li>
     </ul>
+    <a class="exit" v-on:click="$logout">
+      <font-awesome-icon icon="sign-out-alt" />
+      Sair
+    </a>
   </div>
 </template>
 

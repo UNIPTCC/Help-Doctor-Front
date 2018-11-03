@@ -28,6 +28,15 @@
       outline: none;
     }
   }
+  .exit {
+    width: 100%;
+    display: inline-block;
+    position: fixed;
+    bottom: -100vh;
+    color: $white;
+    opacity: 0;
+    transition: bottom 1s ease;
+  }
   ul {
     width: 0;
     height: 0;
@@ -84,6 +93,10 @@
     ul {
       width: calc(100%);
       height: calc(100% - 60px);
+    }
+    .exit {
+      bottom: 15px;
+      opacity: 1;
     }
   }
   @media (min-width: 992px) {

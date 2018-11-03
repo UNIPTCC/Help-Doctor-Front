@@ -22,7 +22,8 @@ import {
   faUserMd,
   faUser,
   faCalendarAlt,
-  faNotesMedical
+  faNotesMedical,
+  faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons'
 library.add([
   faDizzy,
@@ -34,7 +35,8 @@ library.add([
   faUserMd,
   faUser,
   faCalendarAlt,
-  faNotesMedical
+  faNotesMedical,
+  faSignOutAlt
 ])
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 /* Font Awesome */
@@ -43,6 +45,13 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 /* Vue Resource */
+
+/* Plugins */
+import Logout from './plugins/Logout/logout'
+Vue.use(Logout, {
+  router
+})
+/* Plugins */
 
 /* Components */
 import Header from './components/Header/Header'

@@ -11,9 +11,9 @@
             Parece que a página que você estava tentando acessar não existe.
           </p>
           <b-button variant="outline-success">
-            <router-link to="/login">
-              Voltar para o Login
-            </router-link>
+            <a v-on:click="$router.go(-1)">
+              Voltar para a página anterior
+            </a>
           </b-button>
         </b-col>
       </b-row>
