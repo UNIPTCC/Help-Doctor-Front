@@ -9,14 +9,13 @@ export default class HelpDoctorApi extends Service {
 
   /**
    * Metodo para autenticação do usuário na API
+   * @param {string} email - email do usuário
+   * @param {string} password - senha do usuário
    */
   async authentication (email, password) {
     try {
-      if (!email) throw new Error(400, "E-mail obrigatório")
-      if (!password) throw new Error(400, "Senha obrigatória")
-
-      return await this.http({
-        method: 'post',
+      const { data } = await this.http({
+        method: 'POST',
         url: `${VUE_APP_HELPDOCTOR_API_URL}/oauth/authorize?grant_type=password`,
         data: {
           username: email,
@@ -26,6 +25,7 @@ export default class HelpDoctorApi extends Service {
           'Content-Type': 'application/json'
         }
       })
+      return data
     } catch (err) {
       // eslint-disable-next-line
       console.error(err)
@@ -41,6 +41,28 @@ export default class HelpDoctorApi extends Service {
         default:
           err.response.parseMessage = "Falha do servidor, tente novamente mais tarde :("
       }
+      throw err
+    }
+  }
+
+  /**
+   * Pega a lista de hospitais
+   */
+  async getHospitals () {
+    try {
+      const { data } =  await this.http({
+        method: 'GET',
+        url: `${VUE_APP_HELPDOCTOR_API_URL}/hospital`,
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Authorization ': `Bearer ${this.getJWT()}` // TODO descomentar quando o Guilherme normalizar a autorização nessa rota
+        }
+      })
+
+      return data
+    } catch (err) {
+      // eslint-disable-next-line
+      console.error(err)
       throw err
     }
   }

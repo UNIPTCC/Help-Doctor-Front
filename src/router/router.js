@@ -230,6 +230,7 @@ const router = new VueRouter({
   routes
 })
 
+ // eslint-disable-next-line
 const verifyRole = function (record, roleName) {
   return record.meta.hasOwnProperty(roleName)
 }

@@ -59,10 +59,10 @@ export default {
           const response = await api.authentication(email, password)
           this.error = ''
 
-          localStorage.setItem('user', JSON.stringify(response.data.idTokenPayload.user))
-          localStorage.setItem('jwt', response.data.token)
+          localStorage.setItem('user', JSON.stringify(response.idTokenPayload.user))
+          localStorage.setItem('jwt', response.token)
 
-          if (response.data.token) {
+          if (response.token) {
             if (this.$route.params.nextUrl) {
               this.$router.push(this.$route.params.nextUrl)
             } else {

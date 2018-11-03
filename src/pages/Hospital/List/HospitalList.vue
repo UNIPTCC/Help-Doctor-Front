@@ -24,6 +24,9 @@
 </template>
 
 <script>
+import HelpDoctorApi from '../../../services/HelpDoctorApi'
+const api = new HelpDoctorApi()
+
 export default {
   name: 'HospitalList',
   data () {
@@ -40,26 +43,28 @@ export default {
           sortable: true
         }
       ],
-      hospitals: [
-        {
-          id: 1,
-          name: 'Hospital 1',
-        },
-        {
-          id: 2,
-          name: 'Hospital 2',
-        },
-        {
-          id: 3,
-          name: 'Order Hospital 3',
-        }
-      ],
-      totalRows: 1,
-      perPage: 2
+      hospitals: [],
+      totalRows: 0,
+      perPage: 10,
+      error: false
     }
   },
   created() {
-    this.totalRows = this.hospitals.length
+    (async () => {
+      await this.getHospitals()
+    })()
+  },
+  methods: {
+    getHospitals () {
+      (async () => {
+        try {
+          this.hospitals = await api.getHospitals()
+          this.totalRows = this.hospitals.length
+        } catch (err) {
+          this.error = 'Falha ao obter hospitais'
+        }
+      })()
+    }
   }
 }
 </script>
