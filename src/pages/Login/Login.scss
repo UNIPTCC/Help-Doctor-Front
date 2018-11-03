@@ -14,6 +14,9 @@
     border-radius: $radius;
     opacity: 0;
     transition: $transition;
+    &.show {
+      opacity: 1;
+    }
   }
   .card {
     background: $blue;

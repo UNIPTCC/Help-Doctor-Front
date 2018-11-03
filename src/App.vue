@@ -50,6 +50,9 @@ export default {
       min-height: 440px;
     }
   }
+  .content-full {
+    padding: 0;
+  }
   /* Global Configs */
 }
 </style>

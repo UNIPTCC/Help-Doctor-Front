@@ -1,5 +1,5 @@
 <template>
-  <div class="content" id="not-found">
+  <div class="content content-full" id="not-found">
     <b-container>
       <b-row>
         <b-col cols="12">

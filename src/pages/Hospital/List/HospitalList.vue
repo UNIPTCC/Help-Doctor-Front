@@ -24,8 +24,6 @@
 </template>
 
 <script>
-// import HelpDoctorApi from '../../../services/HelpDoctorApi' // Exemplo de request
-
 export default {
   name: 'HospitalList',
   data () {
@@ -62,18 +60,6 @@ export default {
   },
   created() {
     this.totalRows = this.hospitals.length
-
-    // this.api = new HelpDoctorApi() // Exemplo de request
-
-    // this.getStatus() // Exemplo de request
-  },
-  methods: {
-    // getStatus () {
-    //   (async () => {
-    //     let status = await this.api.getStatus()
-    //     console.log(status)
-    //   })()
-    // }
   }
 }
 </script>
