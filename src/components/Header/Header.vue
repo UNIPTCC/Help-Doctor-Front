@@ -2,7 +2,7 @@
   <div class="header">
     <b-navbar toggleable="md" type="light">
       <b-navbar-brand>
-        <router-link to="/">
+        <router-link to="/home">
           <h1>
             HelpDoctor
           </h1>

@@ -226,6 +226,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 
@@ -244,21 +245,21 @@ router.beforeEach((to, from, next) => {
   // const jwt = `a`
   if (to.matched.some(record => !record.meta.guest)) {
     if (!jwt || !user) {
-        next({
-            path: '/login',
-            params: { nextUrl: to.fullPath }
-        })
+      next({
+        name: 'Login',
+        params: { nextUrl: to.fullPath }
+      })
     } else {
-        if (to.matched.some(record => verifyRole(record, user.role))) {
-          next()
-        } else {
-          next({
-            path: '/home'
-          })
-        }
+      // if (to.matched.some(record => verifyRole(record, user.role))) {
+        next()
+      // } else {
+      //   next({
+      //     name: 'Home'
+      //   })
+      // }
     }
   } else {
-      next() 
+    next() 
   }
 })
 

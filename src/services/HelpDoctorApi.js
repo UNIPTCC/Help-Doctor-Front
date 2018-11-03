@@ -39,7 +39,7 @@ export default class HelpDoctorApi extends Service {
           err.response.parseMessage = "Login ou senha inválido(s)"
           break
         default:
-          err.response.parseMessage = "Falha no servidor, tente novamente mais tarde :("
+          err.response.parseMessage = "Falha do servidor, tente novamente mais tarde :("
       }
       throw err
     }

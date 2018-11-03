@@ -21,20 +21,25 @@
             Entrar
           </b-button>
         </b-form>
+        <!--
         <b-link v-b-modal.modalpassword>
           Esqueci minha senha
         </b-link>
+        *** Falta implementar o back-end do reset de senha, até lá manter oculto ***
+        -->
         <span id='error-login' v-bind:class="{'show': error}">
           {{error}}
         </span>
       </b-card>
-      <!-- <modal-password-reset /> Falta implementar o back-end do reset de senha, até lá manter oculto -->
+      <!--
+      <modal-password-reset />
+      *** Falta implementar o back-end do reset de senha, até lá manter oculto ***
+      -->
     </div>
 </template>
 
 <script>
 import HelpDoctorApi from '../../services/HelpDoctorApi'
-
 const api = new HelpDoctorApi()
 
 export default {
@@ -52,11 +57,24 @@ export default {
         try {
           const { email, password } = this
           const response = await api.authentication(email, password)
-          this.error = false
+          this.error = ''
+
           localStorage.setItem('user', JSON.stringify(response.data.idTokenPayload.user))
           localStorage.setItem('jwt', response.data.token)
+
+          if (response.data.token) {
+            if (this.$route.params.nextUrl) {
+              this.$router.push(this.$route.params.nextUrl)
+            } else {
+              this.$router.push({ name: 'Home' })
+            }
+          }
         } catch (err) {
-          this.error = err.response.parseMessage
+          if (err.response) {
+            this.error = err.response.parseMessage
+          } else {
+            this.error = "Falha do servidor, tente novamente mais tarde :("
+          }
         }
       })()
     }
