@@ -53,7 +53,7 @@ const routes = [
     }
   },
   {
-    path: '/hospital/new',
+    path: '/hospital/novo',
     name: 'HospitalNew',
     component: HospitalEdit,
     meta: {
@@ -71,7 +71,7 @@ const routes = [
     }
   },
     {
-    path: '/user',
+    path: '/usuario',
     name: 'UserList',
     component: UserList,
     meta: {
@@ -81,7 +81,7 @@ const routes = [
     }
   },
   {
-    path: '/user/new',
+    path: '/usuario/novo',
     name: 'UserNew',
     component: UserEdit,
     meta: {
@@ -91,7 +91,7 @@ const routes = [
     }
   },
   {
-    path: '/user/:id',
+    path: '/usuario/:id',
     name: 'UserEdit',
     component: UserEdit,
     meta: {
@@ -112,7 +112,7 @@ const routes = [
     }
   },
   {
-    path: '/agenda/new',
+    path: '/agenda/novo',
     name: 'AppointmentNew',
     component: AppointmentEdit,
     meta: {
@@ -147,7 +147,7 @@ const routes = [
     }
   },
   {
-    path: '/prontuario/new',
+    path: '/prontuario/novo',
     name: 'RecordNew',
     component: RecordEdit,
     meta: {
@@ -185,7 +185,7 @@ const routes = [
     }
   },
   {
-    path: '/paciente/new',
+    path: '/paciente/novo',
     name: 'PatientNew',
     component: PatientEdit,
     meta: {

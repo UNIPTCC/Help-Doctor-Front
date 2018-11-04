@@ -54,5 +54,45 @@ export default {
     padding: 0;
   }
   /* Global Configs */
+  /* Classes */
+  .display-show {
+    display: inline-block;
+  }
+  .display-hide {
+    display: none;
+  }
+  .title {
+    color: $blue;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 auto 30px;
+  }
+  .btn.new {
+    width: 90px;
+    height: 38px;
+    position: relative;
+    border: none;
+    color: $white;
+    background: $blue;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: $transition;
+    &.disabled {
+      color: $white;
+      background: $gray-disable;
+      &:hover {
+        color: $white;
+        background: $gray-disable;
+      }
+    }
+    &:hover {
+      background: darken($blue, 25%);
+      color: $white;
+    }
+    &:focus, &:active, &:hover {
+      outline: none;
+    }
+  }
+  /* Classes */
 }
 </style>

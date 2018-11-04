@@ -10,6 +10,15 @@
             </h1>
           </b-col>
         </b-row>
+        <b-row>
+          <b-col cols="12">
+            <div class="wrapper">
+              <router-link class="btn new" to="/hospital/novo">
+                Novo <font-awesome-icon icon="plus" />
+              </router-link>
+            </div>
+          </b-col>
+        </b-row>
         <custom-table
           :perPage="perPage"
           :totalRows="totalRows"

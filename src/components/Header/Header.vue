@@ -49,7 +49,7 @@ export default {
         },
         {
           name: 'Usuários',
-          path: '/user',
+          path: '/usuario',
           icon: 'user-md'
         }
       ]

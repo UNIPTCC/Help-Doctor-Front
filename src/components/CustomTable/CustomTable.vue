@@ -24,7 +24,7 @@
           :class="{editable:editable}"
         >
            <template slot="actions" slot-scope="row">
-             <font-awesome-icon icon="pencil-alt" />
+              <font-awesome-icon icon="pencil-alt" />
            </template>
         </b-table>
       </b-col>
