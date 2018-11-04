@@ -251,6 +251,7 @@ router.beforeEach((to, from, next) => {
         params: { nextUrl: to.fullPath }
       })
     } else {
+      // TODO comentários sobre a lógica de roles no sistema, normalizar com o Guilherme
       // if (to.matched.some(record => verifyRole(record, user.role))) {
         next()
       // } else {
