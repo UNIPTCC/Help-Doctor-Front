@@ -8,7 +8,7 @@ export default class Hospitals extends Service {
   }
 
   async get (id, name) {
-    let query
+    let query = ''
     if (id) {
       query += `?id=${id}`
     } else if (name) {
