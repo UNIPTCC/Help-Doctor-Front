@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import HelpDoctorApi from '../../../services/HelpDoctorApi'
-const api = new HelpDoctorApi()
+import Hospitals from '../../../services/Hospitals'
+const hospitalsService = new Hospitals()
 
 export default {
   name: 'HospitalList',
@@ -58,7 +58,7 @@ export default {
     getHospitals () {
       (async () => {
         try {
-          this.hospitals = await api.getHospitals()
+          this.hospitals = await hospitalsService.get()
           this.totalRows = this.hospitals.length
         } catch (err) {
           this.error = 'Falha ao obter hospitais'

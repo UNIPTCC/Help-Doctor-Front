@@ -39,8 +39,8 @@
 </template>
 
 <script>
-import HelpDoctorApi from '../../services/HelpDoctorApi'
-const api = new HelpDoctorApi()
+import Authentication from '../../services/Authentication'
+const authenticationService = new Authentication()
 
 export default {
   name: 'Login',
@@ -56,7 +56,7 @@ export default {
       (async () => {
         try {
           const { email, password } = this
-          const response = await api.authentication(email, password)
+          const response = await authenticationService.login(email, password)
           this.error = ''
 
           localStorage.setItem('user', JSON.stringify(response.idTokenPayload.user))
