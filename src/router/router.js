@@ -45,7 +45,7 @@ const routes = [
   },
   {
     path: '/hospital',
-    name: 'Hospital - Lista',
+    name: 'HospitalList',
     component: HospitalList,
     meta: {
       title: 'HelpDoctor - Hospitais',
@@ -54,7 +54,7 @@ const routes = [
   },
   {
     path: '/hospital/new',
-    name: 'Hospital - Novo',
+    name: 'HospitalNew',
     component: HospitalEdit,
     meta: {
       title: 'HelpDoctor - Novo Hospital',
@@ -63,7 +63,7 @@ const routes = [
   },
   {
     path: '/hospital/:id',
-    name: 'Hospital - Editar',
+    name: 'HospitalEdit',
     component: HospitalEdit,
     meta: {
       title: 'HelpDoctor - Editar Hospital',
@@ -72,7 +72,7 @@ const routes = [
   },
     {
     path: '/user',
-    name: 'Usuário - Lista',
+    name: 'UserList',
     component: UserList,
     meta: {
       title: 'HelpDoctor - Usuários',
@@ -82,7 +82,7 @@ const routes = [
   },
   {
     path: '/user/new',
-    name: 'Usuário - Novo',
+    name: 'UserNew',
     component: UserEdit,
     meta: {
       title: 'HelpDoctor - Novo Usuário',
@@ -92,7 +92,7 @@ const routes = [
   },
   {
     path: '/user/:id',
-    name: 'Usuário - Editar',
+    name: 'UserEdit',
     component: UserEdit,
     meta: {
       title: 'HelpDoctor - Editar Usuário',
@@ -102,7 +102,7 @@ const routes = [
   },
   {
     path: '/agenda',
-    name: 'Agenda - Lista',
+    name: 'AppointmentList',
     component: AppointmentList,
     meta: {
       title: 'HelpDoctor - Agendas',
@@ -113,7 +113,7 @@ const routes = [
   },
   {
     path: '/agenda/new',
-    name: 'Agenda - Novo',
+    name: 'AppointmentNew',
     component: AppointmentEdit,
     meta: {
       title: 'HelpDoctor - Nova Agenda',
@@ -124,7 +124,7 @@ const routes = [
   },
   {
     path: '/agenda/:id',
-    name: 'Agenda - Editar',
+    name: 'AppointmentEdit',
     component: AppointmentEdit,
     meta: {
       title: 'HelpDoctor - Editar Agenda',
@@ -135,7 +135,7 @@ const routes = [
   },
     {
     path: '/prontuario',
-    name: 'Prontuário - Lista',
+    name: 'RecordList',
     component: RecordList,
     meta: {
       title: 'HelpDoctor - Prontuários',
@@ -148,7 +148,7 @@ const routes = [
   },
   {
     path: '/prontuario/new',
-    name: 'Prontuário - Novo',
+    name: 'RecordNew',
     component: RecordEdit,
     meta: {
       title: 'HelpDoctor - Novo Prontuário',
@@ -161,7 +161,7 @@ const routes = [
   },
   {
     path: '/prontuario/:id',
-    name: 'Prontuário - Editar',
+    name: 'RecordEdit',
     component: RecordEdit,
     meta: {
       title: 'HelpDoctor - Editar Prontuário',
@@ -173,7 +173,7 @@ const routes = [
   },
     {
     path: '/paciente',
-    name: 'Paciente - Lista',
+    name: 'PatientList',
     component: PatientList,
     meta: {
       title: 'HelpDoctor - Pacientes',
@@ -186,7 +186,7 @@ const routes = [
   },
   {
     path: '/paciente/new',
-    name: 'Paciente - Novo',
+    name: 'PatientNew',
     component: PatientEdit,
     meta: {
       title: 'HelpDoctor - Novo Paciente',
@@ -199,7 +199,7 @@ const routes = [
   },
   {
     path: '/paciente/:id',
-    name: 'Paciente - Editar',
+    name: 'PatientEdit',
     component: PatientEdit,
     meta: {
       title: 'HelpDoctor - Editar Paciente',
