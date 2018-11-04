@@ -12,7 +12,7 @@
         </b-row>
         <b-row>
           <b-col cols="12">
-            <form>
+            <form v-on:submit.prevent="onSubmit">
               formulário aqui
             </form>
           </b-col>
@@ -32,7 +32,8 @@ export default {
   data () {
     return {
       title: (this.$route.params.id) ? `Editar Hospital` : 'Novo Hospital',
-      hospital: {}
+      hospital: {},
+      error: false
     }
   },
   created() {
@@ -48,6 +49,21 @@ export default {
           this.title = `Editar Hospital ${this.hospital.name}`
         } catch (err) {
           this.error = 'Falha ao obter hospital'
+        }
+      })()
+    },
+    onSubmit () {
+      (async () => {
+        try {
+          const { hospital } = this
+          const response = await hospitalsService.post()
+          this.error = ''
+        } catch (err) {
+          if (err.response) {
+            this.error = err.response.parseMessage
+          } else {
+            this.error = "Falha do servidor, tente novamente mais tarde :("
+          }
         }
       })()
     }

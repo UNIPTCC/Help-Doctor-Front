@@ -12,12 +12,12 @@ export default class Authentication extends Service {
       const { data } = await this.http({
         method: 'POST',
         url: `${VUE_APP_HELPDOCTOR_API_URL}/oauth/authorize?grant_type=password`,
+        headers: {
+          'Content-Type': 'application/json'
+        },
         data: {
           username: email,
           password: password
-        },
-        headers: {
-          'Content-Type': 'application/json'
         }
       })
       return data

@@ -32,7 +32,7 @@ export default class Hospitals extends Service {
     }
   }
 
-  async create () {
+  async create (hospital) {
     try {
       const { data } =  await this.http({
         method: 'POST',
@@ -40,6 +40,10 @@ export default class Hospitals extends Service {
         headers: {
           'Content-Type': 'application/json'
           // 'Authorization ': `Bearer ${this.getJWT()}` // TODO descomentar quando o Guilherme normalizar a autorização nessa rota
+        },
+        data: {
+          name: hospital.name,
+          address: hospital.address
         }
       })
 
@@ -51,7 +55,7 @@ export default class Hospitals extends Service {
     }
   }
 
-  async update (id) {
+  async update (id, hospital) {
     try {
       const { data } =  await this.http({
         method: 'PUT',
@@ -59,6 +63,10 @@ export default class Hospitals extends Service {
         headers: {
           'Content-Type': 'application/json'
           // 'Authorization ': `Bearer ${this.getJWT()}` // TODO descomentar quando o Guilherme normalizar a autorização nessa rota
+        },
+        data: {
+          name: hospital.name,
+          address: hospital.address
         }
       })
 

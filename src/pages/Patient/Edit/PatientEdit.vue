@@ -6,8 +6,15 @@
         <b-row>
           <b-col cols="12">
             <h1 class="title">
-              Editar de Paciente 'nome'
+              {{title}}
             </h1>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col cols="12">
+            <form>
+              formulário aqui
+            </form>
           </b-col>
         </b-row>
       </b-container>
@@ -21,13 +28,15 @@ export default {
   name: 'PatientEdit',
   data () {
     return {
-      patient: {
-        
-      }
+      title: (this.$route.params.id) ? `Editar Paciente` : 'Novo Paciente',
+      patient: {},
+      error: false
     }
   },
   created() {
-    // $route.params.id -> para pegar o ID da url
+    if (this.$route.params.id) {
+      // TODO implementar metodo
+    }
   }
 }
 </script>
