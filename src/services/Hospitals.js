@@ -14,7 +14,6 @@ export default class Hospitals extends Service {
     } else if (name) {
       query += `?name=${name}`
     }
-
     try {
       const { data } =  await this.http({
         method: 'GET',
@@ -25,7 +24,7 @@ export default class Hospitals extends Service {
         }
       })
 
-      return data
+      return (query !== '') ? data[0] : data
     } catch (err) {
       // eslint-disable-next-line
       console.error(err)

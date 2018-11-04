@@ -6,8 +6,15 @@
         <b-row>
           <b-col cols="12">
             <h1 class="title">
-              Editar de Hospital 'nome'
+              {{title}}
             </h1>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col cols="12">
+            <form>
+              formulário aqui
+            </form>
           </b-col>
         </b-row>
       </b-container>
@@ -17,17 +24,33 @@
 </template>
 
 <script>
+import Hospitals from '../../../services/Hospitals'
+const hospitalsService = new Hospitals()
+
 export default {
   name: 'HospitalEdit',
   data () {
     return {
-      hospital: {
-        
-      }
+      title: (this.$route.params.id) ? `Editar Hospital` : 'Novo Hospital',
+      hospital: {}
     }
   },
   created() {
-    // $route.params.id -> para pegar o ID da url
+    if (this.$route.params.id) {
+      this.getHospital(this.$route.params.id)
+    }
+  },
+  methods: {
+    getHospital (id) {
+      (async () => {
+        try {
+          this.hospital = await hospitalsService.get(id)
+          this.title = `Editar Hospital ${this.hospital.name}`
+        } catch (err) {
+          this.error = 'Falha ao obter hospital'
+        }
+      })()
+    }
   }
 }
 </script>
