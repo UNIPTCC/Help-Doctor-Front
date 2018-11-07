@@ -39,6 +39,7 @@ export default {
     openMenu () {
       this.open = !this.open
       this.icon = (this.open) ? 'times' : 'grip-vertical'
+      document.querySelector('#app').classList.toggle('no-scroll')
     }
   }
 }
