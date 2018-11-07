@@ -25,9 +25,11 @@ export default {
   a:hover {
     text-decoration: none;
   }
-  &.no-scroll, .no-scroll {
-    overflow-y: hidden;
-    max-height: 100vh;
+  &.no-scroll {
+    @media (max-width: 991px) {
+      overflow-y: hidden;
+      max-height: 100vh;
+    }
   }
   .content {
     color: $black;
