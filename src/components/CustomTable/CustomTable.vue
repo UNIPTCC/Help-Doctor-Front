@@ -15,7 +15,7 @@
           striped
           hover
           stacked="lg"
-          :items="itens"
+          :items="items"
           :fields="colunms"
           :current-page="currentPage"
           :per-page="perPage"
@@ -23,8 +23,10 @@
           @filtered="onFiltered"
           :class="{editable:editable}"
         >
-           <template slot="actions" slot-scope="row">
-              <font-awesome-icon icon="pencil-alt" />
+           <template slot="actions" slot-scope="data">
+              <router-link :to="{ path: `${path}/${data.item.id}` }">
+                <font-awesome-icon icon="pencil-alt" />
+              </router-link>
            </template>
         </b-table>
       </b-col>
@@ -51,7 +53,8 @@ export default {
     return {
       stacked: (window.innerWidth > 991) ? false : true,
       currentPage: 1,
-      filter: null
+      filter: null,
+      path: ''
     }
   },
   props: {
@@ -63,7 +66,7 @@ export default {
       type: Number,
       required: true
     },
-    itens: {
+    items: {
       type: Array,
       required: true
     },
@@ -77,19 +80,20 @@ export default {
     }
   },
   created() {
-    this.totalRows = this.itens.length
+    this.totalRows = this.items.length
     if (this.editable) {
       this.colunms.push({
         key: 'actions',
         label: 'Ações',
         sortable: false
       })
+      this.path = this.$route.path
     }
   },
   watch: {
-    itens (newVal, oldVal) {
+    items (newVal, oldVal) {
       if (newVal !== oldVal) {
-        this.totalRows = this.itens.length
+        this.totalRows = this.items.length
       }
     },
     editable (newVal, oldVal) {

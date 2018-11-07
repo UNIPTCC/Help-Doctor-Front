@@ -23,7 +23,7 @@
           :perPage="perPage"
           :totalRows="totalRows"
           :colunms="colunms"
-          :itens="records"
+          :items="records"
           editable
         />
       </b-container>

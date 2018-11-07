@@ -10,21 +10,21 @@ export default class Hospitals extends Service {
   async get (id, name) {
     let query = ''
     if (id) {
-      query += `?id=${id}`
+      query = `/${id}`
     } else if (name) {
-      query += `?name=${name}`
+      query = `?name=${name}`
     }
+
     try {
       const { data } =  await this.http({
         method: 'GET',
         url: `${VUE_APP_HELPDOCTOR_API_URL}/hospital${query}`,
         headers: {
-          'Content-Type': 'application/json'
-          // 'Authorization ': `Bearer ${this.getJWT()}` // TODO descomentar quando o Guilherme normalizar a autorização nessa rota
+          Authorization: `Bearer ${this.getJWT()}`
         }
       })
 
-      return (query !== '') ? data[0] : data
+      return data
     } catch (err) {
       // eslint-disable-next-line
       console.error(err)
@@ -38,8 +38,7 @@ export default class Hospitals extends Service {
         method: 'POST',
         url: `${VUE_APP_HELPDOCTOR_API_URL}/hospital`,
         headers: {
-          'Content-Type': 'application/json'
-          // 'Authorization ': `Bearer ${this.getJWT()}` // TODO descomentar quando o Guilherme normalizar a autorização nessa rota
+          Authorization: `Bearer ${this.getJWT()}`
         },
         data: {
           name: hospital.name,
@@ -61,8 +60,7 @@ export default class Hospitals extends Service {
         method: 'PUT',
         url: `${VUE_APP_HELPDOCTOR_API_URL}/hospital/${id}`,
         headers: {
-          'Content-Type': 'application/json'
-          // 'Authorization ': `Bearer ${this.getJWT()}` // TODO descomentar quando o Guilherme normalizar a autorização nessa rota
+          Authorization: `Bearer ${this.getJWT()}`
         },
         data: {
           name: hospital.name,
@@ -84,8 +82,7 @@ export default class Hospitals extends Service {
         method: 'DELETE',
         url: `${VUE_APP_HELPDOCTOR_API_URL}/hospital/${id}`,
         headers: {
-          'Content-Type': 'application/json'
-          // 'Authorization ': `Bearer ${this.getJWT()}` // TODO descomentar quando o Guilherme normalizar a autorização nessa rota
+          Authorization: `Bearer ${this.getJWT()}`
         }
       })
 

@@ -23,7 +23,7 @@
           :perPage="perPage"
           :totalRows="totalRows"
           :colunms="colunms"
-          :itens="hospitals"
+          :items="hospitals"
           editable
         />
       </b-container>
