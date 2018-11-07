@@ -237,6 +237,7 @@ const verifyRole = function (record, roleName) {
 
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title
+  document.querySelector('#app').classList.remove('no-scroll')
   const jwt = localStorage.getItem('jwt')
   const user = JSON.parse(localStorage.getItem('user'))
   // Código comentado para testes de rota forçando autenticações e usuários chumbados

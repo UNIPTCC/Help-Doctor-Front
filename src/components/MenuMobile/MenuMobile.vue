@@ -5,7 +5,7 @@
     </button>
     <ul>
       <li v-for="(item, index) in items" :key="index">
-        <router-link :to="{ path: item.path }">
+        <router-link v-on:click="openMenu()" :to="{ path: item.path }">
           <div class="wrapper">
             <font-awesome-icon v-if="item.icon" :icon="item.icon" />
             {{ item.name }}
