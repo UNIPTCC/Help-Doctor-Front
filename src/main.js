@@ -24,7 +24,8 @@ import {
   faCalendarAlt,
   faNotesMedical,
   faSignOutAlt,
-  faPlus
+  faPlus,
+  faCircleNotch
 } from '@fortawesome/free-solid-svg-icons'
 library.add([
   faDizzy,
@@ -38,7 +39,8 @@ library.add([
   faCalendarAlt,
   faNotesMedical,
   faSignOutAlt,
-  faPlus
+  faPlus,
+  faCircleNotch
 ])
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 /* Font Awesome */

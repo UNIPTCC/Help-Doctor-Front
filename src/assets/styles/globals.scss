@@ -38,5 +38,9 @@ $min-height-container-mobile: calc(100vh - 335px);
 /* Sizes */
 
 /* Animations */
-
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
 /* Animations */

@@ -2,7 +2,7 @@
   <div>
     <header-default />
     <div class="content" id="hospital-list">
-      <b-container>
+      <b-container v-if="!loading">
         <b-row>
           <b-col cols="12">
             <h1 class="title">
@@ -27,6 +27,7 @@
           editable
         />
       </b-container>
+      <font-awesome-icon v-if="loading" icon="circle-notch" class="spin loader" />
     </div>
     <footer-default />
   </div>
@@ -40,6 +41,7 @@ export default {
   name: 'HospitalList',
   data () {
     return {
+      loading: true,
       colunms: [
         {
           key: 'id',
@@ -69,6 +71,7 @@ export default {
         try {
           this.hospitals = await hospitalsService.get()
           this.totalRows = this.hospitals.length
+          this.loading = false
         } catch (err) {
           this.error = 'Falha ao obter hospitais'
         }

@@ -39,6 +39,7 @@ export default {
     overflow-x: hide;
     background: $gray;
     padding-left: 200px;
+    padding: 15px 0 15px 200px;
     @media (max-width: 991px) {
       padding: 15px 0;
       min-height: $min-height-container-tablet;
@@ -52,6 +53,13 @@ export default {
   }
   .content-full {
     padding: 0;
+  }
+  .spin {
+    animation: spinner 1.3s linear infinite;
+  }
+  .loader {
+    color: $blue;
+    font-size: 40px;
   }
   /* Global Configs */
   /* Classes */
