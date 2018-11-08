@@ -63,19 +63,30 @@
       tbody {
         tr{
           td {
-            .fa-pencil-alt {
-              color: $gray-disable;
-              &:hover {
-                cursor: pointer;
+            a{
+              position: relative;
+              .fa-pencil-alt {
+                color: $gray-disable;
+                transition: $transition;
+                position: absolute;
+                left: -8px;
+                top: 4px;
+                &:hover {
+                  font-size: 20px;
+                  cursor: pointer;
+                  top: 0;
+                }
               }
             }
           }
           &:hover {
-            background: lighten($blue, 30%);
-            color: darken($blue, 25%);
+            background: darken($blue, 20%);
             font-weight: 700;
-            svg {
-              color: darken($blue, 25%);
+            color: $white;
+            a{
+              svg {
+                color: $white;
+              }
             }
           }
         }

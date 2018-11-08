@@ -2,7 +2,7 @@
 <div>
     <header-default />
     <div class="content" id="patient-edit">
-      <b-container>
+      <b-container v-if="!loading">
         <b-row>
           <b-col cols="12">
             <h1 class="title">
@@ -18,6 +18,7 @@
           </b-col>
         </b-row>
       </b-container>
+      <font-awesome-icon v-if="loading" icon="circle-notch" class="spin loader" />
     </div>
     <footer-default />
   </div>
@@ -28,12 +29,14 @@ export default {
   name: 'PatientEdit',
   data () {
     return {
+      loading: true,
       title: (this.$route.params.id) ? `Editar Paciente` : 'Novo Paciente',
       patient: {},
       error: false
     }
   },
   created() {
+    this.loading = false
     if (this.$route.params.id) {
       // TODO implementar metodo
     }

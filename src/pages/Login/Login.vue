@@ -17,7 +17,7 @@
             required
             placeholder="Senha"
           />
-          <b-button type='submit'>
+          <b-button :disabled="loading" type="submit">
             Entrar
           </b-button>
         </b-form>
@@ -27,9 +27,10 @@
         </b-link>
         *** Falta implementar o back-end do reset de senha, até lá manter oculto ***
         -->
-        <span id='error-login' v-bind:class="{'show': error}">
+        <span id='error-login' v-if="!loading" v-bind:class="{'show': error}">
           {{error}}
         </span>
+        <font-awesome-icon v-if="loading" icon="circle-notch" class="spin loader" />
       </b-card>
       <!--
       <modal-password-reset />
@@ -46,6 +47,7 @@ export default {
   name: 'Login',
   data () {
     return {
+      loading: false,
       email: '',
       password: '',
       error: false
@@ -55,6 +57,7 @@ export default {
     onSubmit () {
       (async () => {
         try {
+          this.loading = true
           const { email, password } = this
           const response = await authenticationService.login(email, password)
           this.error = ''
@@ -70,6 +73,7 @@ export default {
             }
           }
         } catch (err) {
+          this.loading = false
           if (err.response) {
             this.error = err.response.parseMessage
           } else {

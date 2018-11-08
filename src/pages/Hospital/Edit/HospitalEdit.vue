@@ -2,7 +2,7 @@
 <div>
     <header-default />
     <div class="content" id="hospital-edit">
-      <b-container>
+      <b-container v-if="!loading">
         <b-row>
           <b-col cols="12">
             <h1 class="title">
@@ -18,6 +18,7 @@
           </b-col>
         </b-row>
       </b-container>
+      <font-awesome-icon v-if="loading" icon="circle-notch" class="spin loader" />
     </div>
     <footer-default />
   </div>
@@ -31,6 +32,7 @@ export default {
   name: 'HospitalEdit',
   data () {
     return {
+      loading: true,
       title: (this.$route.params.id) ? `Editar Hospital` : 'Novo Hospital',
       hospital: {},
       error: false
@@ -39,6 +41,8 @@ export default {
   created() {
     if (this.$route.params.id) {
       this.getHospital(this.$route.params.id)
+    } else {
+      this.loading = false
     }
   },
   methods: {
@@ -47,6 +51,7 @@ export default {
         try {
           this.hospital = await hospitalsService.get(id)
           this.title = `Editar Hospital ${this.hospital.name}`
+          this.loading = false
         } catch (err) {
           this.error = 'Falha ao obter hospital'
         }

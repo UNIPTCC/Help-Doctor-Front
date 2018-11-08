@@ -2,7 +2,7 @@
   <div>
     <header-default />
     <div class="content" id="user-list">
-      <b-container>
+      <b-container v-if="!loading">
         <b-row>
           <b-col cols="12">
             <h1 class="title">
@@ -27,6 +27,7 @@
           editable
         />
       </b-container>
+      <font-awesome-icon v-if="loading" icon="circle-notch" class="spin loader" />
     </div>
     <footer-default />
   </div>
@@ -39,6 +40,7 @@ export default {
   name: 'UserList',
   data () {
     return {
+      loading: true,
       colunms: [
         {
           key: 'id',
@@ -86,6 +88,7 @@ export default {
     }
   },
   created() {
+    this.loading = false
     this.totalRows = this.users.length
 
     // this.api = new HelpDoctorApi() // Exemplo de request

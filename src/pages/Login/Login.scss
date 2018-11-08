@@ -18,6 +18,11 @@
       opacity: 1;
     }
   }
+  .loader {
+    position: absolute;
+    top: 260px;
+    left: calc(50% - 20px);
+  }
   .card {
     background: $blue;
     border: 1px solid $white;
@@ -57,6 +62,15 @@
         border-radius: $radius;
         font-weight: 600;
         transition: $transition;
+        &.disabled {
+          &:hover, &:focus, &:active {
+            background: $white;
+            color: $blue;
+            border-color: $blue;
+            font-size: initial;
+            cursor: not-allowed;
+          }
+        }
         &:hover, &:focus {
           background: darken($blue, 25%);
           color: $white;
