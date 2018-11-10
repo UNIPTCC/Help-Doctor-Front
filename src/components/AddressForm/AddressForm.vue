@@ -13,6 +13,7 @@
           placeholder='CEP'
           class="zipcode"
           v-mask="['#####-###']"
+          @keyup.native="getAddress(zipcode)"
         />
         <b-btn v-on:click="getAddress(zipcode)" :disabled="loading || (zipcode && zipcode.length <= 8)">
           <font-awesome-icon :icon="(loading) ? 'circle-notch' : 'search'" :class="(loading) ? 'spin' : ''" />
@@ -113,7 +114,6 @@ export default {
        (async () => {
           try {
             const response = await ViaCEPService.get(zipcode)
-
             this.disabled = false
 
             if (!response.erro) {

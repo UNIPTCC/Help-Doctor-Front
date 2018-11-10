@@ -20,6 +20,9 @@ export default {
   created () {
     this.state = this.recieveState || null
   },
+  updated () {
+    this.state = this.recieveState || null
+  },
   watch: {
     state (newVal, oldVal) {
        if (newVal !== oldVal) {
