@@ -80,10 +80,10 @@ export default {
       (async () => {
         try {
           this.users = await usersService.get()
+          this.totalRows = this.users.length
           await this.parseHospitals()
           await this.parseRoles()
           this.loading = false
-          this.totalRows = this.users.length
         } catch (err) {
           this.loading = false
           window.alert('Falha ao obter usuários')
@@ -93,7 +93,27 @@ export default {
     parseRoles () {
        (async () => {
         this.users = this.users.map((user) => {
-          const roleString = null
+          let roleString = ''
+          if (user.roles && user.roles[0] && user.roles[0]) {
+            switch (user.roles[0].name) {
+              case 'ADMIN':
+                roleString = 'Administrador'
+                break
+              case 'MANAGER':
+                roleString = 'Gerente'
+                break
+              case 'DOCTOR':
+                roleString = 'Médico'
+                break
+              case 'NURSE':
+                roleString = 'Enfermeira'
+                break
+              case 'RECEPTIONIST':
+                roleString = 'Atendente'
+                break
+              default:
+            }
+          }
           return {
             roleString,
             ...user
