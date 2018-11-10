@@ -76,6 +76,7 @@ export default {
     text-transform: uppercase;
     font-weight: 600;
     margin: 0 auto 30px;
+    font-size: 2rem;
   }
   .btn.new {
     width: 90px;

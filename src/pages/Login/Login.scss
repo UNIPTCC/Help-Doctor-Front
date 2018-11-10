@@ -54,6 +54,8 @@
       input {
         margin: 0 auto 15px;
         font-size: 18px;
+        border-radius: $radius;
+        color: $black;
       }
       button {
         background: $white;

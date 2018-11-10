@@ -13,7 +13,7 @@
         <b-row>
           <b-col cols="12">
             <form v-on:submit.prevent="onSubmit">
-              formulário aqui
+              <address-form v-on:pickaddress="recieveAddress" :addressObject="hospital.addressHospital" />
             </form>
           </b-col>
         </b-row>
@@ -34,7 +34,9 @@ export default {
     return {
       loading: true,
       title: (this.$route.params.id) ? `Editar Hospital` : 'Novo Hospital',
-      hospital: {},
+      hospital: {
+        addressHospital: {}
+      },
       error: false
     }
   },
@@ -71,6 +73,9 @@ export default {
           }
         }
       })()
+    },
+    recieveAddress (data) {
+      this.hospital.addressHospital[data.name] = data.value
     }
   }
 }

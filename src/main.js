@@ -25,7 +25,8 @@ import {
   faNotesMedical,
   faSignOutAlt,
   faPlus,
-  faCircleNotch
+  faCircleNotch,
+  faSearch
 } from '@fortawesome/free-solid-svg-icons'
 library.add([
   faDizzy,
@@ -40,7 +41,8 @@ library.add([
   faNotesMedical,
   faSignOutAlt,
   faPlus,
-  faCircleNotch
+  faCircleNotch,
+  faSearch
 ])
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 /* Font Awesome */
@@ -49,6 +51,11 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 /* Vue Resource */
+
+/* Vue the Mask */
+import VueTheMask from 'vue-the-mask'
+Vue.use(VueTheMask)
+/* Vue the Mask */
 
 /* Plugins */
 import Logout from './plugins/Logout/logout'
@@ -75,6 +82,12 @@ Vue.component('modal-password-reset', ModalPasswordReset)
 
 import CustomTable from './components/CustomTable/CustomTable'
 Vue.component('custom-table', CustomTable)
+
+import AddressForm from './components/AddressForm/AddressForm'
+Vue.component('address-form', AddressForm)
+
+import StateSelect from './components/StateSelect/StateSelect'
+Vue.component('state-select', StateSelect)
 /* Components */
 
 Vue.config.productionTip = false
