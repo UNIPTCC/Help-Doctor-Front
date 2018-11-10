@@ -26,7 +26,8 @@ import {
   faSignOutAlt,
   faPlus,
   faCircleNotch,
-  faSearch
+  faSearch,
+  faSave
 } from '@fortawesome/free-solid-svg-icons'
 library.add([
   faDizzy,
@@ -42,7 +43,8 @@ library.add([
   faSignOutAlt,
   faPlus,
   faCircleNotch,
-  faSearch
+  faSearch,
+  faSave
 ])
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 /* Font Awesome */

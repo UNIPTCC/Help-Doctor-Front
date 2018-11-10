@@ -7,13 +7,13 @@
         </legend>
       </b-col>
       <b-col cols="12" sm="12" md="12" lg="12" xl="12" class='text-left'>
-        <b-input
+        <b-form-input
           type='text'
           v-model='zipcode'
           placeholder='CEP'
           class="zipcode"
           v-mask="['#####-###']"
-          @keyup.native="getAddress(zipcode)"
+          required
         />
         <b-btn v-on:click="getAddress(zipcode)" :disabled="loading || (zipcode && zipcode.length <= 8)">
           <font-awesome-icon :icon="(loading) ? 'circle-notch' : 'search'" :class="(loading) ? 'spin' : ''" />
@@ -24,47 +24,53 @@
           v-on:pickstate="recieveState"
           :recieveState="state"
           :disabled="disabled"
+          required
         />
       </b-col>
       <b-col cols="12" sm="12" md="12" lg="6" xl="6">
-        <b-input
+        <b-form-input
           type='text'
           v-model.trim='city'
           placeholder='Cidade'
           :disabled="disabled"
+          required
         />
       </b-col>
       <b-col cols="12" sm="12" md="12" lg="4" xl="5">
-        <b-input
+        <b-form-input
           type='text'
           v-model.trim='neighborhood'
           placeholder='Bairro'
           :disabled="disabled"
+          required
         />
       </b-col>
       <b-col cols="12" sm="12" md="12" lg="4" xl="5">
-        <b-input
+        <b-form-input
           type='text'
           v-model.trim='address'
           placeholder='Rua'
           :disabled="disabled"
+          required
         />
       </b-col>
       <b-col cols="12" sm="12" md="12" lg="4" xl="2">
-        <b-input
+        <b-form-input
           type='text'
           v-model.trim='number'
           placeholder='Número'
           :disabled="disabled"
           ref='number'
+          required
         />
       </b-col>
       <b-col cols="12" sm="12" md="12" lg="12" xl="12">
-        <b-input
+        <b-form-input
           type='text'
           v-model.trim='complement'
           placeholder='Complemento'
           :disabled="disabled"
+          required
         />
       </b-col>
     </b-row>

@@ -42,7 +42,7 @@ export default class Hospitals extends Service {
         },
         data: {
           name: hospital.name,
-          address: hospital.address
+          address: hospital.addressHospital
         }
       })
 
@@ -64,7 +64,7 @@ export default class Hospitals extends Service {
         },
         data: {
           name: hospital.name,
-          address: hospital.address
+          address: hospital.addressHospital
         }
       })
 

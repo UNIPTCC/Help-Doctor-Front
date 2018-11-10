@@ -13,7 +13,24 @@
         <b-row>
           <b-col cols="12">
             <form v-on:submit.prevent="onSubmit">
+              <b-row>
+                <b-col>
+                  <b-form-input
+                    type='text'
+                    v-model.trim='hospital.name'
+                    placeholder='Nome'
+                    required
+                  />
+                </b-col>
+              </b-row>
               <address-form v-on:pickaddress="recieveAddress" :addressObject="hospital.addressHospital" />
+              <b-row>
+                <b-col class='text-right'>
+                  <b-btn class='new' type='submit'>
+                    <font-awesome-icon icon="save" /> Salvar
+                  </b-btn>
+                </b-col>
+              </b-row>
             </form>
           </b-col>
         </b-row>
@@ -52,7 +69,6 @@ export default {
       (async () => {
         try {
           this.hospital = await hospitalsService.get(id)
-          this.title = `Editar Hospital ${this.hospital.name}`
           this.loading = false
         } catch (err) {
           this.error = 'Falha ao obter hospital'
@@ -63,8 +79,14 @@ export default {
       (async () => {
         try {
           const { hospital } = this
-          const response = await hospitalsService.post()
+          const { id } = this.$route.params
+          if (!id) {
+            const response = await hospitalsService.create(hospital)
+          } else {
+            const response = await hospitalsService.update(id, hospital)
+          }
           this.error = ''
+          this.$router.push({ name: 'HospitalList' })
         } catch (err) {
           if (err.response) {
             this.error = err.response.parseMessage
@@ -76,6 +98,9 @@ export default {
     },
     recieveAddress (data) {
       this.hospital.addressHospital[data.name] = data.value
+    },
+    validate () {
+
     }
   }
 }

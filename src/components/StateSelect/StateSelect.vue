@@ -5,6 +5,7 @@
       :options="options" 
       :disabled="disabled"
       :loading="loading" 
+      :required="required"
     />
   </div>
 </template>
@@ -15,7 +16,8 @@ export default {
   props: {
     disabled: Boolean,
     loading: Boolean,
-    recieveState: String
+    recieveState: String,
+    required: Boolean
   },
   created () {
     this.state = this.recieveState || null

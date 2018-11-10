@@ -63,6 +63,15 @@ export default {
     color: $blue;
     font-size: 40px;
   }
+  form {
+    input, select, textarea {
+      margin: 0 0 15px;
+      color: $black;
+      font-family: cursive;
+      font-size: 18px;
+      border-radius: $radius;
+    }
+  }
   /* Global Configs */
   /* Classes */
   .display-show {
