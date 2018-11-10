@@ -12,6 +12,7 @@
           v-model.trim='zipcode'
           placeholder='CEP'
           class="zipcode"
+          v-mask="['#####-###']"
         />
         <b-btn v-on:click="getAddress(zipcode)" :disabled="loading">
           <font-awesome-icon :icon="(loading) ? 'circle-notch' : 'search'" :class="(loading) ? 'spin' : ''" />

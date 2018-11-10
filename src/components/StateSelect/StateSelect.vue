@@ -18,7 +18,6 @@ export default {
     recieveState: String
   },
   created () {
-    console.log(this.recieveState)
     this.state = this.recieveState || null
   },
   watch: {
