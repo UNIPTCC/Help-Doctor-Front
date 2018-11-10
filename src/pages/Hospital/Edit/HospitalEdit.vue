@@ -80,10 +80,11 @@ export default {
         try {
           const { hospital } = this
           const { id } = this.$route.params
+          let response = null
           if (!id) {
-            const response = await hospitalsService.create(hospital)
+            response = await hospitalsService.create(hospital)
           } else {
-            const response = await hospitalsService.update(id, hospital)
+            response = await hospitalsService.update(id, hospital)
           }
           if (response.id) {
             this.error = ''
