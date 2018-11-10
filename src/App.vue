@@ -40,7 +40,6 @@ export default {
     overflow-y: auto;
     overflow-x: hide;
     background: $gray;
-    padding-left: 200px;
     padding: 15px 0 15px 200px;
     @media (max-width: 991px) {
       padding: 15px 0;
@@ -67,8 +66,7 @@ export default {
     input, select, textarea {
       margin: 0 0 15px;
       color: $black;
-      font-family: cursive;
-      font-size: 18px;
+      font-size: 16px;
       border-radius: $radius;
     }
   }

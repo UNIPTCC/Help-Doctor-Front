@@ -2,6 +2,9 @@
   .navbar {
     z-index: 2;
     background: $blue;
+    @media (min-width: 991px) {
+      padding: 0.5rem 1rem 0.5rem 200px;
+    }
     .navbar-brand {
       margin: 0 auto;
       a {
