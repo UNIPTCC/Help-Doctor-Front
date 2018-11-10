@@ -1,139 +1,141 @@
-.custom-table {
-  .filter {
-    position: relative;
-    margin: 0 auto 15px;
-    text-align: left;
-    input {
-      border-radius: $radius;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      max-width: 500px;
-      width: calc(100% - 80px);
-      display: inline-block;
-      margin: 0 auto;
-    }
-    button {
-      top: -1px;
-      left: 0;
-      width: 80px;
-      height: 38px;
+#app{
+  .custom-table {
+    .filter {
       position: relative;
-      border: none;
-      color: $white;
-      background: $blue;
-      font-weight: 600;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      transition: $transition;
-      &.disabled {
+      margin: 0 auto 15px;
+      text-align: left;
+      input {
+        border-radius: $radius;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        max-width: 500px;
+        width: calc(100% - 80px);
+        display: inline-block;
+        margin: 0 auto;
+      }
+      button {
+        top: -4px;
+        left: 0;
+        width: 80px;
+        height: 38px;
+        position: relative;
+        border: none;
         color: $white;
-        background: $gray-disable;
-        &:hover {
+        background: $blue;
+        font-weight: 600;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        transition: $transition;
+        &.disabled {
           color: $white;
           background: $gray-disable;
-          cursor: not-allowed;
+          &:hover {
+            color: $white;
+            background: $gray-disable;
+            cursor: not-allowed;
+          }
+        }
+        &:hover {
+          background: darken($blue, 25%);
+          color: $white;
+        }
+        &:focus, &:active, &:hover {
+          outline: none;
         }
       }
-      &:hover {
-        background: darken($blue, 25%);
-        color: $white;
-      }
-      &:focus, &:active, &:hover {
-        outline: none;
-      }
     }
-  }
-  .table {
-    transition: $transition;
-    thead {
-      background: $white;
+    .table {
       transition: $transition;
-    }
-    tbody {
-      tr{
+      thead {
+        background: $white;
         transition: $transition;
-        &:nth-of-type(odd) {
-          background: lighten($gray-bg, 12%);
-        }
-        &:nth-of-type(even) {
-          background: $white;
-        }
       }
-    }
-    &.editable {
       tbody {
         tr{
-          td {
-            a{
-              position: relative;
-              .fa-pencil-alt {
-                color: $gray-disable;
-                transition: $transition;
-                position: absolute;
-                left: -8px;
-                top: 4px;
-                &:hover {
-                  font-size: 20px;
-                  cursor: pointer;
-                  top: 0;
+          transition: $transition;
+          &:nth-of-type(odd) {
+            background: lighten($gray-bg, 12%);
+          }
+          &:nth-of-type(even) {
+            background: $white;
+          }
+        }
+      }
+      &.editable {
+        tbody {
+          tr{
+            td {
+              a{
+                position: relative;
+                .fa-pencil-alt {
+                  color: $gray-disable;
+                  transition: $transition;
+                  position: absolute;
+                  left: -8px;
+                  top: 4px;
+                  &:hover {
+                    font-size: 20px;
+                    cursor: pointer;
+                    top: 0;
+                  }
+                }
+              }
+            }
+            &:hover {
+              background: darken($blue, 20%);
+              font-weight: 700;
+              color: $white;
+              a{
+                svg {
+                  color: $white;
                 }
               }
             }
           }
-          &:hover {
-            background: darken($blue, 20%);
-            font-weight: 700;
+        }
+      }
+    }
+    .pagination {
+      .page-item {
+        transition: $transition;
+        a, span {
+          color: $blue;
+          transition: $transition;
+        }
+        &.active {
+          color: $white;
+          font-weight: 700;
+          a, span {
             color: $white;
-            a{
-              svg {
-                color: $white;
-              }
-            }
+            background: $blue;
+          }
+        }
+        &.disabled {
+          cursor: not-allowed;
+          a, span {
+            background: $gray-disable-light;
+            color: $white;
+          }
+        }
+        &:first-child {
+          .page-link {
+            border-top-left-radius: $radius;
+            border-bottom-left-radius: $radius;
+          }
+        }
+        &:last-child {
+          .page-link {
+            border-top-right-radius: $radius;
+            border-bottom-right-radius: $radius;
           }
         }
       }
     }
-  }
-  .pagination {
-    .page-item {
-      transition: $transition;
-      a, span {
-        color: $blue;
-        transition: $transition;
-      }
-      &.active {
-        color: $white;
-        font-weight: 700;
-        a, span {
-          color: $white;
-          background: $blue;
-        }
-      }
-      &.disabled {
-        cursor: not-allowed;
-        a, span {
-          background: $gray-disable-light;
-          color: $white;
-        }
-      }
-      &:first-child {
-        .page-link {
-          border-top-left-radius: $radius;
-          border-bottom-left-radius: $radius;
-        }
-      }
-      &:last-child {
-        .page-link {
-          border-top-right-radius: $radius;
-          border-bottom-right-radius: $radius;
-        }
-      }
+    .pagination-total {
+      text-align: left;
+      margin: 0 auto;
+      font-style: italic;
+      font-size: 13px;
     }
-  }
-  .pagination-total {
-    text-align: left;
-    margin: 0 auto;
-    font-style: italic;
-    font-size: 13px;
   }
 }

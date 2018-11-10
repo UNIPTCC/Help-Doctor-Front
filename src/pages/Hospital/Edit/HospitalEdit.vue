@@ -85,8 +85,10 @@ export default {
           } else {
             const response = await hospitalsService.update(id, hospital)
           }
-          this.error = ''
-          this.$router.push({ name: 'HospitalList' })
+          if (response.id) {
+            this.error = ''
+            this.$router.push({ name: 'HospitalList' })
+          }
         } catch (err) {
           if (err.response) {
             this.error = err.response.parseMessage
