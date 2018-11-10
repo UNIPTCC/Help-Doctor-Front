@@ -26,11 +26,11 @@
           @filtered="onFiltered"
           :class="{editable:editable}"
         >
-           <template slot="actions" slot-scope="data">
-              <router-link :to="{ path: `${path}/${data.item.id}` }">
-                <font-awesome-icon icon="pencil-alt" />
-              </router-link>
-           </template>
+          <template slot="actions" slot-scope="data">
+            <router-link :to="{ path: `${path}/${data.item.id}` }">
+              <font-awesome-icon icon="pencil-alt" />
+            </router-link>
+          </template>
         </b-table>
       </b-col>
     </b-row>
