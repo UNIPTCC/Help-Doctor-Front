@@ -79,6 +79,8 @@ export default {
     onSubmit () {
       (async () => {
         try {
+          this.hospital.address = this.hospital.addressHospital
+          delete this.hospital.addressHospital
           const { hospital } = this
           const { id } = this.$route.params
           let response = null
@@ -97,14 +99,12 @@ export default {
           } else {
             this.error = "Falha do servidor, tente novamente mais tarde :("
           }
+          window.alert(this.error)
         }
       })()
     },
     recieveAddress (data) {
       this.hospital.addressHospital[data.name] = data.value
-    },
-    validate () {
-
     }
   }
 }

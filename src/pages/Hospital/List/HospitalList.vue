@@ -24,6 +24,7 @@
           :totalRows="totalRows"
           :colunms="colunms"
           :items="hospitals"
+          sortBy="id"
           editable
         />
       </b-container>

@@ -24,6 +24,8 @@
           :per-page="perPage"
           :filter="filter"
           @filtered="onFiltered"
+          :sort-by.sync="sortBy"
+          :sort-desc.sync="sortDesc"
           :class="{editable:editable}"
         >
           <template slot="actions" slot-scope="data">
@@ -78,6 +80,14 @@ export default {
       required: true
     },
     editable: {
+      type: Boolean,
+      required: false
+    },
+    sortBy: {
+      type: String,
+      required: false
+    },
+    sortDesc: {
       type: Boolean,
       required: false
     }

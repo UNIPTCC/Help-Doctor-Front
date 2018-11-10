@@ -24,6 +24,7 @@
           :totalRows="totalRows"
           :colunms="colunms"
           :items="users"
+          sortBy="id"
           editable
         />
       </b-container>
@@ -54,12 +55,12 @@ export default {
           sortable: true
         },
         {
-          key: 'role',
+          key: 'roleString',
           label: 'Permissão',
           sortable: true
         },
         {
-          key: 'hospital',
+          key: 'hospitalString',
           label: 'Hospital',
           sortable: true
         }
@@ -79,12 +80,38 @@ export default {
       (async () => {
         try {
           this.users = await usersService.get()
+          await this.parseHospitals()
+          await this.parseRoles()
           this.loading = false
           this.totalRows = this.users.length
         } catch (err) {
           this.loading = false
           window.alert('Falha ao obter usuários')
         }
+      })()
+    },
+    parseRoles () {
+       (async () => {
+        this.users = this.users.map((user) => {
+          const roleString = null
+          return {
+            roleString,
+            ...user
+          }
+        })
+      })()
+    },
+    parseHospitals () {
+      (async () => {
+        this.users = await this.users.map((user) => {
+          const hospitalString = user.hospitals.map((hospital) => {
+            return (hospital.id === user.responsable_hospital) ? hospital.name : false
+          }) || ((user.hospitals.length > 0) ? user.hospitals[0].name : '')
+          return {
+            hospitalString: (hospitalString[0]) ? hospitalString[0] : hospitalString,
+            ...user
+          }
+        })
       })()
     }
   }

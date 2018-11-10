@@ -70,7 +70,6 @@
           v-model.trim='complement'
           placeholder='Complemento'
           :disabled="disabled"
-          required
         />
       </b-col>
     </b-row>
