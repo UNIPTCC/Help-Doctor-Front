@@ -14,6 +14,9 @@
           responsive
           striped
           hover
+          show-empty
+          empty-text="Não há registros"
+          empty-filtered-text="Não encontrado"
           stacked="lg"
           :items="items"
           :fields="colunms"

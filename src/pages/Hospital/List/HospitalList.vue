@@ -73,7 +73,8 @@ export default {
           this.totalRows = this.hospitals.length
           this.loading = false
         } catch (err) {
-          this.error = 'Falha ao obter hospitais'
+          this.loading = false
+          window.alert('Falha ao obter hospitais')
         }
       })()
     }

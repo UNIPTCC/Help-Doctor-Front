@@ -34,7 +34,8 @@
 </template>
 
 <script>
-// import HelpDoctorApi from '../../../services/HelpDoctorApi' // Exemplo de request
+import Users from '../../../services/Users'
+const usersService = new Users()
 
 export default {
   name: 'UserList',
@@ -63,45 +64,29 @@ export default {
           sortable: true
         }
       ],
-      users: [
-        {
-          id: 1,
-          name: 'Guilhérme',
-          role: 'Médico',
-          hospital: 'Hospital 1'
-        },
-        {
-          id: 2,
-          name: 'Jonatas',
-          role: 'Atendente',
-          hospital: 'Hospital 1'
-        },
-        {
-          id: 3,
-          name: 'Vinícius',
-          role: 'Admin',
-          hospital: '-'
-        }
-      ],
-      totalRows: 1,
-      perPage: 2
+      users: [],
+      totalRows: 0,
+      perPage: 10
     }
   },
   created() {
-    this.loading = false
-    this.totalRows = this.users.length
-
-    // this.api = new HelpDoctorApi() // Exemplo de request
-
-    // this.getStatus() // Exemplo de request
+    (async () => {
+      await this.getUsers()
+    })()
   },
   methods: {
-    // getStatus () {
-    //   (async () => {
-    //     let status = await this.api.getStatus()
-    //     console.log(status)
-    //   })()
-    // }
+    getUsers () {
+      (async () => {
+        try {
+          this.users = await usersService.get()
+          this.loading = false
+          this.totalRows = this.users.length
+        } catch (err) {
+          this.loading = false
+          window.alert('Falha ao obter usuários')
+        }
+      })()
+    }
   }
 }
 </script>

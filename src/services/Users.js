@@ -1,24 +1,22 @@
 import Service from './Service'
 const { VUE_APP_HELPDOCTOR_API_URL } = process.env
 
-export default class Hospitals extends Service {
+export default class Users extends Service {
   constructor () {
     super()
     this.base = VUE_APP_HELPDOCTOR_API_URL
   }
 
-  async get (id, name) {
+  async get (id) {
     let query = ''
     if (id) {
       query = `/${id}`
-    } else if (name) {
-      query = `?name=${name}`
     }
 
     try {
       const { data } =  await this.http({
         method: 'GET',
-        url: `${VUE_APP_HELPDOCTOR_API_URL}/hospital${query}`,
+        url: `${VUE_APP_HELPDOCTOR_API_URL}/user${query}`,
         headers: {
           Authorization: `Bearer ${this.getJWT()}`
         }
@@ -32,15 +30,15 @@ export default class Hospitals extends Service {
     }
   }
 
-  async create (hospital) {
+  async create (user) {
     try {
       const { data } =  await this.http({
         method: 'POST',
-        url: `${VUE_APP_HELPDOCTOR_API_URL}/hospital`,
+        url: `${VUE_APP_HELPDOCTOR_API_URL}/user`,
         headers: {
           Authorization: `Bearer ${this.getJWT()}`
         },
-        data: hospital
+        data: user
       })
 
       return data
@@ -51,15 +49,15 @@ export default class Hospitals extends Service {
     }
   }
 
-  async update (id, hospital) {
+  async update (id, user) {
     try {
       const { data } =  await this.http({
         method: 'PUT',
-        url: `${VUE_APP_HELPDOCTOR_API_URL}/hospital/${id}`,
+        url: `${VUE_APP_HELPDOCTOR_API_URL}/user/${id}`,
         headers: {
           Authorization: `Bearer ${this.getJWT()}`
         },
-        data: hospital
+        data: user
       })
 
       return data
@@ -74,7 +72,7 @@ export default class Hospitals extends Service {
     try {
       const { data } =  await this.http({
         method: 'DELETE',
-        url: `${VUE_APP_HELPDOCTOR_API_URL}/hospital/${id}`,
+        url: `${VUE_APP_HELPDOCTOR_API_URL}/user/${id}`,
         headers: {
           Authorization: `Bearer ${this.getJWT()}`
         }

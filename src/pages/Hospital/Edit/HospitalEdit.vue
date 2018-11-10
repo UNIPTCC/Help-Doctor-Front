@@ -71,7 +71,8 @@ export default {
           this.hospital = await hospitalsService.get(id)
           this.loading = false
         } catch (err) {
-          this.error = 'Falha ao obter hospital'
+          window.alert('Falha ao obter hospital')
+          this.$router.push({ name: 'HospitalList' })
         }
       })()
     },
