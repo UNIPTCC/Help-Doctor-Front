@@ -69,7 +69,7 @@
                 <b-col cols="12" sm="12" md="12" lg="4" xl="4">
                   select roles
                 </b-col>
-                <b-col cols="12" sm="12" md="12" lg="4" xl="4" v-if="user.roles_id === 3">
+                <b-col cols="12" sm="12" md="12" lg="4" xl="4" v-if="false">
                   <b-form-input
                     type='text'
                     placeholder="Documento de licença Médica"

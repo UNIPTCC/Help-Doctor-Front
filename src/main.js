@@ -96,6 +96,9 @@ Vue.component('address-form', AddressForm)
 
 import StateSelect from './components/StateSelect/StateSelect'
 Vue.component('state-select', StateSelect)
+
+import HospitalSelect from './components/HospitalSelect/HospitalSelect'
+Vue.component('hospital-select', HospitalSelect)
 /* Components */
 
 Vue.config.productionTip = false
