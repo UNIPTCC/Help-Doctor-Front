@@ -14,7 +14,7 @@
           class="zipcode"
           v-mask="['#####-###']"
         />
-        <b-btn v-on:click="getAddress(zipcode)" :disabled="loading || zipcode.length <= 8">
+        <b-btn v-on:click="getAddress(zipcode)" :disabled="loading || (zipcode && zipcode.length <= 8)">
           <font-awesome-icon :icon="(loading) ? 'circle-notch' : 'search'" :class="(loading) ? 'spin' : ''" />
         </b-btn>
       </b-col>
@@ -113,15 +113,20 @@ export default {
        (async () => {
           try {
             const response = await ViaCEPService.get(zipcode)
-            
-            this.disabled = false
-            this.zipcode = response.cep
-            this.address = response.logradouro
-            this.neighborhood = response.bairro
-            this.city = response.localidade
-            this.state = response.uf
 
-            this.$refs.number.$el.focus()
+            this.disabled = false
+
+            if (!response.erro) {
+              this.zipcode = response.cep
+              this.address = response.logradouro
+              this.neighborhood = response.bairro
+              this.city = response.localidade
+              this.state = response.uf
+
+              this.$refs.number.$el.focus()
+            } else {
+              window.alert("CEP não encontrado, preencha os dados manualmente.")
+            }
           } catch (err) {
             this.error = 'Falha ao obter endereço'
           }

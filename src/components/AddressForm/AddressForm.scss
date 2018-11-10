@@ -12,6 +12,9 @@
   input, select {
     margin: 0 0 15px;
     color: $black;
+    &:disabled {
+      color: $black-disabled;
+    }
   }
   input {
     &.zipcode {
