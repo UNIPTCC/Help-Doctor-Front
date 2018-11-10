@@ -9,12 +9,12 @@
       <b-col cols="12" sm="12" md="12" lg="12" xl="12" class='text-left'>
         <b-input
           type='text'
-          v-model.trim='zipcode'
+          v-model='zipcode'
           placeholder='CEP'
           class="zipcode"
           v-mask="['#####-###']"
         />
-        <b-btn v-on:click="getAddress(zipcode)" :disabled="loading">
+        <b-btn v-on:click="getAddress(zipcode)" :disabled="loading || zipcode.length <= 8">
           <font-awesome-icon :icon="(loading) ? 'circle-notch' : 'search'" :class="(loading) ? 'spin' : ''" />
         </b-btn>
       </b-col>
@@ -55,6 +55,7 @@
           v-model.trim='number'
           placeholder='Número'
           :disabled="disabled"
+          ref='number'
         />
       </b-col>
       <b-col cols="12" sm="12" md="12" lg="12" xl="12">
@@ -70,10 +71,14 @@
 </template>
 
 <script>
+import ViaCEP from '../../services/ViaCEP'
+const ViaCEPService = new ViaCEP()
+
 export default {
   name: 'AddressForm',
   data () {
     return {
+      error: '',
       loading: false,
       disabled: true,
       zipcode: '',
@@ -105,7 +110,22 @@ export default {
   },
   methods: {
     getAddress (zipcode) {
-      // TODO implementar API via CEP ou semelhante
+       (async () => {
+          try {
+            const response = await ViaCEPService.get(zipcode)
+            
+            this.disabled = false
+            this.zipcode = response.cep
+            this.address = response.logradouro
+            this.neighborhood = response.bairro
+            this.city = response.localidade
+            this.state = response.uf
+
+            this.$refs.number.$el.focus()
+          } catch (err) {
+            this.error = 'Falha ao obter endereço'
+          }
+      })()
     },
     recieveState (data) {
       this.state = data
