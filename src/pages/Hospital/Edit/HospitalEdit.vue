@@ -58,8 +58,9 @@ export default {
     }
   },
   created() {
-    if (this.$route.params.id) {
-      this.getHospital(this.$route.params.id)
+    const { id } = this.$route.params
+    if (id) {
+      this.getHospital(id)
     } else {
       this.loading = false
     }

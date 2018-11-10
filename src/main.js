@@ -59,6 +59,12 @@ import VueTheMask from 'vue-the-mask'
 Vue.use(VueTheMask)
 /* Vue the Mask */
 
+/* Vue Date */
+import Datetime from 'vue-datetime'
+import 'vue-datetime/dist/vue-datetime.css'
+Vue.use(Datetime)
+/* Vue Date */
+
 /* Plugins */
 import Logout from './plugins/Logout/logout'
 Vue.use(Logout, {

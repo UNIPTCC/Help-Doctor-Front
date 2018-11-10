@@ -12,8 +12,79 @@
         </b-row>
         <b-row>
           <b-col cols="12">
-            <form>
-              formulário aqui
+            <form v-on:submit.prevent="onSubmit">
+              <b-row>
+                <b-col cols="12" sm="12" md="12" lg="6" xl="6">
+                  <b-form-input
+                    type='text'
+                    v-model.trim='user.name'
+                    placeholder='Nome'
+                    required
+                  />
+                </b-col>
+                <b-col cols="12" sm="12" md="12" lg="6" xl="6">
+                  <b-form-input
+                    type='email'
+                    v-model.trim='user.email'
+                    placeholder='E-mail'
+                    required
+                  />
+                </b-col>
+                <b-col cols="12" sm="12" md="12" lg="6" xl="6">
+                  <b-form-input
+                    type='password'
+                    v-model.trim='password'
+                    placeholder='Senha'
+                  />
+                </b-col>
+                <b-col cols="12" sm="12" md="12" lg="6" xl="6">
+                  <b-form-input
+                    type='password'
+                    v-model.trim='confirmPassword'
+                    placeholder='Confirmação de senha (Preencha apenas se mudar a senha)'
+                  />
+                </b-col>
+                <b-col cols="12" sm="12" md="12" lg="6" xl="6">
+                  <b-form-input
+                    type='text'
+                    v-model.trim='user.personal_document'
+                    placeholder='CPF'
+                    v-mask="['###.###.###-##']"
+                    required
+                  />
+                </b-col>
+                <b-col cols="12" sm="12" md="12" lg="6" xl="6">
+                  select hospital
+                </b-col>  
+                <b-col cols="12" sm="12" md="12" lg="4" xl="4">
+                  <b-form-select 
+                    v-model="user.genre"
+                    :options="genders"
+                    required
+                  />
+                </b-col>  
+                <b-col cols="12" sm="12" md="12" lg="4" xl="4">
+                  <datetime type="date" v-model="user.birthday" format="dd/MM/yyyy" placeholder="Data de nascimento" />
+                </b-col>
+                <b-col cols="12" sm="12" md="12" lg="4" xl="4">
+                  select roles
+                </b-col>
+                <b-col cols="12" sm="12" md="12" lg="4" xl="4" v-if="user.roles_id === 3">
+                  <b-form-input
+                    type='text'
+                    placeholder="Documento de licença Médica"
+                    v-model.trim='user.medical_document'
+                  />
+                </b-col>         
+              </b-row>
+              <address-form v-on:pickaddress="recieveAddress" :addressObject="user.address" />
+              <b-row>
+                <b-col class='text-right'>
+                  <b-btn class='new' type='submit'>
+                    <font-awesome-icon icon="save" /> Salvar
+                  </b-btn>
+                </b-col>
+              </b-row>
             </form>
           </b-col>
         </b-row>
@@ -25,20 +96,82 @@
 </template>
 
 <script>
+import Users from '../../../services/Users'
+const usersService = new Users()
+
 export default {
   name: 'UserEdit',
   data () {
     return {
       loading: true,
       title: (this.$route.params.id) ? `Editar Usuário` : 'Novo Usuário',
-      user: {},
+      genders: [
+        {
+          text: 'Selecione o genero', value: null, disabled: true
+        },
+        {
+          text: 'Masculino', value: 'M'
+        },
+        {
+          text: 'Feminino', value: 'F'
+        }
+      ],
+      user: {
+        genre: null,
+        address: {}
+      },
+      password: '',
+      confirmPassword: '',
       error: false
     }
   },
   created() {
-    this.loading = false
-    if (this.$route.params.id) {
-      // TODO implementar metodo
+    const { id } = this.$route.params
+    if (id) {
+      this.getUser(id)
+    } else {
+      this.loading = false
+    }
+  },
+  methods: {
+    getUser (id) {
+      (async () => {
+        try {
+          this.user = await usersService.get(id)
+          this.loading = false
+        } catch (err) {
+          window.alert('Falha ao obter o Usuário')
+          this.$router.push({ name: 'UserList' })
+        }
+      })()
+    },
+    onSubmit () {
+      (async () => {
+        try {
+          const { user } = this
+          const { id } = this.$route.params
+          let response = null
+          if (!id) {
+            response = await usersService.create(user)
+          } else {
+            response = await usersService.update(id, user)
+          }
+          if (response.id) {
+            this.error = ''
+            this.$router.push({ name: 'UserList' })
+          }
+        } catch (err) {
+          if (err.response) {
+            this.error = err.response.parseMessage
+          } else {
+            this.error = "Falha do servidor, tente novamente mais tarde :("
+          }
+          window.alert(this.error)
+        }
+      })()
+    },
+    recieveAddress (data) {
+      this.user.address[data.name] = data.value
     }
   }
 }

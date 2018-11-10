@@ -68,6 +68,14 @@ export default {
       color: $black;
       font-size: 16px;
       border-radius: $radius;
+      background: $white;
+      min-height: calc(2.25rem + 2px);
+      padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+      line-height: 1.5;
+      width: 100%;
+      border: 1px solid $gray-bg;
+      vertical-align: middle;
+      display: inline-block;
     }
   }
   /* Global Configs */
