@@ -24,7 +24,7 @@
           :totalRows="totalRows"
           :colunms="colunms"
           :items="records"
-          editable
+          :editable="canEdit()"
         />
       </b-container>
       <font-awesome-icon v-if="loading" icon="circle-notch" class="spin loader" />
@@ -96,6 +96,9 @@ export default {
     // this.getStatus() // Exemplo de request
   },
   methods: {
+    canEdit () {
+      return this.$user.roleName !== 'RECEPTIONIST'
+    }
     // getStatus () {
     //   (async () => {
     //     let status = await this.api.getStatus()

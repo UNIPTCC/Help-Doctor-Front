@@ -80,7 +80,7 @@ export default {
           this.menu = this.menu.concat(appointmentsMenu, recordsMenu, patientsMenu)
           break
         case 'NURSE':
-          this.menu = this.menu.concat(appointmentsMenu, recordsMenu, patientsMenu)
+          this.menu = this.menu.concat(recordsMenu, patientsMenu)
           break
         case 'RECEPTIONIST':
           this.menu = this.menu.concat(recordsMenu, patientsMenu)
