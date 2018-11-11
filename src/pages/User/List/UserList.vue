@@ -107,7 +107,7 @@ export default {
                 roleString = 'Médico'
                 break
               case 'NURSE':
-                roleString = 'Enfermeira'
+                roleString = 'Enfermeiro'
                 break
               case 'RECEPTIONIST':
                 roleString = 'Atendente'
@@ -125,11 +125,14 @@ export default {
     parseHospitals () {
       (async () => {
         this.users = await this.users.map((user) => {
-          const hospitalString = user.hospitals.map((hospital) => {
-            return (hospital.id === user.responsable_hospital) ? hospital.name : false
-          }) || ((user.hospitals.length > 0) ? user.hospitals[0].name : '')
+          let hospitalString = user.hospitals.map((hospital) => {
+            return hospital.id === user.responsable_hospital
+          })
+          if (hospitalString[0] === false || hospitalString.length === 0) {
+            hospitalString = ((user.hospitals.length > 0) ? user.hospitals[0].name : '')
+          }
           return {
-            hospitalString: (hospitalString[0]) ? hospitalString[0] : hospitalString,
+            hospitalString,
             ...user
           }
         })
