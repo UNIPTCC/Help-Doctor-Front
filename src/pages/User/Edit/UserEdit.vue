@@ -68,12 +68,14 @@
                     :recieveHospital="user.responsable_hospital"
                     v-on:pickhospital="recieveHospital"
                     v-if="roleId === 2"
+                    :required="roleId === 2"
                   />
                   <b-form-input
                     type='text'
                     placeholder="Documento de licença Médica"
                     v-model.trim='user.medical_document'
                     v-if="roleId === 3 || roleId === 4"
+                    :required="roleId === 3 || roleId === 4"
                   />
                 </b-col> 
               </b-row>
@@ -173,14 +175,16 @@ export default {
           const { user } = this
           const { id } = this.$route.params
           let response = null
+          console.log(JSON.stringify(user))
           if (this.verifyPassword()) {
             if (!id) {
               response = await usersService.create(user)
             } else {
               response = await usersService.update(id, user)
             }
-            if (response.id) {
+            if (response) {
               this.error = ''
+              window.alert("Usuário atualizado com sucesso")
               this.$router.push({ name: 'UserList' })
             }
           } else {
@@ -201,6 +205,7 @@ export default {
       if (password) {
         if (password === confirmPassword) {
           this.user.password = password
+          console.log(this.user.password)
           return true
         } else {
           return false
@@ -226,8 +231,8 @@ export default {
     recieveHospital (data) {
       this.user.responsable_hospital = data
     },
-    recieveHospitals (data) {
-      this.user.hospitals = data
+    recieveHospitals (data) {   
+      this.user.hospitals= data
     },
     recieveRole (data) {
       this.roleId = data

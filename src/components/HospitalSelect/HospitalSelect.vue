@@ -6,7 +6,8 @@
       :disabled="disabled"
       :loading="loading" 
       :required="required"
-      :multiple="multiple" 
+      :multiple="multiple"
+      :select-size="(multiple) ? 5 : 0"
     />
   </div>
 </template>
@@ -20,7 +21,7 @@ export default {
   props: {
     disabled: Boolean,
     loading: Boolean,
-    recieveHospital:  [String, Array],
+    recieveHospital:  [String, Array, Number],
     required: Boolean,
     multiple: Boolean
   },
@@ -29,12 +30,15 @@ export default {
     this.getHospitals()
   },
   updated () {
-    this.hospital = this.recieveHospital || null
+    if (this.hospital === null) {
+      this.hospital = this.recieveHospital
+    }
   },
   watch: {
     hospital (newVal, oldVal) {
        if (newVal !== oldVal) {
-        if (this.multiple) {
+        if (this.multiple && !this.hospital.includes(newVal)) {
+          // this.hospital.push(newVal)
           this.$emit('pickhospitals', newVal)
         } else {
           this.$emit('pickhospital', newVal)
@@ -49,7 +53,7 @@ export default {
   },
   data () {
     return {
-      state: null,
+      hospital: null,
       options: [
         { value: null, text: (this.multiple) ? 'Selecione os Hospitais de atuação' : 'Selecione o Hospital a ser gerenciado',  disabled: true }
       ]

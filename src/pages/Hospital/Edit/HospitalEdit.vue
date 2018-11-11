@@ -92,6 +92,7 @@ export default {
           }
           if (response.id) {
             this.error = ''
+            window.alert("Hospital atualizado com sucesso")
             this.$router.push({ name: 'HospitalList' })
           }
         } catch (err) {
