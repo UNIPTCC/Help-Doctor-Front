@@ -61,7 +61,13 @@
                   />
                 </b-col>
                 <b-col cols="12" sm="12" md="12" lg="4" xl="4">
-                  <datetime type="date" v-model="user.birthday" format="dd/MM/yyyy" placeholder="Data de nascimento" />
+                  <datetime
+                    type="date"
+                    v-model="user.birthday"
+                    format="dd/MM/yyyy"
+                    placeholder="Data de nascimento"
+                    required
+                  />
                 </b-col>
                 <b-col cols="12" sm="12" md="12" lg="4" xl="4">
                   <hospital-select 

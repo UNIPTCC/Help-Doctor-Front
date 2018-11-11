@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import 'moment/locale/pt-br'
 import Patients from '../../../services/Patients'
 const patientsService = new Patients()
 
