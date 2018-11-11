@@ -28,7 +28,6 @@ export default {
   },
   updated () {
     this.role = this.recieveRole || null
-    this.getRoles()
   },
   watch: {
     role (newVal, oldVal) {

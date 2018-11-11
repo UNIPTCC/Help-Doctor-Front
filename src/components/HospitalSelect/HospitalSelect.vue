@@ -30,7 +30,6 @@ export default {
   },
   updated () {
     this.hospital = this.recieveHospital || null
-    this.getHospitals()
   },
   watch: {
     hospital (newVal, oldVal) {
