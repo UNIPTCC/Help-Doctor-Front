@@ -67,17 +67,15 @@
                   <hospital-select 
                     :recieveHospital="user.responsable_hospital"
                     v-on:pickhospital="recieveHospital"
-                    v-if="false"
+                    v-if="roleId === 2"
                   />
-                </b-col> 
-                <b-col cols="12" sm="12" md="12" lg="4" xl="4">
                   <b-form-input
                     type='text'
                     placeholder="Documento de licença Médica"
                     v-model.trim='user.medical_document'
-                    v-if="false"
+                    v-if="roleId === 3 || roleId === 4"
                   />
-                </b-col>
+                </b-col> 
               </b-row>
               <b-row>
                 <b-col cols="12" sm="12" md="12" lg="6" xl="6">
@@ -175,14 +173,18 @@ export default {
           const { user } = this
           const { id } = this.$route.params
           let response = null
-          if (!id) {
-            response = await usersService.create(user)
+          if (this.verifyPassword()) {
+            if (!id) {
+              response = await usersService.create(user)
+            } else {
+              response = await usersService.update(id, user)
+            }
+            if (response.id) {
+              this.error = ''
+              this.$router.push({ name: 'UserList' })
+            }
           } else {
-            response = await usersService.update(id, user)
-          }
-          if (response.id) {
-            this.error = ''
-            this.$router.push({ name: 'UserList' })
+            window.alert('Senha e confirmação de senha devem ser iguais.')
           }
         } catch (err) {
           if (err.response) {
@@ -193,6 +195,18 @@ export default {
           window.alert(this.error)
         }
       })()
+    },
+    verifyPassword() {
+      const { password, confirmPassword } = this
+      if (password) {
+        if (password === confirmPassword) {
+          this.user.password = password
+          return true
+        } else {
+          return false
+        }
+      }
+      return true
     },
     parseHospitals () {
       (async () => {
@@ -216,6 +230,7 @@ export default {
       this.user.hospitals = data
     },
     recieveRole (data) {
+      this.roleId = data
       this.user.roles = [
         data
       ]
