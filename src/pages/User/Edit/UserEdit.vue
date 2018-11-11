@@ -175,7 +175,6 @@ export default {
           const { user } = this
           const { id } = this.$route.params
           let response = null
-          console.log(JSON.stringify(user))
           if (this.verifyPassword()) {
             if (!id) {
               response = await usersService.create(user)
@@ -205,7 +204,6 @@ export default {
       if (password) {
         if (password === confirmPassword) {
           this.user.password = password
-          console.log(this.user.password)
           return true
         } else {
           return false
