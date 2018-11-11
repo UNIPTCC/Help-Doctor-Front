@@ -96,24 +96,7 @@ export default {
         this.users = this.users.map((user) => {
           let roleString = ''
           if (user.roles && user.roles[0] && user.roles[0]) {
-            switch (user.roles[0].name) {
-              case 'ADMIN':
-                roleString = 'Administrador'
-                break
-              case 'MANAGER':
-                roleString = 'Gerente'
-                break
-              case 'DOCTOR':
-                roleString = 'Médico'
-                break
-              case 'NURSE':
-                roleString = 'Enfermeiro'
-                break
-              case 'RECEPTIONIST':
-                roleString = 'Atendente'
-                break
-              default:
-            }
+            roleString = user.roles[0].label
           }
           return {
             roleString,

@@ -143,7 +143,7 @@ export default {
       ],
       user: {
         genre: null,
-        role: null,
+        roles: null,
         address: {}
       },
       password: '',
@@ -166,6 +166,15 @@ export default {
       (async () => {
         try {
           this.user = await usersService.get(id)
+          if (!this.user.address) {
+            this.user.address = {}
+          }
+          if (!this.user.hospitals) {
+            this.user.hospitals = {}
+          }
+          if (!this.user.roles) {
+            this.user.roles = {}
+          }
           await this.parseHospitals()
           await this.parseRoles()
           this.loading = false
@@ -183,6 +192,7 @@ export default {
           let response = null
           if (this.verifyPassword()) {
             if (!id) {
+              this.user.roles_id
               response = await usersService.create(user)
             } else {
               response = await usersService.update(id, user)
@@ -226,10 +236,15 @@ export default {
     },
     parseRoles () {
       (async () => {
-        this.roleId = await this.user.roles[0].id || null
+        if (this.user.roles[0]) {
+          this.roleId = await this.user.roles[0].id || null
+        }
       })()
     },
     recieveAddress (data) {
+      if (!this.user.address) {
+        this.user.address = {}
+      }
       this.user.address[data.name] = data.value
     },
     recieveHospital (data) {

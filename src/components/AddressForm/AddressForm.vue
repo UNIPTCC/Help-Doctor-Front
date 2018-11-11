@@ -98,18 +98,20 @@ export default {
   },
   props: {
     addressObject: {
-      type: Object,
+      type: [Object, null],
       required: true
     }
   },
   created() {
-    this.zipcode = this.addressObject.zipcode
-    this.address = this.addressObject.address
-    this.neighborhood = this.addressObject.neighborhood
-    this.city = this.addressObject.city
-    this.state = this.addressObject.state
-    this.number = this.addressObject.number
-    this.complement = this.addressObject.complement
+    if (this.addressObject) {
+      this.zipcode = this.addressObject.zipcode
+      this.address = this.addressObject.address
+      this.neighborhood = this.addressObject.neighborhood
+      this.city = this.addressObject.city
+      this.state = this.addressObject.state
+      this.number = this.addressObject.number
+      this.complement = this.addressObject.complement
+    }
     if (this.address !== undefined) {
       this.disabled = false
     }
