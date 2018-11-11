@@ -67,7 +67,8 @@ export default {
       ],
       users: [],
       totalRows: 0,
-      perPage: 10
+      perPage: 10,
+      error: false
     }
   },
   created() {

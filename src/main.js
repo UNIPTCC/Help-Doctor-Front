@@ -59,6 +59,15 @@ import VueTheMask from 'vue-the-mask'
 Vue.use(VueTheMask)
 /* Vue the Mask */
 
+/* Vue Moment */
+import moment from 'moment'
+import 'moment/locale/pt-br'
+import VueMoment from 'vue-moment'
+Vue.use(VueMoment, {
+  moment
+})
+/* Vue Moment */
+
 /* Vue Date */
 import Datetime from 'vue-datetime'
 import 'vue-datetime/dist/vue-datetime.css'

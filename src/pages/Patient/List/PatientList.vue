@@ -24,6 +24,7 @@
           :totalRows="totalRows"
           :colunms="colunms"
           :items="patients"
+          sortBy="id"
           editable
         />
       </b-container>
@@ -34,7 +35,9 @@
 </template>
 
 <script>
-// import HelpDoctorApi from '../../../services/HelpDoctorApi' // Exemplo de request
+import 'moment/locale/pt-br'
+import Patients from '../../../services/Patients'
+const patientsService = new Patients()
 
 export default {
   name: 'PatientList',
@@ -53,54 +56,52 @@ export default {
           sortable: true
         },
         {
-          key: 'document',
+          key: 'personal_document',
           label: 'CPF',
           sortable: true
         },
         {
-          key: 'birthday',
+          key: 'birthdayParsed',
           label: 'Data de nascimento',
           sortable: true
         }
       ],
-      patients: [
-        {
-          id: 1,
-          name: 'Vitor Montanha',
-          document: '330.315.510-01',
-          birthday: '04/09/1998'
-        },
-        {
-          id: 2,
-          name: 'Humberto II',
-          document: '870.622.620-56',
-          birthday: '21/04/1960'
-        },
-        {
-          id: 3,
-          name: 'Catia Izilda',
-          document: '111.319.140-66',
-          birthday: '30/03/1970'
-        }
-      ],
-      totalRows: 1,
-      perPage: 2
+      patients: [],
+      totalRows: 0,
+      perPage: 10,
+      error: false
     }
   },
   created() {
-    this.totalRows = this.patients.length
-    this.loading = false
-    // this.api = new HelpDoctorApi() // Exemplo de request
-
-    // this.getStatus() // Exemplo de request
+    (async () => {
+      await this.getPatients()
+    })()
   },
   methods: {
-    // getStatus () {
-    //   (async () => {
-    //     let status = await this.api.getStatus()
-    //     console.log(status)
-    //   })()
-    // }
+    getPatients () {
+      (async () => {
+        try {
+          this.patients = await patientsService.get()
+          await this.parseDates()
+          this.totalRows = this.patients.length
+          this.loading = false
+        } catch (err) {
+          this.loading = false
+          window.alert('Falha ao obter os pacientes')
+        }
+      })()
+    },
+    parseDates () {
+      (async () => {
+        this.patients = this.patients.map((patient) => {
+          const birthdayParsed = this.$moment(patient.birthday).format('LL')
+          return {
+            birthdayParsed,
+            ...patient
+          }
+        })
+      })()
+    }
   }
 }
 </script>
