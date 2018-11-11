@@ -138,12 +138,7 @@ const routes = [
     name: 'RecordList',
     component: RecordList,
     meta: {
-      title: 'HelpDoctor - Prontuários',
-      admin: true,
-      manager: true,
-      doctor: true,
-      nurse:true,
-      clerk: true
+      title: 'HelpDoctor - Prontuários'
     }
   },
   {
@@ -152,11 +147,6 @@ const routes = [
     component: RecordEdit,
     meta: {
       title: 'HelpDoctor - Novo Prontuário',
-      admin: true,
-      manager: true,
-      doctor: true,
-      nurse:true,
-      clerk: true
     }
   },
   {
@@ -176,12 +166,7 @@ const routes = [
     name: 'PatientList',
     component: PatientList,
     meta: {
-      title: 'HelpDoctor - Pacientes',
-      admin: true,
-      manager: true,
-      doctor: true,
-      nurse:true,
-      clerk: true
+      title: 'HelpDoctor - Pacientes'
     }
   },
   {
@@ -189,12 +174,7 @@ const routes = [
     name: 'PatientNew',
     component: PatientEdit,
     meta: {
-      title: 'HelpDoctor - Novo Paciente',
-      admin: true,
-      manager: true,
-      doctor: true,
-      nurse:true,
-      clerk: true
+      title: 'HelpDoctor - Novo Paciente'
     }
   },
   {
@@ -202,12 +182,7 @@ const routes = [
     name: 'PatientEdit',
     component: PatientEdit,
     meta: {
-      title: 'HelpDoctor - Editar Paciente',
-      admin: true,
-      manager: true,
-      doctor: true,
-      nurse:true,
-      clerk: true
+      title: 'HelpDoctor - Editar Paciente'
     }
   },
   {
@@ -215,12 +190,7 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: {
-      title: 'HelpDoctor - Home',
-      admin: true,
-      manager: true,
-      doctor: true,
-      nurse:true,
-      clerk: true
+      title: 'HelpDoctor - Home'
     }
   }
 ]
@@ -230,21 +200,20 @@ const router = new VueRouter({
   routes
 })
 
- // eslint-disable-next-line
 const verifyRole = function (record, roleName) {
-  return record.meta.hasOwnProperty(roleName)
+  return (!record.meta.admin) ? true : record.meta.hasOwnProperty(roleName.toLowerCase()) 
 }
 
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title
   document.querySelector('#app').classList.remove('no-scroll')
   const jwt = localStorage.getItem('jwt')
-  const user = JSON.parse(localStorage.getItem('user'))
-  // Código comentado para testes de rota forçando autenticações e usuários chumbados
-  // let user = {
-  //   role: 'clerk'
-  // }
-  // const jwt = `a`
+  let user = JSON.parse(localStorage.getItem('user'))
+  // Código comentado para testes de rota forçando autenticações e usuários chumbados, comentar a linha de baixo e descomentar a de cima para testar
+  // user.roleName = 'recepicionist'
+  user.roleName = user.roles[0].name
+  localStorage.setItem('user', JSON.stringify(user))
+  
   if (to.matched.some(record => !record.meta.guest)) {
     if (!jwt || !user) {
       next({
@@ -252,14 +221,13 @@ router.beforeEach((to, from, next) => {
         params: { nextUrl: to.fullPath }
       })
     } else {
-      // TODO comentários sobre a lógica de roles no sistema, normalizar com o Guilherme
-      // if (to.matched.some(record => verifyRole(record, user.role))) {
+      if (to.matched.some(record => verifyRole(record, user.roleName))) {
         next()
-      // } else {
-      //   next({
-      //     name: 'Home'
-      //   })
-      // }
+      } else {
+        next({
+          name: 'Home'
+        })
+      }
     }
   } else {
     next() 
