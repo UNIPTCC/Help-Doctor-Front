@@ -22,37 +22,71 @@ export default {
   data () {
     return {
       menu: [
-        {
-          name: 'Home',
-          path: '/home',
-          icon: 'home'
-        },
-        {
+        // Comentado para não aparecer, já que precisa de possivel desenvolvimento e não vai dar tempo
+        // {
+        //   name: 'Home',
+        //   path: '/home',
+        //   icon: 'home'
+        // }
+      ],
+      appointmentsMenu: {
           name: 'Agenda',
           path: '/agenda',
           icon: 'calendar-alt'
-        },
-        {
-          name: 'Prontuários',
-          path: '/prontuario',
-          icon: 'notes-medical'
-        },
-        {
-          name: 'Pacientes',
-          path: '/paciente',
-          icon: 'user'
-        },
-        {
-          name: 'Hospitais',
-          path: '/hospital',
-          icon: 'hospital'
-        },
-        {
-          name: 'Usuários',
-          path: '/usuario',
-          icon: 'user-md'
-        }
-      ]
+      },
+      recordsMenu: {
+        name: 'Prontuários',
+        path: '/prontuario',
+        icon: 'notes-medical'
+      },
+      patientsMenu: {
+        name: 'Pacientes',
+        path: '/paciente',
+        icon: 'user'
+      },
+      hospitalsMenu: {
+        name: 'Hospitais',
+        path: '/hospital',
+        icon: 'hospital'
+      },
+      usersMenu: {
+        name: 'Usuários',
+        path: '/usuario',
+        icon: 'user-md'
+      }
+    }
+  },
+  created () {
+    this.parseMenus()
+  },
+  methods: {
+    parseMenus () {
+      const { 
+        appointmentsMenu, 
+        recordsMenu,
+        patientsMenu,
+        hospitalsMenu,
+        usersMenu
+      } = this
+      const { roleName } = this.$user
+      switch (roleName) {
+        case 'ADMIN':
+          this.menu = this.menu.concat(appointmentsMenu, recordsMenu, patientsMenu, hospitalsMenu, usersMenu)
+          break
+        case 'MANAGER':
+          this.menu = this.menu.concat(appointmentsMenu, recordsMenu, patientsMenu, usersMenu)
+          break
+        case 'DOCTOR':
+          this.menu = this.menu.concat(appointmentsMenu, recordsMenu, patientsMenu)
+          break
+        case 'NURSE':
+          this.menu = this.menu.concat(appointmentsMenu, recordsMenu, patientsMenu)
+          break
+        case 'RECEPTIONIST':
+          this.menu = this.menu.concat(recordsMenu, patientsMenu)
+          break
+        default:
+      }
     }
   }
 }

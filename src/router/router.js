@@ -209,11 +209,13 @@ router.beforeEach((to, from, next) => {
   document.querySelector('#app').classList.remove('no-scroll')
   const jwt = localStorage.getItem('jwt')
   let user = JSON.parse(localStorage.getItem('user'))
-  // Código comentado para testes de rota forçando autenticações e usuários chumbados, comentar a linha de baixo e descomentar a de cima para testar
-  // user.roleName = 'recepicionist'
-  user.roleName = user.roles[0].name
-  localStorage.setItem('user', JSON.stringify(user))
-  
+  if (user) {
+    // Código comentado para testes de rota forçando autenticações e usuários chumbados, comentar a linha de baixo e descomentar a de cima para testar
+    // user.roleName = 'recepicionist'
+    user.roleName = user.roles[0].name
+    localStorage.setItem('user', JSON.stringify(user))
+  }
+
   if (to.matched.some(record => !record.meta.guest)) {
     if (!jwt || !user) {
       next({
@@ -225,7 +227,7 @@ router.beforeEach((to, from, next) => {
         next()
       } else {
         next({
-          name: 'Home'
+          name: 'PatientList'
         })
       }
     }
