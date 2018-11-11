@@ -34,6 +34,11 @@ export default {
        if (newVal !== oldVal) {
         this.$emit('pickrole', newVal)
       }
+    },
+    recieveRole (newVal, oldVal) {
+       if (newVal !== oldVal) {
+        this.role = newVal || null
+      }
     }
   },
   data () {

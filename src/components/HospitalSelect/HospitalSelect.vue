@@ -40,6 +40,11 @@ export default {
           this.$emit('pickhospital', newVal)
         }
       }
+    },
+    recieveHospital (newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.hospital = this.recieveHospital || null
+      }
     }
   },
   data () {

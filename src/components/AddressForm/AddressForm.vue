@@ -21,7 +21,7 @@
       </b-col>
       <b-col cols="12" sm="12" md="12" lg="6" xl="6">
         <state-select
-          v-on:pickstate="recieveState"
+          v-on:pickstate="recieveStateFrom"
           :recieveState="state"
           :disabled="disabled"
           required
@@ -137,7 +137,7 @@ export default {
           }
       })()
     },
-    recieveState (data) {
+    recieveStateFrom (data) {
       this.state = data
     }
   },
@@ -175,7 +175,7 @@ export default {
       }
     },
     state (newVal, oldVal) {
-       if (newVal !== oldVal) {
+        if (newVal !== oldVal) {
         this.$emit('pickaddress', { 
           value: newVal,
           name: 'state'

@@ -30,6 +30,11 @@ export default {
        if (newVal !== oldVal) {
         this.$emit('pickstate', newVal)
       }
+    },
+    recieveState (newVal, oldVal) {
+       if (newVal !== oldVal) {
+        this.state = newVal || null
+      }
     }
   },
   data () {
