@@ -54,28 +54,47 @@
                   />
                 </b-col>
                 <b-col cols="12" sm="12" md="12" lg="6" xl="6">
-                  select hospital
-                </b-col>  
-                <b-col cols="12" sm="12" md="12" lg="4" xl="4">
                   <b-form-select 
                     v-model="user.genre"
                     :options="genders"
                     required
                   />
-                </b-col>  
+                </b-col>
                 <b-col cols="12" sm="12" md="12" lg="4" xl="4">
                   <datetime type="date" v-model="user.birthday" format="dd/MM/yyyy" placeholder="Data de nascimento" />
                 </b-col>
                 <b-col cols="12" sm="12" md="12" lg="4" xl="4">
-                  select roles
-                </b-col>
-                <b-col cols="12" sm="12" md="12" lg="4" xl="4" v-if="false">
+                  <hospital-select 
+                    :recieveHospital="user.responsable_hospital"
+                    v-on:pickhospital="recieveHospital"
+                    v-if="false"
+                  />
+                </b-col> 
+                <b-col cols="12" sm="12" md="12" lg="4" xl="4">
                   <b-form-input
                     type='text'
                     placeholder="Documento de licença Médica"
                     v-model.trim='user.medical_document'
+                    v-if="false"
                   />
-                </b-col>         
+                </b-col>
+              </b-row>
+              <b-row>
+                <b-col cols="12" sm="12" md="12" lg="6" xl="6">
+                  <hospital-select
+                    :recieveHospital="hospitalIds"
+                    v-on:pickhospitals="recieveHospitals"
+                    multiple
+                    required
+                  />
+                </b-col> 
+                <b-col cols="12" sm="12" md="12" lg="6" xl="6">
+                  <role-select
+                    :recieveRole="roleId"
+                    v-on:pickrole="recieveRole"
+                    required
+                  />
+                </b-col>     
               </b-row>
               <address-form v-on:pickaddress="recieveAddress" :addressObject="user.address" />
               <b-row>
@@ -118,10 +137,13 @@ export default {
       ],
       user: {
         genre: null,
+        role: null,
         address: {}
       },
       password: '',
       confirmPassword: '',
+      hospitalIds: [],
+      roleId: null,
       error: false
     }
   },
@@ -138,6 +160,8 @@ export default {
       (async () => {
         try {
           this.user = await usersService.get(id)
+          await this.parseHospitals()
+          await this.parseRoles()
           this.loading = false
         } catch (err) {
           window.alert('Falha ao obter o Usuário')
@@ -170,8 +194,31 @@ export default {
         }
       })()
     },
+    parseHospitals () {
+      (async () => {
+        this.hospitalIds = await this.user.hospitals.map((hospital) => {
+          return hospital.id
+        })
+      })()
+    },
+    parseRoles () {
+      (async () => {
+        this.roleId = await this.user.roles[0].id || null
+      })()
+    },
     recieveAddress (data) {
       this.user.address[data.name] = data.value
+    },
+    recieveHospital (data) {
+      this.user.responsable_hospital = data
+    },
+    recieveHospitals (data) {
+      this.user.hospitals = data
+    },
+    recieveRole (data) {
+      this.user.roles = [
+        data
+      ]
     }
   }
 }

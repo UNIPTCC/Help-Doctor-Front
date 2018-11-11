@@ -99,6 +99,9 @@ Vue.component('state-select', StateSelect)
 
 import HospitalSelect from './components/HospitalSelect/HospitalSelect'
 Vue.component('hospital-select', HospitalSelect)
+
+import RoleSelect from './components/RoleSelect/RoleSelect'
+Vue.component('role-select', RoleSelect)
 /* Components */
 
 Vue.config.productionTip = false
