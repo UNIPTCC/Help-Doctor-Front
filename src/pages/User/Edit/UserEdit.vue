@@ -126,7 +126,7 @@ export default {
       title: (this.$route.params.id) ? `Editar Usuário` : 'Novo Usuário',
       genders: [
         {
-          text: 'Selecione o genero', value: null, disabled: true
+          text: 'Genêro', value: null, disabled: true
         },
         {
           text: 'Masculino', value: 'M'

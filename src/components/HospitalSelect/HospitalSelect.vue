@@ -55,12 +55,12 @@ export default {
       (async () => {
         try {
           const hospitalsList = await hospitalsService.get()
-          this.options = await hospitalsList.map((hospital) => {
+          this.options = this.options.concat(await hospitalsList.map((hospital) => {
             return {
               value: hospital.id,
               text: hospital.name
             }
-          })
+          }))
           this.loading = false
         } catch (err) {
           this.loading = false

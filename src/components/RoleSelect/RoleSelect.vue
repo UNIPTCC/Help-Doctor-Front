@@ -49,12 +49,12 @@ export default {
       (async () => {
         try {
           const rolesList = await rolesService.get()
-          this.options = await rolesList.map((role) => {
+          this.options = this.options.concat(await rolesList.map((role) => {
             return {
               value: role.id,
               text: role.label
             }
-          })
+          }))
           this.loading = false
         } catch (err) {
           this.loading = false
