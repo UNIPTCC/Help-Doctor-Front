@@ -85,6 +85,9 @@ Vue.use(User)
 /* Plugins */
 
 /* Components */
+import fullCalendar from 'vue-fullcalendar'
+Vue.component('full-calendar', fullCalendar)
+
 import Header from './components/Header/Header'
 Vue.component('header-default', Header)
 

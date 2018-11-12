@@ -1,0 +1,2 @@
+Arquivo para deixar links da documentaco dos plugins utilizados
+https://github.com/Wanderxx/vue-fullcalendar
