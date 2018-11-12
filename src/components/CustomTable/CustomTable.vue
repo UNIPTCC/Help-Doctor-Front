@@ -99,9 +99,6 @@ export default {
       this.path = this.$route.path
     }
   },
-  updated () {
-    this.totalRows = this.items.length
-  },
   watch: {
     items (newVal, oldVal) {
       if (newVal !== oldVal) {

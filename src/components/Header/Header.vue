@@ -22,12 +22,11 @@ export default {
   data () {
     return {
       menu: [
-        // Comentado para não aparecer, já que precisa de possivel desenvolvimento e não vai dar tempo
-        // {
-        //   name: 'Home',
-        //   path: '/home',
-        //   icon: 'home'
-        // }
+        {
+          name: 'Home',
+          path: '/home',
+          icon: 'home'
+        }
       ],
       appointmentsMenu: {
           name: 'Agenda',
