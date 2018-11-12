@@ -12,8 +12,8 @@
         </b-row>
         <b-row>
           <b-col cols="12">
-            <form>
-              formulário aqui
+            <form v-on:submit.prevent="onSubmit">
+              
             </form>
           </b-col>
         </b-row>
@@ -38,7 +38,23 @@ export default {
   created() {
     this.loading = false
     if (this.$route.params.id) {
-      // TODO implementar metodo
+      // TODO implementar get
+    }
+  },
+  methods: {
+    onSubmit () {
+      (async () => {
+        try {
+          // TODO implementar submit
+        } catch (err) {
+          if (err.response) {
+            this.error = err.response.parseMessage
+          } else {
+            this.error = "Falha do servidor, tente novamente mais tarde :("
+          }
+          window.alert(this.error)
+        }
+      })()
     }
   }
 }

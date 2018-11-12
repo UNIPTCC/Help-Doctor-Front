@@ -25,6 +25,7 @@
           :colunms="colunms"
           :items="records"
           :editable="canEdit()"
+          sortBy="id"
         />
       </b-container>
       <font-awesome-icon v-if="loading" icon="circle-notch" class="spin loader" />
@@ -83,29 +84,19 @@ export default {
           date: '30/03/1970'
         }
       ],
-      totalRows: 1,
-      perPage: 2
+      totalRows: 0,
+      perPage: 10
     }
   },
   created() {
     this.loading = false
     this.totalRows = this.records.length
-
-    // this.api = new HelpDoctorApi() // Exemplo de request
-
-    // this.getStatus() // Exemplo de request
   },
   methods: {
     canEdit () {
       const user = JSON.parse(localStorage.getItem('user'))
       return user.roleName !== 'RECEPTIONIST'
     }
-    // getStatus () {
-    //   (async () => {
-    //     let status = await this.api.getStatus()
-    //     console.log(status)
-    //   })()
-    // }
   }
 }
 </script>
