@@ -68,7 +68,7 @@ export default {
         hospitalsMenu,
         usersMenu
       } = this
-      const { roleName } = this.$user
+      const { roleName } = JSON.parse(localStorage.getItem('user'))
       switch (roleName) {
         case 'ADMIN':
           this.menu = this.menu.concat(appointmentsMenu, recordsMenu, patientsMenu, hospitalsMenu, usersMenu)

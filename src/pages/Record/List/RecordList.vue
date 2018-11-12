@@ -97,7 +97,8 @@ export default {
   },
   methods: {
     canEdit () {
-      return this.$user.roleName !== 'RECEPTIONIST'
+      const user = JSON.parse(localStorage.getItem('user'))
+      return user.roleName !== 'RECEPTIONIST'
     }
     // getStatus () {
     //   (async () => {

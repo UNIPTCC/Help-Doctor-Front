@@ -79,9 +79,6 @@ import Logout from './plugins/Logout/logout'
 Vue.use(Logout, {
   router
 })
-
-import User from './plugins/User/user'
-Vue.use(User)
 /* Plugins */
 
 /* Components */
