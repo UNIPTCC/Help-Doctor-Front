@@ -69,7 +69,7 @@ export default {
             if (this.$route.params.nextUrl) {
               this.$router.push(this.$route.params.nextUrl)
             } else {
-              this.$router.push({ name: 'PatientList' })
+              this.$router.push({ name: 'Home' })
             }
           }
         } catch (err) {
