@@ -109,7 +109,7 @@ export default {
       (async () => {
         this.users = await this.users.map((user) => {
           let hospitalString = user.hospitals.map((hospital) => {
-            return hospital.id === user.responsable_hospital
+            return hospital.id === user.responsable_hospital ? hospital.name : false
           })
           if (hospitalString[0] === false || hospitalString.length === 0) {
             hospitalString = ((user.hospitals.length > 0) ? user.hospitals[0].name : '')
