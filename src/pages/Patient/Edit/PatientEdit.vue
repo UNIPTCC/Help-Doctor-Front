@@ -105,7 +105,8 @@ export default {
         }
       ],
       patient: {
-        genre: null
+        genre: null,
+        address: {}
       },
       error: false
     }

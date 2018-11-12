@@ -3,7 +3,7 @@
     <header-default />
     <div class="content" id="home">
         <p>
-          Help Doctor
+          Bem-vindo ao Help Doctor
         </p>
     </div>
     <footer-default />
