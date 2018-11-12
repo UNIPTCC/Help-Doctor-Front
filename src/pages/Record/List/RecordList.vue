@@ -21,7 +21,6 @@
         </b-row>
         <custom-table
           :perPage="perPage"
-          :totalRows="totalRows"
           :colunms="colunms"
           :items="records"
           :editable="canEdit()"
@@ -84,13 +83,11 @@ export default {
           date: '30/03/1970'
         }
       ],
-      totalRows: 0,
       perPage: 10
     }
   },
   created() {
     this.loading = false
-    this.totalRows = this.records.length
   },
   methods: {
     canEdit () {

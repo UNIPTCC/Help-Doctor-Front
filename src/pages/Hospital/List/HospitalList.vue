@@ -21,7 +21,6 @@
         </b-row>
         <custom-table
           :perPage="perPage"
-          :totalRows="totalRows"
           :colunms="colunms"
           :items="hospitals"
           sortBy="id"
@@ -56,7 +55,6 @@ export default {
         }
       ],
       hospitals: [],
-      totalRows: 0,
       perPage: 10,
       error: false
     }
@@ -71,7 +69,6 @@ export default {
       (async () => {
         try {
           this.hospitals = await hospitalsService.get()
-          this.totalRows = this.hospitals.length
           this.loading = false
         } catch (err) {
           this.loading = false
