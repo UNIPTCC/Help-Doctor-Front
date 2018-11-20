@@ -2,9 +2,10 @@
   <div>
     <header-default />
     <div class="content" id="appointment-list">
-      <b-container>
+      <b-container v-if="!loading">
         <full-calendar :events="appointments" :config="config"></full-calendar>
       </b-container>
+      <font-awesome-icon v-if="loading" icon="circle-notch" class="spin loader" />
     </div>
     <footer-default />
   </div>
@@ -14,18 +15,6 @@
 import 'fullcalendar/dist/locale/pt-br'
 import Appointments from '../../../services/Appointments'
 const appointmentsService = new Appointments()
-var demoEvents = [
-	{
-      title : 'Corrida naruto',
-      start : '2018-11-09',
-      end : '2018-11-15'
-    },
-    {
-      title : 'Bater em otaku fedido',
-      start : '2018-11-20',
-      end : '2018-11-22'
-    }
-]
 export default {
   name: 'AppointmentList',
   data () {
@@ -48,6 +37,13 @@ export default {
       (async () => {
         try {
           const responseAppointments = await appointmentsService.get()
+          this.appointments = responseAppointments.map((appointment) => {
+            return {
+              title  : appointment.pronouncer[0].patient[0].name,
+              start  : appointment.schedule,
+              allDay : false,
+            }
+          })
           this.loading = false
         } catch (err) {
           this.loading = false

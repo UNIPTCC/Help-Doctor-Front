@@ -22,7 +22,7 @@ export default class Appointments extends Service {
         }
       })
 
-      return data
+      return data.data
     } catch (err) {
       // eslint-disable-next-line
       console.error(err)
