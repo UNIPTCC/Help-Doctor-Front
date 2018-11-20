@@ -23,6 +23,7 @@ export default {
       appointments: [],
       config: {
         locale: 'pt-br',
+        defaultView: 'month'
       },
       error: false
     }
