@@ -1,5 +1,9 @@
 #appointment-list {
-  .fc-scroller {
-    min-height: 200px;
+  #calendar {
+    .fc-scroller {
+      min-height: 200px;
+      height: auto !important;
+    }
   }
+  
 }
