@@ -15,7 +15,7 @@
             <hospital-select
               :recieveHospital="hospital"
               :list="user.hospitals"
-              v-on:pickhospitals="recieveHospitals"
+              v-on:pickhospital="recieveHospitals"
             />
           </b-col>
         </b-row>
@@ -81,7 +81,7 @@ export default {
       })()
     },
     recieveHospitals (data) {
-      (async () => {  
+      (async () => {
         this.hospital = data
         await this.getQueue(this.hospital)
       })()

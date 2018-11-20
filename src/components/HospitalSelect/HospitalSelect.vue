@@ -48,7 +48,7 @@ export default {
     hospital (newVal, oldVal) {
        if (newVal !== oldVal) {
         if (this.multiple && !this.hospital.includes(newVal)) {
-          // this.hospital.push(newVal)
+          this.hospital.push(newVal)
           this.$emit('pickhospitals', newVal)
         } else {
           this.$emit('pickhospital', newVal)

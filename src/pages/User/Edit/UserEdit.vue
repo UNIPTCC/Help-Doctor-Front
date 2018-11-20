@@ -187,15 +187,21 @@ export default {
     onSubmit () {
       (async () => {
         try {
+          const userStorage = JSON.parse(localStorage.getItem('user'))
           const { user } = this
           const { id } = this.$route.params
           let response = null
           if (this.verifyPassword()) {
             if (!id) {
-              this.user.roles_id
+              this.user.roles_id = [ this.roleId ]
               response = await usersService.create(user)
             } else {
               response = await usersService.update(id, user)
+              if (userStorage.id === user.id) {
+                let parseUser = user
+                parseUser.roleName = userStorage.roleName
+                localStorage.setItem('user', JSON.stringify(parseUser))
+              }
             }
             if (response) {
               this.error = ''
