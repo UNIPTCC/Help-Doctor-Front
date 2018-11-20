@@ -41,7 +41,7 @@ export default {
             return {
               title  : appointment.pronouncer[0].patient[0].name,
               start  : appointment.schedule,
-              allDay : false,
+              allDay : true,
             }
           })
           this.loading = false
