@@ -53,9 +53,6 @@ export default {
     }
   }
 }
-//export default {
-  //name: 'AppointmentList'
-//}
 </script>
 
 <style lang="scss" scoped>
