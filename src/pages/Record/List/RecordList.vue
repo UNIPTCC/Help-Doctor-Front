@@ -34,7 +34,8 @@
 </template>
 
 <script>
-// import HelpDoctorApi from '../../../services/HelpDoctorApi' // Exemplo de request
+import Records from '../../../services/Records'
+const recordsService = new Records()
 
 export default {
   name: 'RecordList',
@@ -48,48 +49,70 @@ export default {
           sortable: true
         },
         {
-          key: 'name',
+          key: 'patient',
           label: 'Nome do Paciente',
           sortable: true
         },
         {
-          key: 'date',
+          key: 'dateParsed',
           label: 'Data',
           sortable: true
         },
         {
-          key: 'hopsital',
+          key: 'hospital',
           label: 'Hospital',
           sortable: true
         }
       ],
-      records: [
-        {
-          id: 1,
-          name: 'Vitor Montanha',
-          hopsital: 'Hospital 1',
-          date: '04/09/1998'
-        },
-        {
-          id: 2,
-          name: 'Humberto II',
-          hopsital: 'Hospital 1',
-          date: '21/04/1960'
-        },
-        {
-          id: 3,
-          name: 'Catia Izilda',
-          hopsital: 'Hospital 2',
-          date: '30/03/1970'
-        }
-      ],
-      perPage: 10
+      records: [],
+      perPage: 10,
+      error: false
     }
   },
   created() {
-    this.loading = false
+    (async () => {
+      await this.getRecords()
+    })()
   },
   methods: {
+    getRecords () {
+      (async () => {
+        try {
+          const user = JSON.parse(localStorage.getItem('user'))
+          let recordsList = []
+
+          for (const hospital of user.hospitals) {
+            const request = await recordsService.get(null, hospital.id)
+            recordsList = recordsList.concat(request)
+          }
+
+          this.records = recordsList.map((record) => {
+            return {
+              hospital: record.hospital[0].name,
+              patient: record.patient[0].name,
+              date: record.createdAt,
+              id: record.id
+            }
+          })
+          await this.parseDates()
+          this.loading = false
+        } catch (err) {
+          this.loading = false
+          window.alert('Falha ao obter lista de prontuários')
+        }
+      })()
+    },
+  parseDates () {
+      (async () => {
+        this.records = this.records.map((record) => {
+          const dateParsed = this.$moment(record.createdAt).format('LL')
+          return {
+            dateParsed,
+            ...record
+          }
+        })
+      })()
+    },
     canEdit () {
       const user = JSON.parse(localStorage.getItem('user'))
       return user.roleName !== 'RECEPTIONIST'
