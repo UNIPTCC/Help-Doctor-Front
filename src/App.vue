@@ -80,6 +80,9 @@ export default {
   }
   /* Global Configs */
   /* Classes */
+  .fc-toolbar .fc-state-active, .fc-toolbar .ui-state-active {
+    z-index: 1;
+  }
   .display-show {
     display: inline-block;
   }
