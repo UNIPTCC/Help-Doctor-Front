@@ -251,7 +251,7 @@ export default {
       this.user.responsable_hospital = data
     },
     recieveHospitals (data) {   
-      this.user.hospitals= data
+      this.user.hospitals = data
     },
     recieveRole (data) {
       this.roleId = data

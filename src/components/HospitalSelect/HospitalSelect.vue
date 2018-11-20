@@ -23,11 +23,21 @@ export default {
     loading: Boolean,
     recieveHospital:  [String, Array, Number],
     required: Boolean,
-    multiple: Boolean
+    multiple: Boolean,
+    list: Array
   },
   created () {
     this.hospital = this.recieveHospital || null
-    this.getHospitals()
+    if (!this.list) {
+      this.getHospitals()
+    } else {
+      this.options = this.list.map((hospital) => {
+        return {
+          value: hospital.id,
+          text: hospital.name
+        }
+      })
+    }
   },
   updated () {
     if (this.hospital === null) {

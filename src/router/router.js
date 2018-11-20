@@ -13,6 +13,7 @@ import RecordList from '../pages/Record/List/RecordList'
 import RecordEdit from '../pages/Record/Edit/RecordEdit'
 import AppointmentList from '../pages/Appointment/List/AppointmentList'
 import AppointmentEdit from '../pages/Appointment/Edit/AppointmentEdit'
+import Queue from '../pages/Queue/Queue';
 
 Vue.use(VueRouter)
 
@@ -183,6 +184,18 @@ const routes = [
     component: PatientEdit,
     meta: {
       title: 'HelpDoctor - Editar Paciente'
+    }
+  },
+  {
+    path: '/atendimento',
+    name: 'Queue',
+    component: Queue,
+    meta: {
+      title: 'HelpDoctor - Fila de atendimento',
+      admin: true,
+      manager: true,
+      doctor: true,
+      nurse:true
     }
   },
   {

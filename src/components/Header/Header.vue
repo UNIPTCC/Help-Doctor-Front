@@ -29,9 +29,14 @@ export default {
         }
       ],
       appointmentsMenu: {
-          name: 'Agenda',
-          path: '/agenda',
-          icon: 'calendar-alt'
+        name: 'Agenda',
+        path: '/agenda',
+        icon: 'calendar-alt'
+      },
+      queueMenu: {
+        name: 'Atendimento',
+        path: '/atendimento',
+        icon: 'exclamation'
       },
       recordsMenu: {
         name: 'Prontuários',
@@ -61,7 +66,8 @@ export default {
   methods: {
     parseMenus () {
       const { 
-        appointmentsMenu, 
+        appointmentsMenu,
+        queueMenu,
         recordsMenu,
         patientsMenu,
         hospitalsMenu,
@@ -70,16 +76,16 @@ export default {
       const { roleName } = JSON.parse(localStorage.getItem('user'))
       switch (roleName) {
         case 'ADMIN':
-          this.menu = this.menu.concat(appointmentsMenu, recordsMenu, patientsMenu, hospitalsMenu, usersMenu)
+          this.menu = this.menu.concat(appointmentsMenu, queueMenu, recordsMenu, patientsMenu, hospitalsMenu, usersMenu)
           break
         case 'MANAGER':
-          this.menu = this.menu.concat(appointmentsMenu, recordsMenu, patientsMenu, usersMenu)
+          this.menu = this.menu.concat(appointmentsMenu, queueMenu, recordsMenu, patientsMenu, usersMenu)
           break
         case 'DOCTOR':
-          this.menu = this.menu.concat(appointmentsMenu, recordsMenu, patientsMenu)
+          this.menu = this.menu.concat(appointmentsMenu, queueMenu, recordsMenu, patientsMenu)
           break
         case 'NURSE':
-          this.menu = this.menu.concat(recordsMenu, patientsMenu)
+          this.menu = this.menu.concat(recordsMenu, queueMenu, patientsMenu)
           break
         case 'RECEPTIONIST':
           this.menu = this.menu.concat(recordsMenu, patientsMenu)
