@@ -3,7 +3,6 @@
     <header-default />
     <div class="content" id="appointment-list">
       <b-container>
-        Agenda Aqui
         <full-calendar :events="fcEvents" locale="pt"></full-calendar>
       </b-container>
     </div>
@@ -26,13 +25,14 @@ var demoEvents = [
     }
 ]
 export default {
+  name: 'AppointmentList',
   data () {
     return {
       fcEvents : demoEvents
     }
   },
   components : {
-	'full-calendar': require('vue-fullcalendar')	
+
   }
 }
 //export default {

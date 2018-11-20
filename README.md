@@ -43,3 +43,7 @@ Variavéis que devem ser definidas em um arquivo `.env` na raiz do projeto.
 ```
 VUE_APP_HELPDOCTOR_API_URL -> URL da API do HelpDoctor
 ```
+
+## Plugins
+
+- [Full Calendar](https://github.com/Wanderxx/vue-fullcalendar)
