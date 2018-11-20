@@ -29,8 +29,8 @@ export default {
         }
       ],
       appointmentsMenu: {
-        name: 'Agenda',
-        path: '/agenda',
+        name: 'Consultas',
+        path: '/consulta',
         icon: 'calendar-alt'
       },
       queueMenu: {

@@ -21,13 +21,23 @@
         </b-row>
         <b-row>
           <b-col cols="12">
-            <ul>
-              <li v-for="(item, index) in queue" :key="index">
-                <router-link :to="{ path: `/agenda/${item.appointment_id}` }">
-                  risco | {{item.name}}
-                </router-link>
-              </li>
-            </ul>
+            <div class='wrapper'>
+              <header>
+                <span class='status'>
+                  Status
+                </span>
+                <span class='patient'>
+                  Paciente
+                </span>
+              </header>
+              <ul>
+                <li v-for="(item, index) in queue" :key="index">
+                  <router-link :to="{ path: `/consulta/${item.appointment_id}` }">
+                    <font-awesome-icon icon="circle" :class="parseClass(item.severity)" /> {{item.name}}
+                  </router-link>
+                </li>
+              </ul>
+            </div>
           </b-col>
         </b-row>
       </b-container>
@@ -45,7 +55,7 @@ export default {
   name: 'Queue',
   data () {
     return {
-      loading: true,
+      loading: false,
       hospital: '',
       user: JSON.parse(localStorage.getItem('user')),
       queue: [],
@@ -75,6 +85,20 @@ export default {
         this.hospital = data
         await this.getQueue(this.hospital)
       })()
+    },
+    parseClass (number) {
+      switch (number) {
+        case 1:
+          return 'blue'
+        case 2:
+          return 'green'
+        case 3:
+          return 'yellow'
+        case 4:
+          return 'red'
+        default:
+          return 'blue'
+      }
     }
   }
 }

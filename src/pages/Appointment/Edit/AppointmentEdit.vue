@@ -6,7 +6,7 @@
         <b-row>
           <b-col cols="12">
             <h1 class="title">
-              Editar de Agenda
+              Editar de Consulta
             </h1>
           </b-col>
         </b-row>

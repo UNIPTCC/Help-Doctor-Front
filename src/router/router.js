@@ -102,33 +102,33 @@ const routes = [
     }
   },
   {
-    path: '/agenda',
+    path: '/consulta',
     name: 'AppointmentList',
     component: AppointmentList,
     meta: {
-      title: 'HelpDoctor - Agendas',
+      title: 'HelpDoctor - Consultas',
       admin: true,
       manager: true,
       doctor: true
     }
   },
   {
-    path: '/agenda/novo',
+    path: '/consulta/novo',
     name: 'AppointmentNew',
     component: AppointmentEdit,
     meta: {
-      title: 'HelpDoctor - Nova Agenda',
+      title: 'HelpDoctor - Nova Consulta',
       admin: true,
       manager: true,
       doctor: true
     }
   },
   {
-    path: '/agenda/:id',
+    path: '/consulta/:id',
     name: 'AppointmentEdit',
     component: AppointmentEdit,
     meta: {
-      title: 'HelpDoctor - Editar Agenda',
+      title: 'HelpDoctor - Editar Consulta',
       admin: true,
       manager: true,
       doctor: true

@@ -26,6 +26,7 @@ import {
   faSignOutAlt,
   faPlus,
   faCircleNotch,
+  faCircle,
   faSearch,
   faSave,
   faExclamation
@@ -44,6 +45,7 @@ library.add([
   faSignOutAlt,
   faPlus,
   faCircleNotch,
+  faCircle,
   faSearch,
   faSave,
   faExclamation
