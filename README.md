@@ -46,4 +46,4 @@ VUE_APP_HELPDOCTOR_API_URL -> URL da API do HelpDoctor
 
 ## Plugins
 
-- [Full Calendar](https://github.com/Wanderxx/vue-fullcalendar)
+- [Full Calendar](https://www.npmjs.com/package/vue-full-calendar)

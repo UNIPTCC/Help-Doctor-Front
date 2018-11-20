@@ -74,6 +74,12 @@ import 'vue-datetime/dist/vue-datetime.css'
 Vue.use(Datetime)
 /* Vue Date */
 
+/* Vue Full Calendar */
+import FullCalendar from 'vue-full-calendar'
+import 'fullcalendar/dist/fullcalendar.css'
+Vue.use(FullCalendar)
+/* Vue Full Calendar */
+
 /* Plugins */
 import Logout from './plugins/Logout/logout'
 Vue.use(Logout, {
@@ -82,9 +88,6 @@ Vue.use(Logout, {
 /* Plugins */
 
 /* Components */
-import fullCalendar from 'vue-fullcalendar'
-Vue.component('full-calendar', fullCalendar)
-
 import Header from './components/Header/Header'
 Vue.component('header-default', Header)
 

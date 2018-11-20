@@ -3,7 +3,7 @@
     <header-default />
     <div class="content" id="appointment-list">
       <b-container>
-        <full-calendar :events="fcEvents" locale="pt"></full-calendar>
+        <full-calendar :events="appointments" :config="config"></full-calendar>
       </b-container>
     </div>
     <footer-default />
@@ -11,7 +11,9 @@
 </template>
 
 <script>
-
+import 'fullcalendar/dist/locale/pt-br'
+import Appointments from '../../../services/Appointments'
+const appointmentsService = new Appointments()
 var demoEvents = [
 	{
       title : 'Corrida naruto',
@@ -28,11 +30,31 @@ export default {
   name: 'AppointmentList',
   data () {
     return {
-      fcEvents : demoEvents
+      loading: true,
+      appointments: [],
+      config: {
+        locale: 'pt-br',
+      },
+      error: false
     }
   },
-  components : {
-
+  created() {
+    (async () => {
+      await this.getAppointments()
+    })()
+  },
+  methods: {
+    getAppointments () {
+      (async () => {
+        try {
+          const responseAppointments = await appointmentsService.get()
+          this.loading = false
+        } catch (err) {
+          this.loading = false
+          window.alert('Falha ao obter consultas')
+        }
+      })()
+    }
   }
 }
 //export default {
