@@ -14,7 +14,7 @@
           <b-col cols="12">
             <hospital-select
               :recieveHospital="hospital"
-              :list="user.hospitals"
+              :list="(user.roleName !== 'ADMIN') ? user.hospitals : false"
               v-on:pickhospital="recieveHospitals"
             />
           </b-col>
@@ -32,9 +32,12 @@
               </header>
               <ul>
                 <li v-for="(item, index) in queue" :key="index">
-                  <router-link :to="{ path: `/consulta/${item.appointment_id}` }">
+                  <router-link v-if="index === 0" :to="{ path: `/consulta/${item.appointment_id}` }">
                     <font-awesome-icon icon="circle" :class="parseClass(item.severity)" /> {{item.name}}
                   </router-link>
+                  <span v-if="index !== 0">
+                    <font-awesome-icon icon="circle" :class="parseClass(item.severity)" /> {{item.name}}
+                  </span>
                 </li>
               </ul>
             </div>
