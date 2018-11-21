@@ -58,7 +58,7 @@ export default {
   name: 'Queue',
   data () {
     return {
-      loading: false,
+      loading: true,
       hospital: '',
       user: JSON.parse(localStorage.getItem('user')),
       queue: [],
