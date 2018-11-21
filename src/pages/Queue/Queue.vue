@@ -31,12 +31,17 @@
                 </span>
               </header>
               <ul>
-                <li v-for="(item, index) in queue" :key="index">
+                <li v-for="(item, index) in queue" :key="index" v-if="queue.length > 0">
                   <router-link v-if="index === 0" :to="{ path: `/consulta/${item.appointment_id}` }">
                     <font-awesome-icon icon="circle" :class="parseClass(item.severity)" /> {{item.name}}
                   </router-link>
                   <span v-if="index !== 0">
                     <font-awesome-icon icon="circle" :class="parseClass(item.severity)" /> {{item.name}}
+                  </span>
+                </li>
+                <li v-if="queue.length < 1">
+                  <span>
+                    Ops! A fila está vazia no momento!
                   </span>
                 </li>
               </ul>
