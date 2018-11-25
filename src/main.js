@@ -84,6 +84,12 @@ import 'fullcalendar/dist/fullcalendar.css'
 Vue.use(FullCalendar)
 /* Vue Full Calendar */
 
+/* Vue Auto Complete */
+import Autocomplete from 'v-autocomplete'
+import 'v-autocomplete/dist/v-autocomplete.css'
+Vue.use(Autocomplete)
+/* Vue Auto Complete */
+
 /* Plugins */
 import Logout from './plugins/Logout/logout'
 Vue.use(Logout, {
@@ -121,6 +127,12 @@ Vue.component('hospital-select', HospitalSelect)
 
 import RoleSelect from './components/RoleSelect/RoleSelect'
 Vue.component('role-select', RoleSelect)
+
+import TypeRecordSelect from './components/TypeRecordSelect/TypeRecordSelect'
+Vue.component('type-record-select', TypeRecordSelect)
+
+import PatientSelect from './components/PatientSelect/PatientSelect'
+Vue.component('patient-select', PatientSelect)
 /* Components */
 
 Vue.config.productionTip = false

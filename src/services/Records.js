@@ -27,7 +27,7 @@ export default class Records extends Service {
           Authorization: `Bearer ${this.getJWT()}`
         }
       })
-      
+
       return data.data
     } catch (err) {
       // eslint-disable-next-line

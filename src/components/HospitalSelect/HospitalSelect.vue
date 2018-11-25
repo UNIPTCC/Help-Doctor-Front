@@ -24,7 +24,7 @@ export default {
     recieveHospital:  [String, Array, Number],
     required: Boolean,
     multiple: Boolean,
-    list: Array
+    list: [Array, Boolean]
   },
   created () {
     this.hospital = this.recieveHospital || null
