@@ -2,15 +2,47 @@
 <div>
     <header-default />
     <div class="content" id="appointment-edit">
-      <b-container>
+      <b-container v-if="!loading">
         <b-row>
           <b-col cols="12">
             <h1 class="title">
-              Editar de Consulta
+              {{title}}
             </h1>
           </b-col>
         </b-row>
+        <b-row>
+          <b-col cols="12">
+            <form v-on:submit.prevent="onSubmit">
+              <b-row>
+                <b-col cols="12" sm="12" md="12" lg="12" xl="12">
+                  selecionar hospital aqui
+                </b-col>
+              </b-row>
+              <b-row>
+                <b-col cols="12" sm="12" md="12" lg="12" xl="12">
+                  selecionar prontuario aqui
+                </b-col>
+              </b-row>
+              <b-row>
+                <b-col cols="12" sm="12" md="12" lg="6" xl="6">
+                  selecionar categoria do medico aqui
+                </b-col>
+                <b-col cols="12" sm="12" md="12" lg="6" xl="6">
+                  selecionar médico aqui
+                </b-col>
+              </b-row>
+            </form>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col class='text-right'>
+            <b-btn class='new' type='submit'>
+              <font-awesome-icon icon="save" /> Salvar
+            </b-btn>
+          </b-col>
+        </b-row>
       </b-container>
+      <font-awesome-icon v-if="loading" icon="circle-notch" class="spin loader" />
     </div>
     <footer-default />
   </div>
@@ -24,7 +56,9 @@ export default {
   name: 'AppointmentEdit',
   data () {
     return {
-      appointment: {}
+      loading: false,
+      appointment: {},
+      title: (this.$route.params.id) ? `Editar Consulta` : 'Nova Consulta',
     }
   },
   created() {
@@ -60,7 +94,7 @@ export default {
           }
           if (response.id) {
             this.error = ''
-            window.alert("Consulta atualizado com sucesso")
+            window.alert("Consulta atualizada com sucesso")
             this.$router.push({ name: 'AppointmentList' })
           }
         } catch (err) {

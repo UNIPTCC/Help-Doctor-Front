@@ -6,7 +6,7 @@
         <b-row>
           <b-col cols="12">
             <div class="wrapper">
-              <router-link class="btn new" to="/prontuario/novo">
+              <router-link class="btn new" to="/consulta/novo">
                 Novo <font-awesome-icon icon="plus" />
               </router-link>
             </div>
