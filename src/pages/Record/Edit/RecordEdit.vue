@@ -16,7 +16,7 @@
               <b-row>
                 <b-col cols="12" sm="12" md="12" lg="12" xl="12">
                   <patient-select
-                    :recievePatient="(record.patient[0]) ? record.patient[0] : {}"
+                    :recievePatient="(record.patient[0]) ? record.patient[0] : false"
                     v-on:pickpatient="recievePatient"
                     required
                   />

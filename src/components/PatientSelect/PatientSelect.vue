@@ -8,7 +8,6 @@
       :component-item="template"
       :min-len="0"
       @update-items="filterPatients"
-
     />
   </div>
 </template>
@@ -23,11 +22,13 @@ export default {
   props: {
     disabled: Boolean,
     loading: Boolean,
-    recievePatient: Object,
+    recievePatient: [Object, Boolean],
     required: Boolean
   },
   created () {
-    this.patient = (this.recievePatient) ? this.recievePatient : {}
+    if (this.recievePatient) {
+      this.patient = this.recievePatient
+    }
     this.getPatients()
   },
   watch: {
@@ -35,16 +36,15 @@ export default {
        if (newVal !== oldVal && newVal) {
         this.$emit('pickpatient', newVal)
       }
-    },
-    recievePatient (newVal, oldVal) {
-       if (newVal !== oldVal && newVal) {
-        this.patient = newVal
-      }
     }
   },
   data () {
     return {
-      patient: {},
+      patient: {
+        name: '',
+        id: 0,
+        personal_document: ''
+      },
       options: [],
       patients: [],
       config: {
