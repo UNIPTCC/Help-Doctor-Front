@@ -40,7 +40,11 @@
                   selecionar médico aqui
                 </b-col>
                 <b-col cols="12" sm="12" md="12" lg="4" xl="4">
-                  selecionar tipo da consulta aqui
+                  <b-form-select 
+                    v-model="appointment.type_id" 
+                    :options="typeOptions" 
+                    required
+                  />
                 </b-col>
               </b-row>
               <b-row>
@@ -150,11 +154,12 @@
                   </b-form-group>
                 </b-col>
                 <b-col cols="12" sm="12" md="12" lg="4" xl="4">
-                  <b-form-group class='size' label="Temperatura?">
+                  <b-form-group class='size' label="Temperatura">
                     <b-form-input
                       type='number'
                       v-model.trim='appointment.fever'
                       placeholder='Graus'
+                      required
                     />
                   </b-form-group>
                 </b-col>
@@ -248,6 +253,25 @@ export default {
         {
           value: 3,
           text: 'Terceiro Grau'
+        }
+      ],
+      typeOptions: [
+        {
+          value: null,
+          text: 'Selecione o tipo do atendimento',
+          disabled: true
+        },
+        {
+          value: 1,
+          text: 'Consulta'
+        },
+        {
+          value: 2,
+          text: 'Pronto atendimento'
+        },
+        {
+          value: 3,
+          text: 'Exame'
         }
       ],
       hospital: null,
