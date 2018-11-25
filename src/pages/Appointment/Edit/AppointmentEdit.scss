@@ -1,0 +1,12 @@
+#appointment-edit{
+  @media (min-width: 991px) {
+    .custom-controls-stacked {
+      min-height: 96px;
+    }
+    .size {
+      &>div {
+        min-height: 96px;
+      }
+    }
+  }
+}

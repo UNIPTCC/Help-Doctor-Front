@@ -63,6 +63,25 @@ export default {
     font-size: 40px;
   }
   form {
+    fieldset {
+      background: $white;
+      legend {
+        background: transparent;
+        border: 1px solid $gray-bg;
+        border-bottom: none;
+        border-radius: $radius;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      &>div {
+        padding: 0 15px;
+        border-radius: $radius;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border: 1px solid $gray-bg;
+        border-top: none;
+      }
+    }
     input, select, textarea {
       margin: 0 0 15px;
       color: $black;
