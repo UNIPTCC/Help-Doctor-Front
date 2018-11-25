@@ -83,7 +83,7 @@
                     v-if="roleId === 3 || roleId === 4"
                     :required="roleId === 3 || roleId === 4"
                   />
-                </b-col> 
+                </b-col>
               </b-row>
               <b-row>
                 <b-col cols="12" sm="12" md="12" lg="6" xl="6">
@@ -93,14 +93,14 @@
                     multiple
                     required
                   />
-                </b-col> 
+                </b-col>
                 <b-col cols="12" sm="12" md="12" lg="6" xl="6">
                   <role-select
                     :recieveRole="roleId"
                     v-on:pickrole="recieveRole"
                     required
                   />
-                </b-col>     
+                </b-col>
               </b-row>
               <address-form v-on:pickaddress="recieveAddress" :addressObject="user.address" />
               <b-row>
