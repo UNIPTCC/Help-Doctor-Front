@@ -12,7 +12,11 @@
             </div>
           </b-col>
         </b-row>
-        <full-calendar :events="appointments" :config="config"></full-calendar>
+        <full-calendar
+          :events="appointments"
+          :config="config"
+          @event-selected="eventSelected"
+        />
       </b-container>
       <font-awesome-icon v-if="loading" icon="circle-notch" class="spin loader" />
     </div>
@@ -43,6 +47,9 @@ export default {
     })()
   },
   methods: {
+    eventSelected (item) {
+      this.$router.push({ name: 'AppointmentEdit', params: { id: item.id }})
+    },
     getAppointments () {
       (async () => {
         try {
@@ -52,6 +59,7 @@ export default {
               title  : appointment.pronouncer[0].patient[0].name,
               start  : appointment.schedule,
               allDay : true,
+              id: appointment.id
             }
           })
           this.loading = false
