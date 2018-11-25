@@ -64,7 +64,7 @@ export default {
     return {
       hospital: null,
       options: [
-        { value: null, text: (this.multiple) ? 'Selecione os Hospitais de atuação' : 'Selecione o Hospital a ser gerenciado',  disabled: true }
+        { value: null, text: (this.multiple) ? 'Selecione os Hospitais de atuação' : 'Selecione o Hospital',  disabled: true }
       ]
     }
   },

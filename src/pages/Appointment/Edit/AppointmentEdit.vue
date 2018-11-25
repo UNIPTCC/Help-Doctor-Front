@@ -15,7 +15,12 @@
             <form v-on:submit.prevent="onSubmit">
               <b-row>
                 <b-col cols="12" sm="12" md="12" lg="12" xl="12">
-                  selecionar hospital aqui
+                  <hospital-select
+                    :recieveHospital="hospital"
+                    v-on:pickhospital="recieveHospital"
+                    :disabled="!!$route.params.id"
+                    required
+                  />
                 </b-col>
               </b-row>
               <b-row>
@@ -58,6 +63,7 @@ export default {
     return {
       loading: false,
       appointment: {},
+      hospital: null,
       title: (this.$route.params.id) ? `Editar Consulta` : 'Nova Consulta',
     }
   },
@@ -74,6 +80,7 @@ export default {
       (async () => {
         try {
           this.appointment = await appointmentsService.get(id)
+          this.hospital = this.appointment.pronouncer[0].hospital_id
           this.loading = false
         } catch (err) {
           window.alert('Falha ao obter consulta')
@@ -106,6 +113,9 @@ export default {
           window.alert(this.error)
         }
       })()
+    },
+    recieveHospital (data) {
+      this.hospital = data
     }
   }
 }

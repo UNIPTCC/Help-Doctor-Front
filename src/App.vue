@@ -76,6 +76,10 @@ export default {
       border: 1px solid $gray-bg;
       vertical-align: middle;
       display: inline-block;
+      &:disabled {
+        color: $black-disabled;
+        background: $gray-bg;
+      }
     }
   }
   /* Global Configs */
