@@ -8,7 +8,7 @@
   input, select {
     &:disabled {
       color: $black-disabled;
-      background: $gray-bg;
+      background: $gray-disable-form;
     }
   }
   input {

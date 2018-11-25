@@ -30,7 +30,11 @@
               </b-row>
               <b-row>
                 <b-col cols="12" sm="12" md="12" lg="6" xl="6">
-                  selecionar categoria do medico aqui
+                  <medical-category-select
+                    :recieveMedicalCategory="appointment.medical_category_id"
+                    v-on:pickmedicalcategory="recieveMedicalCategory"
+                    required
+                  />
                 </b-col>
                 <b-col cols="12" sm="12" md="12" lg="6" xl="6">
                   selecionar médico aqui
@@ -116,6 +120,9 @@ export default {
     },
     recieveHospital (data) {
       this.hospital = data
+    },
+    recieveMedicalCategory (data) {
+      this.appointment.medical_category_id = data
     }
   }
 }

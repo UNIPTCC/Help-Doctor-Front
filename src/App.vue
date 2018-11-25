@@ -78,7 +78,8 @@ export default {
       display: inline-block;
       &:disabled {
         color: $black-disabled;
-        background: $gray-bg;
+        background: $gray-disable-form;
+        cursor: not-allowed;
       }
     }
   }
