@@ -17,7 +17,7 @@
                 <b-col cols="12" sm="12" md="12" lg="12" xl="12">
                   <patient-select
                     :recievePatient="(record.patient[0]) ? record.patient[0] : {}"
-                     v-on:pickpatient="recievePatient"
+                    v-on:pickpatient="recievePatient"
                     required
                   />
                 </b-col>
@@ -76,7 +76,10 @@ export default {
     return {
       loading: true,
       title: (this.$route.params.id) ? `Editar Prontuário` : 'Novo Prontuário',
-      record: {},
+      record: {
+        hospital_id: null,
+        patient: []
+      },
       error: false
     }
   },
@@ -134,12 +137,12 @@ export default {
     },
     recievePatient (data) {
       this.record.patient_id = (data) ? data.id : null
-      this.record.patient = {
-        ...this.record.patient,
+      this.record.patient = [{
+        ...this.record.patient[0],
         id: data.id,
         name: data.name,
         personal_document: data.personal_document
-      }
+      }]
     }
   }
 }

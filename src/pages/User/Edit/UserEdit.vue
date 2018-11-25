@@ -199,7 +199,7 @@ export default {
               response = await usersService.update(id, user)
               if (userStorage.id === user.id) {
                 let parseUser = user
-                parseUser.roleName = userStorage.roleName
+                parseUser.roleName = user.roles[0].name
                 localStorage.setItem('user', JSON.stringify(parseUser))
               }
             }
@@ -230,6 +230,8 @@ export default {
         } else {
           return false
         }
+      } else {
+        delete this.user.password
       }
       return true
     },
@@ -238,6 +240,7 @@ export default {
         this.hospitalIds = await this.user.hospitals.map((hospital) => {
           return hospital.id
         })
+        this.user.hospitals = []
       })()
     },
     parseRoles () {
@@ -256,8 +259,10 @@ export default {
     recieveHospital (data) {
       this.user.responsable_hospital = data
     },
-    recieveHospitals (data) {   
-      this.user.hospitals = data
+    recieveHospitals (data) {
+      if (data.length > 0) {
+        this.user.hospitals = data
+      }
     },
     recieveRole (data) {
       this.roleId = data

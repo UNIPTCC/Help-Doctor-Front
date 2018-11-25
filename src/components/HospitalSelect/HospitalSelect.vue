@@ -47,8 +47,7 @@ export default {
   watch: {
     hospital (newVal, oldVal) {
        if (newVal !== oldVal) {
-        if (this.multiple && !this.hospital.includes(newVal)) {
-          this.hospital.push(newVal)
+        if (this.multiple) {
           this.$emit('pickhospitals', newVal)
         } else {
           this.$emit('pickhospital', newVal)

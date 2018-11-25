@@ -3,6 +3,15 @@
     <header-default />
     <div class="content" id="appointment-list">
       <b-container v-if="!loading">
+        <b-row>
+          <b-col cols="12">
+            <div class="wrapper">
+              <router-link class="btn new" to="/prontuario/novo">
+                Novo <font-awesome-icon icon="plus" />
+              </router-link>
+            </div>
+          </b-col>
+        </b-row>
         <full-calendar :events="appointments" :config="config"></full-calendar>
       </b-container>
       <font-awesome-icon v-if="loading" icon="circle-notch" class="spin loader" />
