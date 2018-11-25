@@ -19,6 +19,7 @@
                     :recieveHospital="hospital"
                     v-on:pickhospital="recieveHospital"
                     :disabled="!!$route.params.id"
+                    :list="(user.roleName !== 'ADMIN') ? user.hospitals : false"
                     required
                   />
                 </b-col>
@@ -33,6 +34,7 @@
                   <medical-category-select
                     :recieveMedicalCategory="appointment.medical_category_id"
                     v-on:pickmedicalcategory="recieveMedicalCategory"
+                    :disabled="!hospital"
                     required
                   />
                 </b-col>
@@ -43,6 +45,7 @@
                   <b-form-select 
                     v-model="appointment.type_id" 
                     :options="typeOptions" 
+                    :disabled="!(!!hospital && !!record)"
                     required
                   />
                 </b-col>
@@ -53,6 +56,7 @@
                     <b-form-radio-group
                       v-model="appointment.diarrhea"
                       :options="booleanOptions"
+                      :disabled="!(!!hospital && !!record)"
                       name="diarrhea"
                       required
                     />
@@ -63,6 +67,7 @@
                     <b-form-radio-group
                       v-model="appointment.hypovolemic_shock"
                       :options="booleanOptions"
+                      :disabled="!(!!hospital && !!record)"
                       name="hypovolemic_shock"
                       required
                     />
@@ -73,6 +78,7 @@
                     <b-form-radio-group
                       v-model="appointment.heart_attack"
                       :options="booleanOptions"
+                      :disabled="!(!!hospital && !!record)"
                       name="heart_attack"
                       required
                     />
@@ -83,6 +89,7 @@
                     <b-form-radio-group
                       v-model="appointment.asthma"
                       :options="booleanOptions"
+                      :disabled="!(!!hospital && !!record)"
                       name="asthma"
                       required
                     />
@@ -95,6 +102,7 @@
                     <b-form-radio-group
                       v-model="appointment.apnea"
                       :options="booleanOptions"
+                      :disabled="!(!!hospital && !!record)"
                       name="apnea"
                       required
                     />
@@ -105,6 +113,7 @@
                     <b-form-radio-group
                       v-model="appointment.vomit"
                       :options="booleanOptions"
+                      :disabled="!(!!hospital && !!record)"
                       name="vomit"
                       required
                     />
@@ -115,6 +124,7 @@
                     <b-form-radio-group
                       v-model="appointment.is_pregnant"
                       :options="booleanOptions"
+                      :disabled="!(!!hospital && !!record)"
                       name="is_pregnant"
                     />
                   </b-form-group>
@@ -124,6 +134,7 @@
                     <b-form-radio-group
                       v-model="appointment.medical_return"
                       :options="booleanOptions"
+                      :disabled="!(!!hospital && !!record)"
                       name="medical_return"
                       required
                     />
@@ -136,6 +147,7 @@
                     <b-form-radio-group
                       v-model="appointment.skin_burn"
                       :options="burnOptions"
+                      :disabled="!(!!hospital && !!record)"
                       name="skin_burn"
                       stacked
                       required
@@ -147,6 +159,7 @@
                     <b-form-radio-group
                       v-model="appointment.convulsion"
                       :options="convulsionOptions"
+                      :disabled="!(!!hospital && !!record)"
                       name="convulsion"
                       stacked
                       required
@@ -158,7 +171,8 @@
                     <b-form-input
                       type='number'
                       v-model.trim='appointment.fever'
-                      placeholder='Graus'
+                      placeholder='Valor em graus'
+                      :disabled="!(!!hospital && !!record)"
                       required
                     />
                   </b-form-group>
@@ -171,6 +185,7 @@
                     v-model="appointment.schedule"
                     format="dd/MM/yyyy 'às' HH:mm"
                     placeholder="Data de atendimento"
+                    :disabled="!(!!hospital && !!record)"
                     required
                   />
                 </b-col>
@@ -182,6 +197,7 @@
                     v-model.trim='appointment.description'
                     placeholder='Detalhes'
                     :rows="5"
+                    :disabled="!(!!hospital && !!record)"
                     required
                   />
                 </b-col>
@@ -212,6 +228,7 @@ export default {
   data () {
     return {
       loading: true,
+      user: JSON.parse(localStorage.getItem('user')),
       appointment: {},
       booleanOptions: [
         {
@@ -275,6 +292,8 @@ export default {
         }
       ],
       hospital: null,
+      record: null,
+      doctor: null,
       genderFemale: true,
       title: (this.$route.params.id) ? `Editar Consulta` : 'Nova Consulta',
     }
