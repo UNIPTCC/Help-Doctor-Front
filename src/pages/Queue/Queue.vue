@@ -72,8 +72,10 @@ export default {
   },
   created() {
     (async () => {
-      this.hospital = this.user.hospitals[0].id
-      await this.getQueue(this.hospital)
+      this.hospital = this.user.hospitals[0].id || null
+      if (this.hospital) {
+        await this.getQueue(this.hospital)
+      }
     })()
   },
   methods: {
