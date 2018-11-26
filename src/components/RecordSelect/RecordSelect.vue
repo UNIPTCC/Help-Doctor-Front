@@ -34,7 +34,9 @@ export default {
         id: this.recieveRecord.id
       }
     }
-    this.getRecords()
+    if (this.hospital) {
+      this.getRecords()
+    }
   },
   watch: {
     record (newVal, oldVal) {
@@ -84,9 +86,10 @@ export default {
     },
     filterRecords (search) {
       if (search) {
+        search = search.toLowerCase()
         const filter = this.records.filter((record) => {
           const name = record.name.toLowerCase()
-          return name.search(search.toLowerCase()) !== -1
+          return name.search(search) !== -1
         })
         if (filter) {
           this.options = filter

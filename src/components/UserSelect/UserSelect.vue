@@ -80,9 +80,10 @@ export default {
     },
     filterUsers (search) {
       if (search) {
+        search = search.toLowerCase()
         const filter = this.users.filter((user) => {
           const name = user.name.toLowerCase()
-          return name.search(search.toLowerCase()) !== -1
+          return name.search(search) !== -1
         })
         if (filter) {
           this.options = filter
