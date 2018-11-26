@@ -136,6 +136,12 @@ Vue.component('patient-select', PatientSelect)
 
 import MedicalCategorySelect from './components/MedicalCategorySelect/MedicalCategorySelect'
 Vue.component('medical-category-select', MedicalCategorySelect)
+
+import RecordSelect from './components/RecordSelect/RecordSelect'
+Vue.component('record-select', RecordSelect)
+
+import UserSelect from './components/UserSelect/UserSelect'
+Vue.component('user-select', UserSelect)
 /* Components */
 
 Vue.config.productionTip = false
