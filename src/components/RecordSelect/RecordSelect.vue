@@ -22,12 +22,17 @@ export default {
   props: {
     disabled: Boolean,
     loading: Boolean,
-    recieveRecord: [Object, Boolean],
+    recieveRecord: [Object, Boolean, Number, String],
+    hospital: [String, Number],
     required: Boolean
   },
   created () {
     if (this.recieveRecord) {
-      this.record = this.recieveRecord
+      this.record = {
+        createdAt: this.recieveRecord.createdAt,
+        name: this.recieveRecord.patient[0].name,
+        id: this.recieveRecord.id
+      }
     }
     this.getRecords()
   },
@@ -42,8 +47,8 @@ export default {
     return {
       record: {
         name: '',
-        id: 0,
-        personal_document: ''
+        id: null,
+        createdAt: ''
       },
       options: [],
       records: [],
@@ -57,17 +62,16 @@ export default {
   },
   methods: {
     getLabel (item) {
-      return (item) ? item.name : ''
+      return (item) ? `${item.name} em ${this.$moment(item.createdAt).format('LL')}` : ''
     },
     getRecords () {
       (async () => {
         try {
-          const recordsList = await recordsService.get()
+          const recordsList = await recordsService.get(null, this.hospital)
           this.records = recordsList.map((record) => {
             return {
-              id: record.id,
-              name: record.name,
-              personal_document: record.personal_document
+              ...record,
+              name: record.patient[0].name
             }
           })
           this.loading = false
@@ -84,21 +88,9 @@ export default {
           return name.search(search) !== -1
         })
         if (filter) {
-          this.options = filter.map((record) => {
-            return {
-              id: record.id,
-              name: record.name,
-              personal_document: record.personal_document
-            }
-          })
+          this.options = filter
         } else {
-          this.options = this.records.map((record) => {
-            return {
-              id: record.id,
-              name: record.name,
-              personal_document: record.personal_document
-            }
-          })
+          this.options = this.records
         }
       }
     }

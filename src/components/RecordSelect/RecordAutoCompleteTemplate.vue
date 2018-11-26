@@ -2,7 +2,7 @@
   <div>
     <b>#{{item.id}}</b>
     <span> Nome: {{ item.name }}</span>
-    <abbr>CPF: {{item.personal_document}}</abbr>
+    <abbr>Data: {{$moment(item.createdAt).format('LL')}}</abbr>
   </div>
 </template>
 

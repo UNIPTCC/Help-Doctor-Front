@@ -26,7 +26,12 @@
               </b-row>
               <b-row>
                 <b-col cols="12" sm="12" md="12" lg="12" xl="12">
-                  selecionar prontuario aqui
+                  <record-select
+                    :recieveRecord="(record) ? record : false"
+                    v-on:pickrecord="recieveRecord"
+                    :hospital="hospital"
+                    required
+                  />
                 </b-col>
               </b-row>
               <b-row>
@@ -230,6 +235,11 @@ export default {
       loading: true,
       user: JSON.parse(localStorage.getItem('user')),
       appointment: {},
+      hospital: null,
+      record: null,
+      doctor: null,
+      genderFemale: true,
+      title: (this.$route.params.id) ? `Editar Consulta` : 'Nova Consulta',
       booleanOptions: [
         {
           value: false,
@@ -290,12 +300,7 @@ export default {
           value: 3,
           text: 'Exame'
         }
-      ],
-      hospital: null,
-      record: null,
-      doctor: null,
-      genderFemale: true,
-      title: (this.$route.params.id) ? `Editar Consulta` : 'Nova Consulta',
+      ]
     }
   },
   created() {
@@ -313,6 +318,7 @@ export default {
           this.appointment = await appointmentsService.get(id)
           this.hospital = this.appointment.pronouncer[0].hospital_id
           this.genderFemale = !!this.appointment.pronouncer[0].patient[0].genre === 'F'
+          this.record = this.appointment.pronouncer[0]
           this.loading = false
         } catch (err) {
           window.alert('Falha ao obter consulta')
@@ -351,6 +357,12 @@ export default {
     },
     recieveMedicalCategory (data) {
       this.appointment.medical_category_id = data
+    },
+    recieveRecord (data) {
+      this.record.pronouncer_id = (data) ? data.id : null
+      this.record.pronouncer = [{
+        ...data
+      }]
     }
   }
 }

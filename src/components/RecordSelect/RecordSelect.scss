@@ -1,0 +1,41 @@
+#record-select {
+  /* Auto complete */
+  .v-autocomplete {
+    .v-autocomplete-list {
+      top: 40px;
+      position: absolute;
+      z-index: 10;
+      width: 100%;
+      text-align: left;
+      border: none;
+      border-top: none;
+      max-height: 400px;
+      overflow-y: auto;
+      border-bottom: 1px solid #cbd2de;
+      border-bottom-left-radius: 0.25rem;
+      border-bottom-right-radius: 0.25rem;
+      box-shadow: 0 1px 3px 0 $black-shadow;
+      .v-autocomplete-list-item {
+        cursor: pointer;
+        background-color: #fff;
+        padding: 10px;
+        border-bottom: 1px solid #cbd2de;
+        border-left: 1px solid #cbd2de;
+        border-right: 1px solid #cbd2de;
+        &:last-child {
+          border-bottom: none;
+        }
+        &:hover {
+          background-color: $gray;
+        }
+        abbr {
+          opacity: 0.8;
+          font-size: 0.8em;
+          display: block;
+          font-family: sans-serif;
+        }
+      }
+    }
+  }
+  /* Auto complete */
+}
