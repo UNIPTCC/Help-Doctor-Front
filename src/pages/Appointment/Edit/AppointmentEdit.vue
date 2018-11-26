@@ -48,6 +48,7 @@
                     :recieveUser="(doctor) ? doctor : false"
                     v-on:pickuser="recieveUser"
                     type="DOCTOR"
+                    :disabled="!(!!hospital && !!record)"
                     required
                   />
                 </b-col>
@@ -241,8 +242,8 @@ export default {
       user: JSON.parse(localStorage.getItem('user')),
       appointment: {},
       hospital: null,
-      record: null,
-      doctor: null,
+      record: false,
+      doctor: {},
       genderFemale: true,
       title: (this.$route.params.id) ? `Editar Consulta` : 'Nova Consulta',
       booleanOptions: [
@@ -335,9 +336,10 @@ export default {
     onSubmit () {
       (async () => {
         try {
-          const { appointment } = this
+          let { appointment, record } = this
           const { id } = this.$route.params
           let response = null
+          appointment.record = record
           if (!id) {
             response = await appointmentsService.create(appointment)
           } else {
@@ -365,16 +367,21 @@ export default {
       this.appointment.medical_category_id = data
     },
     recieveRecord (data) {
-      this.record.pronouncer_id = (data) ? data.id : null
-      this.record.pronouncer = [{
-        ...data
-      }]
+      if (this.record) {
+        this.record.pronouncer_id = (data) ? data.id : null
+        this.record.pronouncer = [{
+          ...data
+        }]
+      }
     },
     recieveUser (data) {
-      this.record.user_id = (data) ? data.id : null
-      this.record.user = [{
-        ...data
-      }]
+      if (this.doctor) {
+        this.appointment.user_id = (data) ? data.id : null
+        this.appointment.user = [{
+          ...data
+        }]
+        this.doctor = data
+      }
     }
   }
 }

@@ -2,7 +2,7 @@
   <div>
     <b>#{{item.id}}</b>
     <span> Nome: {{ item.name }}</span>
-    <abbr>Data: {{$moment(item.createdAt).format('LL')}}</abbr>
+    <abbr v-if="item.createdAt">Data: {{$moment(item.createdAt).format('LL')}}</abbr>
   </div>
 </template>
 

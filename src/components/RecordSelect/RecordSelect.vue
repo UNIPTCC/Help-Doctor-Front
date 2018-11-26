@@ -62,7 +62,8 @@ export default {
   },
   methods: {
     getLabel (item) {
-      return (item) ? `${item.name} em ${this.$moment(item.createdAt).format('LL')}` : ''
+      const date = (item && item.createdAt) ? ` em ${this.$moment(item.createdAt).format('LL')}` : ''
+      return (item) ? `${item.name}${date}` : ''
     },
     getRecords () {
       (async () => {
