@@ -212,14 +212,14 @@
                   />
                 </b-col>
               </b-row>
+              <b-row>
+                <b-col class='text-right'>
+                  <b-btn class='new' type='submit'>
+                    <font-awesome-icon icon="save" /> Salvar
+                  </b-btn>
+                </b-col>
+              </b-row>
             </form>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col class='text-right'>
-            <b-btn class='new' type='submit'>
-              <font-awesome-icon icon="save" /> Salvar
-            </b-btn>
           </b-col>
         </b-row>
       </b-container>
