@@ -343,7 +343,7 @@ export default {
           } else {
             response = await appointmentsService.update(id, appointment)
           }
-          if (response.id) {
+          if (!response.errors) {
             this.error = ''
             window.alert("Consulta atualizada com sucesso")
             this.$router.push({ name: 'AppointmentList' })
