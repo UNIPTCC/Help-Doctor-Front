@@ -81,7 +81,7 @@ export default {
       if (search) {
         const filter = this.patients.filter((patient) => {
           const name = patient.name.toLowerCase()
-          return name.search(search) !== -1
+          return name.search(search.toLowerCase()) !== -1
         })
         if (filter) {
           this.options = filter

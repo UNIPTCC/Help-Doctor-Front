@@ -85,7 +85,7 @@ export default {
       if (search) {
         const filter = this.records.filter((record) => {
           const name = record.name.toLowerCase()
-          return name.search(search) !== -1
+          return name.search(search.toLowerCase()) !== -1
         })
         if (filter) {
           this.options = filter

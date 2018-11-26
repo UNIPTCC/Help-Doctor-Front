@@ -42,7 +42,7 @@
                 <b-col cols="12" sm="12" md="12" lg="12" xl="12">
                   <b-form-textarea
                     type='text'
-                    v-model.trim='record.description'
+                    v-model='record.description'
                     placeholder='Observações'
                     :rows="5"
                     required

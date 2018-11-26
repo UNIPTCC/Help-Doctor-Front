@@ -204,7 +204,7 @@
                 <b-col cols="12" sm="12" md="12" lg="12" xl="12">
                   <b-form-textarea
                     type='text'
-                    v-model.trim='appointment.description'
+                    v-model='appointment.description'
                     placeholder='Detalhes'
                     :rows="5"
                     :disabled="!(!!hospital && !!record)"

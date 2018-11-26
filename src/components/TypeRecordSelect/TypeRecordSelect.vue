@@ -22,9 +22,6 @@ export default {
   created () {
     this.typeRecord = this.recieveTypeRecord || null
   },
-  updated () {
-    this.typeRecord = this.recieveTypeRecord || null
-  },
   watch: {
     typeRecord (newVal, oldVal) {
        if (newVal !== oldVal) {
