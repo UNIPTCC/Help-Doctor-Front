@@ -193,7 +193,6 @@ export default {
           let response = null
           if (this.verifyPassword()) {
             if (!id) {
-              this.user.roles_id = [ this.roleId ]
               response = await usersService.create(user)
             } else {
               response = await usersService.update(id, user)

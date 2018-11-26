@@ -1,9 +1,16 @@
 #address-form {
+  border: none !important;
+  background: transparent !important;
+  &>div {
+    border: none !important;
+  }
   legend {
     text-align: left;
     font-size: 18px;
     color: $blue;
     margin: 0 0 5px;
+    border: none !important;
+    background: transparent !important;
   }
   input, select {
     &:disabled {
