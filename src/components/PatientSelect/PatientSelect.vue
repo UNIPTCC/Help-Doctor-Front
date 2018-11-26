@@ -84,21 +84,9 @@ export default {
           return name.search(search) !== -1
         })
         if (filter) {
-          this.options = filter.map((patient) => {
-            return {
-              id: patient.id,
-              name: patient.name,
-              personal_document: patient.personal_document
-            }
-          })
+          this.options = filter
         } else {
-          this.options = this.patients.map((patient) => {
-            return {
-              id: patient.id,
-              name: patient.name,
-              personal_document: patient.personal_document
-            }
-          })
+          this.options = this.patients
         }
       }
     }

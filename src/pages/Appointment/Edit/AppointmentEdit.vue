@@ -44,7 +44,12 @@
                   />
                 </b-col>
                 <b-col cols="12" sm="12" md="12" lg="4" xl="4">
-                  selecionar médico aqui
+                  <user-select
+                    :recieveUser="(doctor) ? doctor : false"
+                    v-on:pickuser="recieveUser"
+                    type="DOCTOR"
+                    required
+                  />
                 </b-col>
                 <b-col cols="12" sm="12" md="12" lg="4" xl="4">
                   <b-form-select 
@@ -319,6 +324,7 @@ export default {
           this.hospital = this.appointment.pronouncer[0].hospital_id
           this.genderFemale = !!this.appointment.pronouncer[0].patient[0].genre === 'F'
           this.record = this.appointment.pronouncer[0]
+          this.doctor = this.appointment.user[0]
           this.loading = false
         } catch (err) {
           window.alert('Falha ao obter consulta')
@@ -361,6 +367,12 @@ export default {
     recieveRecord (data) {
       this.record.pronouncer_id = (data) ? data.id : null
       this.record.pronouncer = [{
+        ...data
+      }]
+    },
+    recieveUser (data) {
+      this.record.user_id = (data) ? data.id : null
+      this.record.user = [{
         ...data
       }]
     }

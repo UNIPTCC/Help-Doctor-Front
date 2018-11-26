@@ -22,6 +22,7 @@ export default {
   props: {
     disabled: Boolean,
     loading: Boolean,
+    type: String,
     recieveUser: [Object, Boolean],
     required: Boolean
   },
@@ -62,7 +63,7 @@ export default {
     getUsers () {
       (async () => {
         try {
-          const usersList = await usersService.get()
+          const usersList = await usersService.get(null, this.type)
           this.users = usersList.map((user) => {
             return {
               id: user.id,
@@ -84,21 +85,9 @@ export default {
           return name.search(search) !== -1
         })
         if (filter) {
-          this.options = filter.map((user) => {
-            return {
-              id: user.id,
-              name: user.name,
-              personal_document: user.personal_document
-            }
-          })
+          this.options = filter
         } else {
-          this.options = this.users.map((user) => {
-            return {
-              id: user.id,
-              name: user.name,
-              personal_document: user.personal_document
-            }
-          })
+          this.options = this.users
         }
       }
     }

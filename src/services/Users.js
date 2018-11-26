@@ -7,10 +7,12 @@ export default class Users extends Service {
     this.base = VUE_APP_HELPDOCTOR_API_URL
   }
 
-  async get (id) {
+  async get (id, type) {
     let query = ''
     if (id) {
       query = `/${id}`
+    } else if (type) {
+      query = `?type=${type}`
     }
 
     try {
