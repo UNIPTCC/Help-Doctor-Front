@@ -77,5 +77,5 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../assets/styles/globals";
-@import "./StateSelect";
+@import "./StateSelect.scss";
 </style>
