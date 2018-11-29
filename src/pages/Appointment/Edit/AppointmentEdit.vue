@@ -201,6 +201,18 @@
                     required
                   />
                 </b-col>
+                <b-col cols="12" sm="12" md="12" lg="4" xl="4" v-if='!!$route.params.id'>
+                  <b-form-group label="Fila de atendimento?">
+                    <b-form-radio-group
+                      v-model="appointment.queue"
+                      :options="booleanOptions"
+                      :disabled="!(!!hospital && !!record)"
+                      name="queue"
+                      stacked
+                      required
+                    />
+                  </b-form-group>
+                </b-col>
               </b-row>
               <b-row>
                 <b-col cols="12" sm="12" md="12" lg="12" xl="12">
@@ -244,7 +256,8 @@ export default {
       appointment: {
         type_id: null,
         is_pregnant: false,
-        status: 1
+        queue: true,
+        status: 2
       },
       hospital: null,
       record: false,
