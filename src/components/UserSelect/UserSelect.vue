@@ -37,6 +37,11 @@ export default {
        if (newVal !== oldVal && newVal) {
         this.$emit('pickuser', newVal)
       }
+    },
+    disabled (newVal, oldVal) {
+       if (newVal !== oldVal) {
+        this.config.disabled = newVal
+      }
     }
   },
   data () {

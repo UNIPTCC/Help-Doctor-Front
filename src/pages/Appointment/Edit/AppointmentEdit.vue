@@ -30,6 +30,7 @@
                     :recieveRecord="(record) ? record : false"
                     v-on:pickrecord="recieveRecord"
                     :hospital="hospital"
+                    :disabled="!hospital"
                     required
                   />
                 </b-col>
@@ -240,7 +241,11 @@ export default {
     return {
       loading: true,
       user: JSON.parse(localStorage.getItem('user')),
-      appointment: {},
+      appointment: {
+        type_id: null,
+        is_pregnant: false,
+        status: 1
+      },
       hospital: null,
       record: false,
       doctor: {},
@@ -336,10 +341,9 @@ export default {
     onSubmit () {
       (async () => {
         try {
-          let { appointment, record } = this
+          let { appointment } = this
           const { id } = this.$route.params
           let response = null
-          appointment.record = record
           if (!id) {
             response = await appointmentsService.create(appointment)
           } else {
@@ -367,16 +371,19 @@ export default {
       this.appointment.medical_category_id = data
     },
     recieveRecord (data) {
-      if (this.record) {
-        this.record.pronouncer_id = (data) ? data.id : null
+      if (data) {
+        this.appointment.pronouncer_id = data.id
+        this.record = {}
+        this.record.pronouncer_id = data.id
         this.record.pronouncer = [{
           ...data
         }]
+        this.genderFemale = !!data.patient[0].genre === 'F'
       }
     },
     recieveUser (data) {
-      if (this.doctor) {
-        this.appointment.user_id = (data) ? data.id : null
+      if (data) {
+        this.appointment.user_id = data.id
         this.appointment.user = [{
           ...data
         }]

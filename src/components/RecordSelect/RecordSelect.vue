@@ -35,6 +35,13 @@ export default {
       }
     }
     if (this.hospital) {
+      this.config.disabled = false
+      this.getRecords()
+    }
+  },
+  updated () {
+    if (this.hospital) {
+      this.config.disabled = false
       this.getRecords()
     }
   },
@@ -42,6 +49,12 @@ export default {
     record (newVal, oldVal) {
        if (newVal !== oldVal && newVal) {
         this.$emit('pickrecord', newVal)
+      }
+    },
+    hospital (newVal, oldVal) {
+      if (newVal !== oldVal && newVal) {
+        this.config.disabled = false
+        this.getRecords()
       }
     }
   },
@@ -56,7 +69,7 @@ export default {
       records: [],
       config: {
         placeholder: 'Procurar Prontuário',
-        required: this.required,
+        required: true,
         disabled: this.disabled
       },
       template: RecordAutoCompleteTemplate

@@ -26,9 +26,6 @@ export default {
     this.medicalCategory = this.recieveMedicalCategory || null
     this.getMedicalCategories()
   },
-  updated () {
-    this.medicalCategory = this.recieveMedicalCategory || null
-  },
   watch: {
     medicalCategory (newVal, oldVal) {
        if (newVal !== oldVal) {
