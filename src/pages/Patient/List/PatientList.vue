@@ -79,9 +79,6 @@ export default {
       (async () => {
         try {
           this.patients = await patientsService.get()
-          if (!this.patients.lenght > 0) {
-            this.patients = []
-          }
           await this.parseDates()
           this.loading = false
         } catch (err) {
